@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da0c15f0_c177e400",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7437
+      },
+      "writtenOn": "2014-05-24T14:55:55Z",
+      "side": 1,
+      "message": "should be \"shinano: secure tad socket\"",
+      "revId": "641ae68b52e02af47966be1f5a766a55d6516bf6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
