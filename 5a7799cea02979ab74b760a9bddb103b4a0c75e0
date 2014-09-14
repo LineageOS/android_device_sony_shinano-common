@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_b7401058",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 19
+      },
+      "writtenOn": "2014-09-14T03:38:36Z",
+      "side": 1,
+      "message": "i\u0027m not sure this is the correct one, it can be \"bcm433x\"",
+      "revId": "5a7799cea02979ab74b760a9bddb103b4a0c75e0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
