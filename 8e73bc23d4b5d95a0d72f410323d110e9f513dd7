@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a18252c_ca5f0f74",
+        "filename": "libaudioamp/audio_amplifier.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2014-10-22T16:55:06Z",
+      "side": 1,
+      "message": "I kept this as I copied this file as-is from m8",
+      "parentUuid": "5a18252c_af646549",
+      "revId": "8e73bc23d4b5d95a0d72f410323d110e9f513dd7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a18252c_6f4b6db1",
         "filename": "libaudioamp/tfa9890.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-22T05:31:45Z",
       "side": 1,
       "message": "Structure of the code is a little weird to me here, tfa9890_param_data isn\u0027t explicitly passed to tfa9890_prepare_for_ioctl so it\u0027s not immediately obvious without further examination what\u0027s going on.",
+      "revId": "8e73bc23d4b5d95a0d72f410323d110e9f513dd7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a18252c_aa645349",
+        "filename": "libaudioamp/tfa9890.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2014-10-22T16:55:06Z",
+      "side": 1,
+      "message": "tfa9890_prepare_for_ioctl reads the file (arg1) \u0027PATCH_DSP_FILE\u0027, and sets the size and data in tfa9890_param_data.\nThe type in tfa9890_param_data is set to PATCH_DSP (arg2)\n\nI\u0027ll add some comments in the next revision",
+      "parentUuid": "5a18252c_6f4b6db1",
       "revId": "8e73bc23d4b5d95a0d72f410323d110e9f513dd7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
