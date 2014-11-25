@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab6814e_ff98cb6c",
+        "filename": "shinano.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2014-11-25T01:19:20Z",
+      "side": 1,
+      "message": "These are in device/sony/qcom-common",
+      "revId": "965df3336d207b8a41662646348b5ea3a1cad7d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
