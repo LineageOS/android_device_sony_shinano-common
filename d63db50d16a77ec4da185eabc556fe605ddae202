@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_82e5eaa9",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 19
+      },
+      "writtenOn": "2014-12-13T23:11:56Z",
+      "side": 1,
+      "message": "typo ?\nit should be removed?",
+      "revId": "d63db50d16a77ec4da185eabc556fe605ddae202",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
