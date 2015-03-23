@@ -20,3 +20,6 @@
 
 # WIFI
 /sys/module/bcmdhd/parameters/firmware_path             u:object_r:sysfs_wlan_fwpath:s0
+
+# Quick Charge
+/system/vendor/bin/hvdcp                      u:object_r:hvdcp_exec:s0
