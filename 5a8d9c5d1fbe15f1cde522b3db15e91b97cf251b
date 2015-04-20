@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa7ab95a_82c4ef40",
+        "filename": "audio/audio_platform_info.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-04-20T05:40:20Z",
+      "side": 1,
+      "message": "I think some remapping needs to happen for camcorder mic too.",
+      "revId": "5a8d9c5d1fbe15f1cde522b3db15e91b97cf251b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
