@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_7a25cbc0",
+        "filename": "shinano.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2015-05-16T01:52:24Z",
+      "side": 1,
+      "message": "Could you move this one line above, below init but above ueventd?",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 65
+      },
+      "revId": "781eb7d36c54996e01421d8590443c05821441d4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
