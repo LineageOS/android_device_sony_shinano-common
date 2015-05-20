@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_4e0cc494",
+        "filename": "rootdir/init.sony.usb.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2015-05-20T19:10:40Z",
+      "side": 1,
+      "message": "Missing\n \nwrite /sys/class/android_usb/android0/f_rndis/manufacturer Sony",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "fe76d4857cc04d1cdc8d768cea0cee3bee11884d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_8e26cc14",
+        "filename": "rootdir/init.sony.usb.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2015-05-20T19:10:40Z",
+      "side": 1,
+      "message": "Missing\n \nwrite /sys/class/android_usb/android0/bDeviceClass 0\nwrite /sys/class/android_usb/android0/bDeviceSubClass 0\nwrite /sys/class/android_usb/android0/bDeviceProtocol 0\n\nHere and everywhere below.",
+      "range": {
+        "startLine": 26,
+        "startChar": 27,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "fe76d4857cc04d1cdc8d768cea0cee3bee11884d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_ae239004",
+        "filename": "rootdir/init.sony.usb.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2015-05-20T19:10:40Z",
+      "side": 1,
+      "message": "Missing the diag configs though I\u0027m not sure if we can use that.",
+      "revId": "fe76d4857cc04d1cdc8d768cea0cee3bee11884d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
