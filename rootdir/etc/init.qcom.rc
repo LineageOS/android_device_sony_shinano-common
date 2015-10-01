@@ -24,6 +24,9 @@ import /vendor/etc/init/hw/init.camera.rc
 on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
 
+    # Turn off backlight on blank
+    write /sys/class/leds/lcd-backlight/trigger "backlight"
+
 on init
     symlink /dev/block/platform/msm_sdcc.1 /dev/block/bootdevice
 
