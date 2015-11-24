@@ -192,7 +192,7 @@ service wvkbd_installer /system/bin/wvkbd
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
-
+    group system wakelock
 
 #service qcamerasvr /system/bin/logwrapper /system/bin/mm-qcamera-daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon

@@ -410,7 +410,7 @@ on property:init.svc.wpa_supplicant=stopped
 service qmuxd /system/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps nfc diag qcom_diag
+    group radio audio bluetooth gps nfc diag wakelock qcom_diag
 
 service netmgrd /system/bin/netmgrd
     class main
@@ -564,7 +564,7 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
 service sensors /system/bin/sensors.qcom
     class core
     user root
-    group root
+    group root wakelock
 
 service qcom-sensor-sh /system/bin/sh /system/etc/init.qcom-sensor.sh
     class main
