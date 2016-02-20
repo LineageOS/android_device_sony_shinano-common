@@ -49,3 +49,7 @@
 #cam_socket
 /data/misc/camera(/.*)					u:object_r:camera_data_file:s0
 /dev/block/mmcblk0p1					u:object_r:tad_block_device:s0
+
+# macaddrsetup
+/sys/devices/platform/bcmdhd_wlan/macaddr    u:object_r:sysfs_wlanmac:s0
+

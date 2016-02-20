@@ -436,6 +436,11 @@ service qmuxd /system/bin/qmuxd
     user root
     group radio audio bluetooth gps nfc diag wakelock qcom_diag
 
+# Wi-Fi and BT MAC addresses
+service macaddrsetup /system/bin/macaddrsetup /sys/devices/platform/bcmdhd_wlan/macaddr
+    class late_start
+    user root
+    oneshot
 service netmgrd /system/bin/netmgrd
     class main
 
