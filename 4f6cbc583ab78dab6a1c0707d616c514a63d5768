@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7faddb67_f9625f16",
+        "filename": "bluetooth/vnd_shinano.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2016-03-31T01:23:33Z",
+      "side": 1,
+      "message": "The removed trailing newline results in compile fail owing to vnd_buildcfg.h being built like this:\n\n#define UPIO_DBG   FALSE#endif",
+      "revId": "4f6cbc583ab78dab6a1c0707d616c514a63d5768",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
