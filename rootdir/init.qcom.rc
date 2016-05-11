@@ -392,6 +392,8 @@ service macaddrsetup /system/bin/macaddrsetup /sys/devices/platform/bcmdhd_wlan/
 
 service netmgrd /system/bin/netmgrd
     class late_start
+    user root
+    group root wifi wakelock radio inet
 
 on property:ro.radio.noril=true
     stop ril-daemon
