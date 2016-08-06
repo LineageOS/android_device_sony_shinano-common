@@ -17,8 +17,7 @@
 
 set -e
 
-export DEVICE_COMMON=shinano-common
-export VENDOR=sony
+export INITIAL_COPYRIGHT_YEAR=2014
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -33,32 +32,27 @@ if [ ! -f "$HELPER" ]; then
 fi
 . "$HELPER"
 
-if [ $# -eq 0 ]; then
-    SRC=adb
-else
-    if [ $# -eq 1 ]; then
-        SRC=$1
-    else
-        echo "$0: bad number of arguments"
-        echo ""
-        echo "usage: $0 [PATH_TO_EXPANDED_ROM]"
-        echo ""
-        echo "If PATH_TO_EXPANDED_ROM is not specified, blobs will be extracted from"
-        echo "the device using adb pull."
-        exit 1
-    fi
-fi
-
 # Initialize the helper for common device
 setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" true
 
-extract "$MY_DIR"/proprietary-files.txt "$SRC"
+# Copyright headers and common guards
+write_headers "z3 z3c sirius castor castor_windy"
+
+write_makefiles "$MY_DIR"/proprietary-files.txt
+
+write_footers
 
 # Reinitialize the helper for device
 setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 
+# Copyright headers and guards
+write_headers
+
 for BLOB_LIST in "$MY_DIR"/../$DEVICE/proprietary-files.txt; do
-    extract $BLOB_LIST "$SRC"
+    write_makefiles $BLOB_LIST
 done
 
-"$MY_DIR"/setup-makefiles.sh
+# Vendor BoardConfig variables
+printf 'USE_CAMERA_STUB := false\n' >> "$BOARDMK"
+
+write_footers
