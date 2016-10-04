@@ -22,7 +22,7 @@ import /init.platform-common.rc
 import /init.camera.rc
 
 on early-init
-    mount debugfs debugfs /sys/kernel/debug
+    mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
     chown system system /sys/kernel/debug/kgsl/proc
 
 on init
