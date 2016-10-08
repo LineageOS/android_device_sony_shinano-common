@@ -24,24 +24,14 @@
 
 #include <sys/system_properties.h>
 
-static void import_kernel_nv(char *name, __attribute__((unused)) bool foo)
+static void import_kernel_nv(const std::string& key,
+        const std::string& value, bool for_emulator __attribute__((unused)))
 {
-    char *value = strchr(name, '=');
-    int name_len = strlen(name);
-
-    if (value == 0) return;
-    *value++ = 0;
-    if (name_len == 0) return;
+    if (key.empty()) return;
 
     // We only want the bootloader version
-    if (strcmp(name, "oemandroidboot.s1boot") == 0) {
-        const char *boot_prop_name = name + 15;
-        char prop[PROP_NAME_MAX];
-        int cnt;
-
-        cnt = snprintf(prop, sizeof(prop), "ro.boot.%s", boot_prop_name);
-        if (cnt < PROP_NAME_MAX)
-            property_set(prop, value);
+    if (key == "oemandroidboot.s1boot") {
+		property_set("ro.boot.oemandroidboot.s1boot", value.c_str());
     }
 }
 
