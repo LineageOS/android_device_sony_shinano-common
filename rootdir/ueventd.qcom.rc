@@ -215,3 +215,7 @@
 
 # NFC
 /dev/pn547              0660    nfc         nfc
+
+# TA
+/dev/block/bootdevice/by-name/TA 0770  tad      tad
+

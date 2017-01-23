@@ -42,6 +42,13 @@ on init
 
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
+    
+     mkdir /idd 0751 idd idd
+    mkdir /rca 0750 idd idd
+
+    wait /dev/block/mmcblk0p1
+    chown tad tad /dev/block/mmcblk0p1
+    chmod 0770 /dev/block/mmcblk0p1
 
     # Bluetooth address setting
     setprop ro.bt.bdaddr_path "/data/etc/bluetooth_bdaddr"
@@ -72,6 +79,15 @@ on fs
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/LTALabel /lta-label nosuid nodev noatime noexec ro barrier=0
     chown system system /lta-label
     chmod 0555 /lta-label
+    
+     chown idd idd /idd
+    chmod 0751 /iddA
+    exec /system/bin/rm -r /idd/lost+found
+    symlink /idd /mnt/idd
+    chown idd idd /rca
+    chmod 0750 /rca
+    exec /system/bin/rm -r /rca/lost+found
+    symlink /rca /mnt/rca
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -263,6 +279,17 @@ on post-fs-data
     mkdir /data/etc 0755 root shell
 
     mkdir /data/media 0770 media_rw media_rw
+    
+    mkdir /data/credmgr 0770 system credmgr_client
+
+    mkdir /idd/lost+found 0770 root root
+    mkdir /idd/output 0755 idd idd
+    mkdir /idd/socket 0711 idd idd
+    mkdir /idd/startup-prober 0700 root root
+
+    restorecon_recursive /idd
+    mkdir /rca/plugins 0750 idd idd
+    restorecon_recursive /rca
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -478,8 +505,8 @@ service mpdecision /system/bin/mpdecision --avg_comp
 
 service iddd /system/bin/iddd
     class main
-    user root
-    group root log
+    user idd
+    group idd log inet trimarea
 
 # Start suntrold
 service suntrold /system/bin/suntrold
@@ -536,7 +563,7 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
-    group camera system inet input
+    group system inet input graphics
 
 service sensors /system/bin/sensors.qcom
     class main
@@ -563,3 +590,58 @@ service audiod /system/bin/audiod
     class late_start
     user system
     group system
+
+# SONY misc
+service tad_static /system/bin/tad_static /dev/block/bootdevice/by-name/TA 0,16
+    class core
+    user tad
+    group tad root
+    socket tad stream 0660 system trimarea
+
+service updatemiscta /system/bin/updatemiscta
+    class main
+    user updatemiscta
+    group trimarea
+    oneshot
+ 
+# Redefined Service
+service audioserver /system/bin/audioserver
+    class main
+    user audioserver
+    # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
+    group audio trimarea camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct qcom_diag
+    ioprio rt 4
+
+service cameraserver /system/bin/cameraserver
+    class main
+    user cameraserver
+    group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct credmgr_client trimarea
+    ioprio rt 4
+
+
+service drm /system/bin/drmserver
+    class main
+    user drm
+    group drm system inet drmrpc readproc trimarea
+
+
+service media /system/bin/mediaserver
+    class main
+    user media
+    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm credmgr_client
+    ioprio rt 4
+
+
+service mediadrm /system/bin/mediadrmserver
+    class main
+    user media
+    group mediadrm drmrpc trimarea
+    ioprio rt 4
+
+service ril-daemon /system/bin/rild
+    class main
+    socket rild stream 660 root radio
+    socket sap_uim_socket1 stream 660 bluetooth bluetooth
+    socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio log readproc wakelock qcom_diag drmrpc trimarea 
