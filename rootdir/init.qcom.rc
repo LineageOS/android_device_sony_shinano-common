@@ -385,14 +385,6 @@ service qmuxd /system/bin/qmuxd
     user root
     group radio audio bluetooth gps nfc diag qcom_diag
 
-# SONY: TrimArea Daemon
-# Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
-service tad_static /system/bin/tad_static /dev/block/mmcblk0 1,16
-    user root
-    group root
-    socket tad stream 0660 system system
-    class core
-
 service taimport /system/bin/taimport
     class late_start
     user root
