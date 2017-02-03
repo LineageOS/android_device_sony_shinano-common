@@ -24,6 +24,8 @@ on early-init
     chown system system /sys/kernel/debug/kgsl/proc
 
 on init
+    symlink /dev/block/platform/msm_sdcc.1 /dev/block/bootdevice
+
     # Enable subsystem restart
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
     write /sys/bus/msm_subsys/devices/subsys0/restart_level "RELATED"
@@ -79,15 +81,14 @@ on fs
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/LTALabel /lta-label nosuid nodev noatime noexec ro barrier=0
     chown system system /lta-label
     chmod 0555 /lta-label
-    
-     chown idd idd /idd
-    chmod 0751 /iddA
-    exec /system/bin/rm -r /idd/lost+found
+
+    # mount apps_log
+    #wait /dev/block/platform/msm_sdcc.1/by-name/apps_log
+    #mount ext4 /dev/block/platform/msm_sdcc.1/by-name/apps_log /idd nosuid nodev noatime noexec barrier=0 discard
+    chown idd idd /idd
+    chmod 0751 /idd
+    #exec /system/bin/rm -r /idd/lost+found
     symlink /idd /mnt/idd
-    chown idd idd /rca
-    chmod 0750 /rca
-    exec /system/bin/rm -r /rca/lost+found
-    symlink /rca /mnt/rca
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
