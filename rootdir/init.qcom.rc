@@ -439,7 +439,7 @@ service gsiff_daemon /system/bin/gsiff_daemon
 service qseecomd /system/bin/qseecomd
     class core
     user root
-    group root
+    group drmpc root
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -531,11 +531,8 @@ service mpdecision /system/bin/mpdecision --avg_comp
 service iddd /system/bin/iddd -v
     class main
     user idd
-    group idd log inet trimarea credmgr_client
+    group idd log inet trimarea credmgr_client system
     writepid /dev/cpuset/system-background/tasks
-    socket idd_cl stream 0660 core idd
-    socket idd_co stream 0660 core idd
-    socket idd_co_stream stream 0660 core idd
 
 on property:gsm.nitz.time=*
     start scdnotifier_nitz
@@ -550,7 +547,7 @@ service suntrold /system/bin/suntrold
 # Start Credential manager daemon
 service credmgrd /system/bin/credmgrd
     user system
-    group credmgr_client trimarea
+    group credmgr_client trimarea idd log inet drmpc
     socket credmgr stream 0777 system credmgr_client
     class main
 
@@ -626,7 +623,7 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
-    group system inet input graphics
+    group system inet input graphics camera credmgr_client
 
 service sensors /system/bin/sensors.qcom
     class main
