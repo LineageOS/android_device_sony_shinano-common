@@ -10,4 +10,6 @@ allow iddd iddd_file:dir rw_file_perms;
 
 type_transition iddd system_data_file:file iddd_file;
 
+type credmgr, domain;
 type credmgr_exec, exec_type, file_type;
+init_daemon_domain(credmgr);
