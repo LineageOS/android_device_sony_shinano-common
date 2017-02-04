@@ -499,7 +499,11 @@ service mpdecision /system/bin/mpdecision --avg_comp
 service iddd /system/bin/iddd
     class main
     user idd
-    group idd log inet trimarea
+    group idd log inet trimarea credmgr
+    writepid /dev/cpuset/system-background/tasks
+    socket idd_cl stream 0660 core idd
+    socket idd_co stream 0660 core idd
+    socket idd_co_stream stream 0660 core idd
 
 # Start suntrold
 service suntrold /system/bin/suntrold
@@ -514,6 +518,9 @@ service credmgrd /system/bin/credmgrd
     group root
     socket credmgr stream 0777 system system
     class main
+    socket secd_ebl_sock stream 0660 system credmgr_client
+    socket secd_devsec_sock stream 0660 system credmgr_client
+    socket secd_credmgr_sock stream 0660 system credmgr_client
 
 # bugreport is triggered by holding down volume down, volume up and power
 service bugreport /system/bin/dumpstate -d -p -B \
