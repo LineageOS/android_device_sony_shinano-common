@@ -13,3 +13,12 @@ type_transition iddd system_data_file:file iddd_file;
 type credmgr, domain;
 type credmgr_exec, exec_type, file_type;
 init_daemon_domain(credmgr);
+
+
+type scd, domain;
+type scd_exec, exec_type, file_type;
+init_daemon_domain(scd)
+
+type wv,domain;
+type wv_exec, exec_type, file_type;
+init_daemon_domain(wv)

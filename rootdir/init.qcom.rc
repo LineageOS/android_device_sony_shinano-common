@@ -532,15 +532,14 @@ service iddd /system/bin/iddd -v
     class main
     user idd
     group idd log inet trimarea credmgr_client system
-    writepid /dev/cpuset/system-background/tasks
 
 on property:gsm.nitz.time=*
     start scdnotifier_nitz
 
 # Start suntrold
 service suntrold /system/bin/suntrold
-    user root
-    group root
+    user system
+    group system
     oneshot
     class main
 
@@ -572,13 +571,12 @@ service bugreport /system/bin/dumpstate -d -p -B \
 # Secure Config Transfer service
 service sct_service /system/bin/sct_service
     user root
-    class main
     disabled
 
 # Trim Area QMI service
 service ta_qmi_service /system/bin/ta_qmi_service
     user ta_qmi
-    group ta_qmi trimarea system root net_raw
+    group ta_qmi trimarea system root net_raw wakelock
     disabled
 
 # Modem Log QMI service
@@ -604,6 +602,12 @@ service scdnotifier_nitz /system/bin/scdnotifier nitz
 # all of its service listeners are registered before calling them
 on property:sys.listeners.registered=true
     start wvkbd_installer
+
+service wvkbd_installer /system/bin/wvkbd
+    user system
+    group system
+    oneshot
+    disabled
 
 # Thermal Manager service
 service thermanager /system/bin/thermanager /system/etc/thermanager.xml
@@ -656,17 +660,11 @@ service audiod /system/bin/audiod
 service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
     class trimarea
     user tad
-    group trimarea root
+    group tad trimarea root
     socket tad stream 0660 system trimarea
 # tad_static is in rootfs, normal file_context does not work
     seclabel u:r:tad:s0
 
-service updatemiscta /system/bin/updatemiscta
-    class main
-    user updatemiscta
-    group trimarea
-    oneshot
- 
 # Redefined Service
 service audioserver /system/bin/audioserver
     class main
