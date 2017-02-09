@@ -50,7 +50,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	libc_ndk \
 	tad_static \
-	wait4tad_static
+	wait4tad_static \
+	libshims_wvm
 
 # ANT+
 PRODUCT_PACKAGES += \

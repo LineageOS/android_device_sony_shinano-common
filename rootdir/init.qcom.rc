@@ -25,6 +25,7 @@ on early-init
     echo 8 8 8 8 > /proc/sys/kernel/printk
 
 on init
+    export LD_SHIM_LIBS /system/vendor/lib/libwvm.so|libshims_wvm.so
     symlink /dev/block/platform/msm_sdcc.1 /dev/block/bootdevice
 
     # Enable subsystem restart
