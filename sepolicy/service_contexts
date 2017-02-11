@@ -1,0 +1,63 @@
+#line 1 "system/sepolicy/service_contexts"
+#line 1 "out/target/product/leo/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
+#line 1 "vendor/semc/system/sepolicy/Camera_Extension_API/1.1.0/service_contexts"
+media.cameraextension                     u:object_r:mediaserver_service:s0
+#line 1 "out/target/product/leo/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
+#line 1 "vendor/semc/system/sepolicy/Crash_Handling/1_0_0/service_contexts"
+#crashmonitornative u:object_r:crashmonitor_service:s0
+#line 1 "out/target/product/leo/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
+#line 1 "vendor/semc/system/sepolicy/Google_Analytics_Proxy/1.0.0/service_contexts"
+#platform_analytics u:object_r:platform_analytics_service:s0
+#line 1 "out/target/product/leo/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
+#line 1 "vendor/semc/system/sepolicy/Image_Processor_API/1.1.0/service_contexts"
+media.cacao                               u:object_r:mediaserver_service:s0
+#line 1 "out/target/product/leo/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
+#line 1 "vendor/semc/system/sepolicy/Power_Save/1.0.0/service_contexts"
+#xperiaappdepinfo                                       u:object_r:xperiaappdepinfo_service:s0
+#xperia_power                                           u:object_r:xperia_power_service:s0
+#stamina_qbd                                            u:object_r:stamina_qbd_service:s0
+#line 1 "out/target/product/leo/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
+#line 1 "vendor/semc/system/sepolicy/Touch/1.0.0/tfsw/service_contexts"
+#tfsw                                      u:object_r:tfsw_service:s0
+#line 1 "out/target/product/leo/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
+#line 1 "vendor/semc/system/sepolicy/WLAN_Miracast_sink/1.1.0/service_contexts"
+#WfdSinkService u:object_r:wfd_sink_exec_service:s0
+#line 1 "out/target/product/leo/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
+#line 1 "device/somc/shinano/sepolicy/service_contexts"
+#overlay                                   u:object_r:overlay_service:s0
+#line 1 "out/target/product/leo/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
+#line 1 "device/qcom/sepolicy/common/service_contexts"
+#android.apps.IQfpService                       u:object_r:iqfp_service:s0
+#AtCmdFwd                                       u:object_r:atfwd_service:s0
+#dpmservice                                     u:object_r:dpmservice:s0
+#listen.service                                 u:object_r:mediaserver_service:s0
+#cneservice                                     u:object_r:cne_service:s0
+#gbahttpauth                                    u:object_r:gba_auth_service:s0
+#vendor.qcom.PeripheralManager                  u:object_r:per_mgr_service:s0
+#com.qualcomm.qti.auth.fidocryptodaemon         u:object_r:fidodaemon_service:s0
+#wbc_service                                    u:object_r:wbc_service:s0
+#STAProxyService                                u:object_r:STAProxyService:s0
+#dun                                            u:object_r:dun_service:s0
+#qti.ims.connectionmanagerservice               u:object_r:imscm_service:s0
+#com.qti.snapdragon.sdk.display.IColorService   u:object_r:color_service:s0
+#wfdservice                                     u:object_r:wfdservice_service:s0
+#DigitalPen                                     u:object_r:usf_service:s0
+#dts_eagle_service                              u:object_r:dtseagleservice_service:s0
+#wfd.native.mm.service                          u:object_r:wfdservice_service:s0
+#extphone                                       u:object_r:radio_service:s0
+#com.qualcomm.location.izat.IzatService         u:object_r:izat_service:s0
+#line 1 "out/target/product/leo/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
+#line 1 "device/qcom/sepolicy/test/service_contexts"
+#com.qualcomm.qti.auth.securesampleauthdaemon   u:object_r:fidotest_service:s0
+#line 1 "out/target/product/leo/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+

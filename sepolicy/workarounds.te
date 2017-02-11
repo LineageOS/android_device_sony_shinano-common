@@ -1,3 +1,8 @@
+allow cameraserver camera_socket:dir { search write add_name };
+allow cameraserver camera_socket:file { read write getattr open };
+allow mm-qcamerad camera_socket:dir { search write add_name };
+allow mm-qcamerad camera_socket:file { read write getattr open };
+
 #============= credmgr ==============
 allow credmgr iddd:unix_dgram_socket sendto;
 allow credmgr iddd_file:sock_file write;
@@ -61,4 +66,99 @@ allow init socket_device:sock_file { create unlink setattr };
 
 #============= taimport ==============
 allow taimport ta_data_file:file unlink;
+
+
+#============= credmgr ==============
+allow credmgr ion_device:chr_file { ioctl open read };
+
+#============= init ==============
+allow init debugfs:file write;
+
+#============= qti_init_shell ==============
+allow qti_init_shell tad:unix_stream_socket connectto;
+allow qti_init_shell tad_socket:sock_file write;
+
+#============= scd ==============
+allow scd socket_device:dir { add_name write };
+allow scd socket_device:sock_file { create setattr };
+allow scd sysfs:file { getattr open read };
+
+#============= suntrold ==============
+allow suntrold ion_device:chr_file { ioctl open read };
+
+#============= tad ==============
+allow tad proc:file { open read };
+allow tad rootfs:file { entrypoint read };
+
+#============= taimport ==============
+allow taimport adbsecure_prop:property_service set;
+allow taimport init:unix_stream_socket connectto;
+allow taimport property_socket:sock_file write;
+
+#============= thermanager ==============
+allow thermanager sysfs:file { open read };
+
+#============= wv ==============
+allow wv ion_device:chr_file { ioctl open read };
+allow wv socket_device:sock_file write;
+allow wv suntrold:unix_stream_socket connectto;
+allow wv tad:unix_stream_socket connectto;
+allow wv tad_socket:sock_file write;
+allow wv tee_device:chr_file { ioctl open read write };
+
+
+
+
+
+#============= cameraserver ==============
+allow cameraserver ta_data_file:dir { getattr open read };
+allow cameraserver sudaemon:unix_dgram_socket sendto;
+allow cameraserver sudaemon:unix_stream_socket connectto;
+allow cameraserver mm-qcamerad:unix_stream_socket sendto;
+allow cameraserver mm-qcamerad:unix_stream_socket connectto;
+
+
+
+#============r credmgr ==============
+allow credmgr ion_device:chr_file { ioctl open read };
+
+#============= init ==============
+allow init debugfs:file write;
+
+#============= mm-qcamerad ==============
+allow mm-qcamerad system_file:file execmod;
+allow mm-qcamerad system_prop:property_service set;
+allow mm-qcamerad ta_data_file:dir { getattr open read };
+
+#============= qti_init_shell ==============
+allow qti_init_shell tad:unix_stream_socket connectto;
+allow qti_init_shell tad_socket:sock_file write;
+
+#============= scd ==============
+allow scd socket_device:dir { add_name write };
+allow scd socket_device:sock_file { create setattr };
+allow scd sysfs:file { getattr open read };
+
+#============= suntrold ==============
+allow suntrold ion_device:chr_file { ioctl open read };
+
+#============= tad ==============
+allow tad proc:file { open read };
+allow tad rootfs:file { entrypoint read };
+
+#============= taimport ==============
+allow taimport adbsecure_prop:property_service set;
+allow taimport init:unix_stream_socket connectto;
+allow taimport property_socket:sock_file write;
+
+#============= thermanager ==============
+allow thermanager sysfs:file { open read };
+
+#============= wv ==============
+allow wv ion_device:chr_file { ioctl open read };
+allow wv socket_device:sock_file write;
+allow wv suntrold:unix_stream_socket connectto;
+allow wv tad:unix_stream_socket connectto;
+allow wv tad_socket:sock_file write;
+allow wv tee_device:chr_file { ioctl open read write };
 

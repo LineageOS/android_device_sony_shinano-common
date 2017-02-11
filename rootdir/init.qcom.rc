@@ -22,6 +22,7 @@ import /init.qcom.power.rc
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chown system system /sys/kernel/debug/kgsl/proc
+    echo 8 8 8 8 > /proc/sys/kernel/printk
 
 on init
     symlink /dev/block/platform/msm_sdcc.1 /dev/block/bootdevice
@@ -45,7 +46,7 @@ on init
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
     
-     mkdir /idd 0751 idd idd
+    mkdir /idd 0751 idd idd
     mkdir /rca 0750 idd idd
 
     wait /dev/block/mmcblk0p1
@@ -185,6 +186,22 @@ on boot
     chown system graphics /sys/class/graphics/fb1/hdcp/tp
     chmod 0664 /sys/devices/virtual/graphics/fb1/hdcp/tp
 
+	# PM8941 flash
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/current1
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/current2
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/fault_status
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/fine_current1
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/fine_current2
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/flash_timer
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/mask_clamp_current
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/mask_enable
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/max_current
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/mode
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/startup_delay
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/strobe
+	chown cameraserver system /sys/class/misc/pm8941-flash/device/vph_pwr_droop
+
+
     # create symlink for fb1 as HDMI
     symlink /dev/graphics/fb1 /dev/graphics/hdmi
 
@@ -278,6 +295,10 @@ on post-fs
     # MHL driver. To support MHL power off charge,
     # the insmod must be done before chargemon.
     insmod /system/lib/modules/mhl_sii8620_8061_drv.ko
+
+	# we will remap this as /mnt/sdcard with the sdcard fuse tool
+	mkdir /data/misc/camera 0770 camera camera
+    mkdir /data/misc/cameraserver 0700 cameraserver cameraserver
 
     exec /system/bin/chargemon
     write /sys/class/power_supply/battery/shutdown_at_low_batt 1
@@ -384,7 +405,7 @@ on post-fs-data
     chmod 2770 /dev/socket/mpdecision
 
     # SONY: Create a dir on data partition not to be deleted during mr and wipedata
-    mkdir /data/persist 0770 persist_rw persist_rw
+    mkdir /data/persist 0770 system system
 
     # SONY: Create dir for Widevine keybox
     mkdir /data/persist/wv 0700 system system
@@ -402,6 +423,14 @@ on post-fs-data
     chmod 0770 /sys/devices/sony_camera_0/info
     chown media camera /sys/devices/sony_camera_1/info
     chmod 0770 /sys/devices/sony_camera_1/info
+
+	exec u:r:qti_init_shell:s0 -- /system/bin/rm -r /idd/lost+found
+	mkdir /idd/lost+found 0770 root root
+	mkdir /idd/output 0755 idd idd
+	mkdir /idd/socket 0711 idd idd
+	restorecon_recursive /idd
+	start wvkbd_installer
+
 
     # SONY: Import MiscTA to System properties
     exec -- /system/bin/taimport property
@@ -528,10 +557,10 @@ service mpdecision /system/bin/mpdecision --avg_comp
     group system
     disabled
 
-service iddd /system/bin/iddd -v
+service iddd /system/bin/iddd
     class main
     user idd
-    group idd log inet trimarea credmgr_client system
+    group idd log inet
 
 on property:gsm.nitz.time=*
     start scdnotifier_nitz
@@ -546,8 +575,8 @@ service suntrold /system/bin/suntrold
 # Start Credential manager daemon
 service credmgrd /system/bin/credmgrd
     user system
-    group credmgr_client trimarea idd log inet drmpc
-    socket credmgr stream 0777 system credmgr_client
+    group credmgr_client
+    socket credmgr stream 0660 system credmgr_client
     class main
 
 #doesn't exist on shinano. Keept for compat purpose
@@ -627,7 +656,8 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
-    group system inet input graphics camera credmgr_client
+    group camera system inet input graphics
+#    group camera system inet input graphics credmgr_client cameraserver
 
 service sensors /system/bin/sensors.qcom
     class main
@@ -676,8 +706,11 @@ service audioserver /system/bin/audioserver
 service cameraserver /system/bin/cameraserver
     class main
     user cameraserver
-    group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct credmgr_client trimarea
+    group camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct credmgr_client trimarea system audio
+#   group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct credmgr_client
     ioprio rt 4
+#	seclabel u:r:cameraserver:s0
+	writepid /dev/cpuset/foreground/tasks
 
 
 service drm /system/bin/drmserver
