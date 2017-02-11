@@ -43,6 +43,7 @@ BOARD_BLUEDROID_VENDOR_CONF := device/sony/shinano-common/bluetooth/vnd_shinano.
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
 # CM Hardware
 BOARD_HARDWARE_CLASS += device/sony/shinano-common/cmhw
@@ -59,6 +60,9 @@ TARGET_INIT_VENDOR_LIB := libinit_shinano
 # SELinux
 BOARD_SEPOLICY_DIRS += \
     device/sony/shinano-common/sepolicy
+
+#Sensors
+USE_SENSOR_MULTI_HAL := true
 
 # Wifi
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
