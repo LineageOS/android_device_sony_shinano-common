@@ -49,10 +49,10 @@ PRODUCT_COPY_FILES += \
 
 # Camera (stock .575 blobs)
 PRODUCT_PACKAGES += \
-	libc_ndk \
 	tad_static \
 	wait4tad_static \
-	libshims_wvm
+	libshims_wvm \
+	libshims_signal
 
 # ANT+
 PRODUCT_PACKAGES += \
