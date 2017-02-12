@@ -517,7 +517,7 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
 service sensors /system/bin/sensors.qcom
     class main
     user root
-    group sensors radio system
+    group root
 
 service time_daemon /system/bin/time_daemon
     class late_start
@@ -557,7 +557,7 @@ service drm /system/bin/drmserver
 service media /system/bin/mediaserver
     class main
     user media
-    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm credmgr_client
+    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm credmgr_client system
     ioprio rt 4
 
 

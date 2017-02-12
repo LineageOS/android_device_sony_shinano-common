@@ -182,7 +182,8 @@ service scdnotifier_nitz /system/bin/scdnotifier nitz
     on property:sys.listeners.registered=true
     start wvkbd_installer
  
-service wvkbd_installer /system/bin/logwrapper /system/bin/wvkbd
+#service wvkbd_installer /system/bin/logwrapper /system/bin/wvkbd
+service wvkbd_installer /system/bin/wvkbd
     user system
     group system
     oneshot
@@ -193,12 +194,13 @@ service rmt_storage /system/bin/rmt_storage
     user root
 
 
-service qcamerasvr /system/bin/logwrapper /system/bin/mm-qcamera-daemon
+#service qcamerasvr /system/bin/logwrapper /system/bin/mm-qcamera-daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
-    group camera system inet input graphics
-#    group camera system inet input graphics credmgr_client cameraserver
-    seclabel u:r:mm-qcamerad:s0
+#    group camera system inet input graphics
+    group camera system inet input graphics credmgr_client cameraserver
+#    seclabel u:r:mm-qcamerad:s0
 
 # SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
@@ -211,13 +213,14 @@ service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
 # tad_static is in rootfs, normal file_context does not work
     seclabel u:r:tad:s0
  
-service cameraserver /system/bin/logwrapper /system/bin/cameraserver
+#service cameraserver /system/bin/logwrapper /system/bin/cameraserver
+service cameraserver /system/bin/cameraserver
     class main
     user cameraserver
     group camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct credmgr_client trimarea system audio
 #   group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct credmgr_client
     ioprio rt 4
-    seclabel u:r:cameraserver:s0
+#    seclabel u:r:cameraserver:s0
     writepid /dev/cpuset/foreground/tasks
 
 

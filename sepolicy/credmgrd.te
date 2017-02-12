@@ -1,0 +1,62 @@
+#credmgrd define
+type credmgrd, domain; 
+type credmgrd_exec, exec_type, file_type;
+type credmgrd_data_file, file_type;
+type credmgrd_socket, file_type;
+init_daemon_domain(credmgrd); 
+
+#credmgrd self
+allow credmgrd self:socket create_socket_perms;
+allow credmgrd self:file rw_file_perms;
+allow credmgrd self:dir rw_file_perms;
+allow credmgrd self:fifo_file rw_file_perms;
+allow credmgrd credmgrd_data_file:file { getattr lock open read setattr write };
+allow credmgrd cache_file:dir { remove_name write };
+allow credmgrd credmgrd_data_file:dir { add_name open read remove_name write };
+allow credmgrd credmgrd_data_file:file { create unlink };
+
+
+#credmgdr tad
+allow credmgrd tad_block_device:blk_file { read write ioctl open };
+allow credmgrd tad_socket:unix_dgram_socket sendto;
+allow credmgrd tad_socket:unix_stream_socket connectto;
+allow credmgrd tad:unix_stream_socket connectto;
+allow credmgrd tad_socket:sock_file write;
+
+#credmgrd camera server
+allow credmgrd camera_socket:file { read write getattr open };
+allow credmgrd camera_socket:unix_stream_socket sendto;
+allow credmgrd camera_socket:unix_stream_socket connectto;
+
+#credmgrd mediaserver
+allow mediaserver credmgrd:unix_stream_socket connectto;
+
+#credmgrd mm-qcamera
+allow credmgrd mm-qcamerad:file { read write getattr open };
+allow credmgrd mm-qcamerad:unix_stream_socket sendto;
+allow credmgrd mm-qcamerad:unix_stream_socket connectto;
+
+#credmgrd qseecomd tee
+allow credmgrd tee_device:chr_file rw_file_perms;
+
+#credmgrd suntrold
+allow credmgrd suntrold_sock_socket:unix_dgram_socket sendto;
+allow credmgrd suntrold_sock_socket:unix_stream_socket connectto;
+allow credmgrd suntrold_sock_socket:sock_file write;
+allow credmgrd suntrold:unix_stream_socket connectto;
+
+#credmgrd iddd
+allow credmgrd iddd:unix_dgram_socket sendto;
+allow credmgrd iddd_file:dir search;
+allow credmgrd iddd_file:sock_file write;
+allow credmgrd iddd_file:unix_stream_socket connectto;
+allow credmgrd iddd_file:unix_dgram_socket sendto;
+
+
+#/mnt/idd is tmpfs
+allow credmgrd tmpfs:lnk_file read;
+
+#credmgrd ion
+allow credmgrd ion_device:chr_file { ioctl open read };
+
+

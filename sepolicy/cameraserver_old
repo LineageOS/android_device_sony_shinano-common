@@ -21,3 +21,8 @@ allow mm-qcamerad camera_data_file:unix_stream_socket connectto;
 allow mm-qcamerad ion_device:chr_file { ioctl open read };
 allow cameraserver ion_device:chr_file { ioctl open read };
 
+
+allow cameraserver secd_socket:unix_dgram_socket sendto;
+allow cameraserver secd_socket:unix_stream_socket connectto;
+allow mm-qcamerad secd_socket:unix_dgram_socket sendto;
+allow mm-qcamerad secd_socket:unix_stream_socket connectto;

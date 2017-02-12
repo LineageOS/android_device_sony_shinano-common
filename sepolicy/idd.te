@@ -7,6 +7,10 @@ allow iddd self:socket create_socket_perms;
 allow iddd iddd_file:fifo_file rw_file_perms;
 allow iddd iddd_file:file rw_file_perms;
 allow iddd iddd_file:dir rw_file_perms;
+allow iddd iddd_file:dir { add_name remove_name search };
+allow iddd iddd_file:file { create rename unlink };
+allow iddd iddd_file:sock_file { create setattr unlink write };
+
 
 type_transition iddd system_data_file:file iddd_file;
 
@@ -24,43 +28,16 @@ type wv,domain;
 type wv_exec, exec_type, file_type;
 init_daemon_domain(wv)
 
+#iddd logd
+allow iddd logd:unix_stream_socket connectto;
+allow iddd logdr_socket:sock_file write;
 
 #============= system_server ==============
 allow system_server credmgr_exec:dir search;
 allow system_server credmgr_exec:file { getattr open read };
 allow system_server iddd_exec:dir search;
 allow system_server iddd_exec:file { getattr open read };
-
-#============= iddd_exec ==============
-allow iddd_exec default_prop:file { getattr open read };
-allow iddd_exec device:dir search;
-allow iddd_exec devpts:chr_file { open read write };
-allow iddd_exec iddd_file:dir search;
-allow iddd_exec iddd_file:file { lock open read write };
-allow iddd_exec init:fd use;
-allow iddd_exec init:process sigchld;
-allow iddd_exec kernel:system module_request;
-allow iddd_exec log_tag_prop:file { getattr open read };
-allow iddd_exec logd:unix_dgram_socket sendto;
-allow iddd_exec logd_prop:file { getattr open read };
-allow iddd_exec logdw_socket:sock_file write;
-allow iddd_exec null_device:chr_file { read write };
-allow iddd_exec proc:lnk_file read;
-allow iddd_exec properties_device:dir getattr;
-allow iddd_exec properties_serial:file { getattr open read };
-allow iddd_exec property_contexts:file { getattr open read };
-allow iddd_exec ptmx_device:chr_file { ioctl open read write };
-allow iddd_exec rootfs:lnk_file { getattr read };
-allow iddd_exec self:dir { read search };
-allow iddd_exec self:file { execute execute_no_trans getattr open read };
-allow iddd_exec self:lnk_file read;
-allow iddd_exec self:process { fork sigchld };
-allow iddd_exec self:unix_dgram_socket { connect create write };
-allow iddd_exec self:unix_stream_socket read;
-allow iddd_exec sysfs:dir search;
-allow iddd_exec sysfs_devices_system_cpu:dir search;
-allow iddd_exec sysfs_devices_system_cpu:file { getattr open read };
-allow iddd_exec system_file:dir getattr;
-#allow iddd_exec system_file:file { entrypoint execute getattr open read };
-allow iddd_exec urandom_device:chr_file { getattr ioctl open read };
+allow iddd tmpfs:lnk_file read;
+#============= iddd ==============
+allow iddd iddd_exec:file execute_no_trans;
 
