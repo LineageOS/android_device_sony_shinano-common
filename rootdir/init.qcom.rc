@@ -74,6 +74,11 @@ on init
     # session is not exercised through RemoteDisplay in the android framework
     setprop persist.sys.wfd.virtual 0
 
+on early-fs
+    wait /dev/block/mmcblk0p1
+    class_start trimarea
+    exec u:r:qti_init_shell:s0 -- /sbin/wait4tad_static
+
 on fs
     mount_all ./fstab.qcom
     mkdir /lta-label 0555 system system
@@ -95,6 +100,11 @@ on early-boot
     setrlimit 8 67108864 67108864
 
     write /sys/kernel/boot_adsp/boot 1
+
+    #SONY early boot
+    start ta_qmi_service
+    start sct_service
+    start mlog_qmi_service
 
     # Run pre_hw_config.sh before entering charge only mode.
     exec /system/bin/sh /system/etc/pre_hw_config.sh
@@ -273,11 +283,18 @@ on post-fs
     write /sys/class/power_supply/battery/shutdown_at_low_batt 1
 
     # Change to socket location on libkeyctrl/suntory for /data encryption
+    # Create suntory data directory
     mkdir /dev/socket/suntory 0755 system system
+    mkdir /data/suntory 0755 system system
+
+    # create directory for scd
+    mkdir /dev/socket/scd 0755 system system
+    mkdir /data/scd 0755 system system
 
 on post-fs-data
-    # Used by taimport for MAC addresses
+    # SONY: Start early TA-users
     mkdir /data/etc 0755 root shell
+    exec -- /system/bin/taimport
 
     mkdir /data/media 0770 media_rw media_rw
     
@@ -289,8 +306,6 @@ on post-fs-data
     mkdir /idd/startup-prober 0700 root root
 
     restorecon_recursive /idd
-    mkdir /rca/plugins 0750 idd idd
-    restorecon_recursive /rca
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -300,7 +315,6 @@ on post-fs-data
     # to observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp dhcp /data/misc/dhcp
 
-    mkdir /data/credmgr 0700 system system
     mkdir /data/tombstones 0755 system system
     mkdir /data/tombstones/vendor 0755 system system
     mkdir /data/pc 0700 radio radio
@@ -369,12 +383,29 @@ on post-fs-data
     mkdir /dev/socket/mpdecision 0770 system system
     chmod 2770 /dev/socket/mpdecision
 
+    # SONY: Create a dir on data partition not to be deleted during mr and wipedata
+    mkdir /data/persist 0770 persist_rw persist_rw
+
+    # SONY: Create dir for Widevine keybox
+    mkdir /data/persist/wv 0700 system system
+
+    # SONY: Create dir for marlin sdata
+    mkdir /data/persist/marlin 0700 system system
+
+    # SONY: Create a dir for pin-cache components
+    mkdir /data/pc 0600 radio radio
+    mkdir /cache/pc 0770 radio system
+
     # SONY: Camera
     mkdir /data/camera 0770 media camera
     chown media camera /sys/devices/sony_camera_0/info
     chmod 0770 /sys/devices/sony_camera_0/info
     chown media camera /sys/devices/sony_camera_1/info
     chmod 0770 /sys/devices/sony_camera_1/info
+
+    # SONY: Import MiscTA to System properties
+    exec -- /system/bin/taimport property
+
 
 
 on property:init.svc.wpa_supplicant=stopped
@@ -492,18 +523,22 @@ on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale 2
 
 service mpdecision /system/bin/mpdecision --avg_comp
-    class late_start
+    class main
     user root
     group system
+    disabled
 
-service iddd /system/bin/iddd
+service iddd /system/bin/iddd -v
     class main
     user idd
-    group idd log inet trimarea credmgr
+    group idd log inet trimarea credmgr_client
     writepid /dev/cpuset/system-background/tasks
     socket idd_cl stream 0660 core idd
     socket idd_co stream 0660 core idd
     socket idd_co_stream stream 0660 core idd
+
+on property:gsm.nitz.time=*
+    start scdnotifier_nitz
 
 # Start suntrold
 service suntrold /system/bin/suntrold
@@ -514,13 +549,20 @@ service suntrold /system/bin/suntrold
 
 # Start Credential manager daemon
 service credmgrd /system/bin/credmgrd
-    user root
-    group root
-    socket credmgr stream 0777 system system
+    user system
+    group credmgr_client trimarea
+    socket credmgr stream 0777 system credmgr_client
     class main
+
+#doesn't exist on shinano. Keept for compat purpose
+# Start Security Daemon
+service secd /system/bin/secd
+    user system
+    group system
     socket secd_ebl_sock stream 0660 system credmgr_client
     socket secd_devsec_sock stream 0660 system credmgr_client
     socket secd_credmgr_sock stream 0660 system credmgr_client
+    class main
 
 # bugreport is triggered by holding down volume down, volume up and power
 service bugreport /system/bin/dumpstate -d -p -B \
@@ -534,16 +576,37 @@ service bugreport /system/bin/dumpstate -d -p -B \
 service sct_service /system/bin/sct_service
     user root
     class main
+    disabled
 
 # Trim Area QMI service
 service ta_qmi_service /system/bin/ta_qmi_service
-    user root
-    class main
+    user ta_qmi
+    group ta_qmi trimarea system root net_raw
+    disabled
 
 # Modem Log QMI service
 service mlog_qmi_service /system/bin/mlog_qmi_service
     user root
     class main
+    disabled
+
+service scd /system/bin/scd
+    class late_start
+    user system
+    group system
+ 
+service scdnotifier_nitz /system/bin/scdnotifier nitz
+    class main
+    user system
+    group system
+    oneshot
+    disabled
+
+# All services that use qseecomd daemon listeners should
+# start on sys.listeners.registered property to make sure that
+# all of its service listeners are registered before calling them
+on property:sys.listeners.registered=true
+    start wvkbd_installer
 
 # Thermal Manager service
 service thermanager /system/bin/thermanager /system/etc/thermanager.xml
@@ -591,12 +654,15 @@ service audiod /system/bin/audiod
     user system
     group system
 
-# SONY misc
-service tad_static /system/bin/tad_static /dev/block/bootdevice/by-name/TA 0,16
-    class core
+# SONY: TrimArea Daemon
+# Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
+service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
+    class trimarea
     user tad
-    group tad root
+    group trimarea root
     socket tad stream 0660 system trimarea
+# tad_static is in rootfs, normal file_context does not work
+    seclabel u:r:tad:s0
 
 service updatemiscta /system/bin/updatemiscta
     class main
@@ -645,3 +711,10 @@ service ril-daemon /system/bin/rild
     socket rild-debug stream 660 radio system
     user root
     group radio cache inet misc audio log readproc wakelock qcom_diag drmrpc trimarea 
+
+service ptt_socket_app /system/bin/ptt_socket_app
+    class main
+    user system
+    group system
+    oneshot
+
