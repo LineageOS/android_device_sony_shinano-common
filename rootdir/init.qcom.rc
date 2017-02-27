@@ -543,6 +543,11 @@ service sensors /system/bin/sensors.qcom
     user root
     group root
 
+service qcom-sensor-sh /system/bin/sh /system/etc/init.qcom-sensor.sh
+    class main
+    user root
+    oneshot
+
 service time_daemon /system/bin/time_daemon
     class late_start
     user root
