@@ -157,6 +157,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.sensors.georv=true \
     ro.qc.sensors.max_geomag_rotvec=50
 
+# Sensor file
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/etc/init.qcom-sensor.sh:system/etc/init.qcom-sensor.sh 
+
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qc_nlp_in_use=0 \
