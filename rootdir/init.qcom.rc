@@ -262,6 +262,25 @@ on post-fs
     mkdir /dev/socket/suntory 0755 system system
     mkdir /data/suntory 0755 system system
 
+    # led RGB
+    chown system system /sys/class/leds/rgb/sync_state
+    chown system system /sys/class/leds/rgb/start_blink
+    chown system system /sys/class/leds/led:rgb_red/brightness
+    chown system system /sys/class/leds/led:rgb_red/lut_pwm
+    chown system system /sys/class/leds/led:rgb_red/step_duration
+    chown system system /sys/class/leds/led:rgb_red/pause_lo_multi
+    chown system system /sys/class/leds/led:rgb_red/pause_hi_multi
+    chown system system /sys/class/leds/led:rgb_green/brightness
+    chown system system /sys/class/leds/led:rgb_green/lut_pwm
+    chown system system /sys/class/leds/led:rgb_green/step_duration
+    chown system system /sys/class/leds/led:rgb_green/pause_lo_multi
+    chown system system /sys/class/leds/led:rgb_green/pause_hi_multi
+    chown system system /sys/class/leds/led:rgb_blue/brightness
+    chown system system /sys/class/leds/led:rgb_blue/lut_pwm
+    chown system system /sys/class/leds/led:rgb_blue/step_duration
+    chown system system /sys/class/leds/led:rgb_blue/pause_lo_multi
+    chown system system /sys/class/leds/led:rgb_blue/pause_hi_multi
+
 on post-fs-data
 		# create directory for DRM plug-ins - give drm the read/write access to
 		# the following directory.
