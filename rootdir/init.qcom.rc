@@ -567,14 +567,6 @@ service mediadrm /system/bin/mediadrmserver
     group mediadrm drmrpc trimarea
     ioprio rt 4
 
-service ril-daemon /system/bin/rild
-    class main
-    socket rild stream 660 root radio
-    socket sap_uim_socket1 stream 660 bluetooth bluetooth
-    socket rild-debug stream 660 radio system
-    user root
-    group radio cache inet misc audio log readproc wakelock qcom_diag drmrpc trimarea 
-
 service ptt_socket_app /system/bin/ptt_socket_app
     class main
     user system
