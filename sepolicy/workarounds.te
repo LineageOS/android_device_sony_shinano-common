@@ -37,3 +37,10 @@ allow wv tee_device:chr_file { ioctl open read write };
 
 #============= mediaserver ==============
 allow mediaserver sensorservice_service:service_manager find;
+
+#============= rmt_storage ==============
+allow rmt_storage self:capability dac_override;
+
+#============= scd ==============
+allow scd socket_device:sock_file write;
+

@@ -59,4 +59,8 @@ allow credmgrd tmpfs:lnk_file read;
 #credmgrd ion
 allow credmgrd ion_device:chr_file { ioctl open read };
 
+#credmgrd files: 
+#============= credmgrd ==============
+allow credmgrd cache_file:dir search;
+
 

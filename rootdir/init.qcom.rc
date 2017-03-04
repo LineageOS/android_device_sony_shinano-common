@@ -107,6 +107,9 @@ on boot
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
 
+	#Create NETMGR daemon socket area
+	mkdir /dev/socket/netmgr 0750 radio radio
+
     setprop ro.telephony.call_ring.multiple false
 
     # port-bridge
@@ -245,6 +248,8 @@ on boot
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
 on post-fs
+    #export LD_PRELOAD libNimsWrap.so
+
     # MHL driver. To support MHL power off charge,
     # the insmod must be done before chargemon.
     insmod /system/lib/modules/mhl_sii8620_8061_drv.ko
@@ -572,4 +577,38 @@ service ptt_socket_app /system/bin/ptt_socket_app
     user system
     group system
     oneshot
+
+service imsqmidaemon /system/bin/imsqmidaemon
+    class main
+    user system
+    socket ims_qmid stream 0660 system radio
+    group radio net_raw log qcom_diag
+
+service imsdatadaemon /system/bin/imsdatadaemon
+    class main
+    user system
+    socket ims_datad stream 0660 system radio
+    group system wifi radio inet net_raw log qcom_diag net_admin
+    disabled
+
+on property:sys.ims.DATA_DAEMON_STATUS=1
+   start ims_rtp_daemon
+   start imscmservice
+
+
+service ims_rtp_daemon /system/bin/ims_rtp_daemon
+   class main
+   user system
+   socket ims_rtpd stream 0660 system radio
+   group radio net_raw diag qcom_diag log inet
+   disabled
+
+service imscmservice /system/bin/imscmservice
+   class main
+   user system
+   group radio net_raw diag qcom_diag log
+   disabled
+
+on property:sys.ims.QMI_DAEMON_STATUS=1
+    start imsdatadaemon
 
