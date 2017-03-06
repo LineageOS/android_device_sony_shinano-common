@@ -16,11 +16,13 @@
 
 package org.cyanogenmod.hardware;
 
+import java.io.File;
+
 import org.cyanogenmod.internal.util.FileUtils;
 
 public class VibratorHW {
 
-//    private static String LEVEL_PATH = "/sys/devices/virtual/timed_output/vibrator/vtg_level";
+    private static String LEVEL_PATH = "/sys/devices/virtual/timed_output/vibrator/vtg_level";
 
     public static boolean isSupported() {
         return true;
@@ -30,23 +32,19 @@ public class VibratorHW {
         return 31;
     }
     public static int getMinIntensity()  {
-        return 31;
+        return 21;
     }
     public static int getWarningThreshold()  {
         return 31;
     }
     public static int getCurIntensity()  {
-//        return Integer.parseInt(FileUtils.readOneLine(LEVEL_PATH));
-		return 31; 
+        return Integer.parseInt(FileUtils.readOneLine(LEVEL_PATH));
     }
     public static int getDefaultIntensity()  {
         return 31;
     }
     public static boolean setIntensity(int intensity)  {
-//        return FileUtils.writeLine(LEVEL_PATH, String.valueOf(intensity));
-		if (intensity == 31) {
-			return true;
-		}
-		return false; 
+        return FileUtils.writeLine(LEVEL_PATH, String.valueOf(intensity));
     }
 }
+
