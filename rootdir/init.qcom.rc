@@ -103,12 +103,13 @@ on early-boot
 on boot
     write /sys/module/qpnp_power_on/parameters/forcecrash_on 1
 
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    # Bluetooth
+    chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
     chmod 0660 /sys/class/rfkill/rfkill0/state
-    chown bluetooth net_bt_stack /dev/ttyHS0
+    chown bluetooth net_bt /dev/ttyHS0
     chmod 0660 /dev/ttyHS0
-    chown bluetooth net_bt_stack /sys/devices/platform/msm_serial_hs.0/clock
+    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
     # Create PERFD deamon related dirs
@@ -308,6 +309,8 @@ on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     # to observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp dhcp /data/misc/dhcp
+
+    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
     mkdir /data/tombstones 0755 system system
     mkdir /data/tombstones/vendor 0755 system system
@@ -609,6 +612,13 @@ service mediadrm /system/bin/mediadrmserver
     user media
     group mediadrm drmrpc trimarea
     ioprio rt 4
+
+# brcm-uim-sysfs (BT/FM/ANT+)
+ service uim /system/bin/brcm-uim-sysfs
+    class late_start
+    user root
+    group bluetooth net_bt_admin net_bt
+    seclabel u:r:uim:s0
 
 service ptt_socket_app /system/bin/ptt_socket_app
     class main

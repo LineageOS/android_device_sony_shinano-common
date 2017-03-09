@@ -76,6 +76,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     e2fsck
 
+# FM
+PRODUCT_PACKAGES += \
+   FMRadio \
+   brcm-uim-sysfs \
+   libfmjni
+
 # GPS
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/gps/flp.conf:system/etc/flp.conf \

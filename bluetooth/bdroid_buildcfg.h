@@ -19,6 +19,8 @@
 #define _BDROID_BUILDCFG_H
 
 #define BTA_DISABLE_DELAY 100 /* in milliseconds */
+#define HCILP_INCLUDED FALSE
+#define BT_WAKE_VIA_USERIAL_IOCTL FALSE
 
 /* Defined if the kernel does not have support for CLOCK_BOOTTIME_ALARM */
 #define KERNEL_MISSING_CLOCK_BOOTTIME_ALARM TRUE
