@@ -45,7 +45,6 @@
 /data/credmgr(/.*)?						u:object_r:credmgrd_data_file:s0
 /cache/CredentialManagerData			u:object_r:credmgrd_data_file:s0
 
-
 #cam_socket
 /data/misc/camera(/.*)					u:object_r:camera_data_file:s0
 /dev/block/mmcblk0p1					u:object_r:tad_block_device:s0
