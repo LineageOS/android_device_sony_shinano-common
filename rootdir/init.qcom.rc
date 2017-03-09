@@ -527,6 +527,7 @@ on property:gsm.nitz.time=*
 
 on property:dev.bootcomplete=1
     rm /data/system/perfd/default_values
+    setprop sys.io.scheduler "bfq"
     start mpdecision
 
 # Start suntrold
