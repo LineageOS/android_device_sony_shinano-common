@@ -36,7 +36,8 @@
 
 /system/bin/wvkbd						u:object_r:wv_exec:s0
 
-
+# Bluetooth
+/system/bin/brcm-uim-sysfs                              u:object_r:brcm_uim_exec:s0
 
 ###########
 #credmgrd
