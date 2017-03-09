@@ -561,6 +561,11 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
     user root
     oneshot
 
+service rmt_storage /system/bin/rmt_storage
+    class core
+    user root
+    group system wakelock
+
 service sensors /system/bin/sensors.qcom
     class core
     user root
