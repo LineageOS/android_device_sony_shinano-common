@@ -1,9 +1,11 @@
 Copyright 2013 - The CyanogenMod Project
+Copyright 2017 - The LineageOS Project
 ================================
 
 This is the Android device configuration for shinano platform.
 
 Shinano devices:
+----------------
 
     Xperia Z2..........................Sirius
     Xperia Z2 Tablet...................Castor
@@ -15,9 +17,14 @@ Shinano devices:
     Xperia Z3 Tablet Compact (Wi-Fi)...Scorpion_windy
 
 
-depending on (Sony specific):
-CyanogenMod/android_device_sony_msm8974-common
-CyanogenMod/android_device_sony_common
+Depend on (Sony specific):
+--------------------------
 
-CyanogenMod/android_kernel_sony_msm      (cm13)
-CyanogenMod/android_kernel_sony_msm8974  (cm12.1)
+    LineageOS/android_device_sony_msm8974-common
+    LineageOS/android_device_sony_common
+
+| version | kernel version                        |
+|---------|---------------------------------------|
+| 14.1    | LineageOS/android_kernel_sony_msm8974 |
+| 13      | LineageOS/android_kernel_sony_msm     |
+| 12.1    | LineageOS/android_kernel_sony_msm8974 |
