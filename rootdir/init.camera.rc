@@ -14,20 +14,16 @@
 # limitations under the License.
 #
 
-
-
 on init
 	export LD_SHIM_LIBS /system/vendor/lib/libwvm.so|libshims_wvm.so:/system/bin/credmgrd|libshims_signal.so:/system/bin/iddd|libshims_idd.so:/system/bin/suntrold|libshims_signal.so
 
 	mkdir /idd 0751 idd idd
 	mkdir /rca 0750 idd idd
 
-
 on early-fs
     wait /dev/block/mmcblk0p1
     class_start trimarea
     exec u:r:qti_init_shell:s0 -- /sbin/wait4tad_static
-
 
 on fs
     # mount apps_log
@@ -38,46 +34,27 @@ on fs
     #exec /system/bin/rm -r /idd/lost+found
     symlink /idd /mnt/idd
 
-
-
-
 on early-boot
     #SONY early boot
     start ta_qmi_service
     start sct_service
     start mlog_qmi_service
 
-
 on boot
-    # Create QMUX deamon socket area
-    mkdir /dev/socket/qmux_radio 0770 radio radio
-    chmod 2770 /dev/socket/qmux_radio
-    mkdir /dev/socket/qmux_audio 0770 media audio
-    chmod 2770 /dev/socket/qmux_audio
-    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
-    chmod 2770 /dev/socket/qmux_bluetooth
-    mkdir /dev/socket/qmux_gps 0770 gps gps
-    chmod 2770 /dev/socket/qmux_gps
-    mkdir /dev/socket/qmux_nfc 0770 nfc nfc
-    chmod 2770 /dev/socket/qmux_nfc
-
-
-       # PM8941 flash
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/current1
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/current2
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/fault_status
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/fine_current1
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/fine_current2
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/flash_timer
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/mask_clamp_current
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/mask_enable
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/max_current
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/mode
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/startup_delay
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/strobe
-       chown cameraserver system /sys/class/misc/pm8941-flash/device/vph_pwr_droop
-
-
+    # PM8941 flash
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/current1
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/current2
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/fault_status
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/fine_current1
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/fine_current2
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/flash_timer
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/mask_clamp_current
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/mask_enable
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/max_current
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/mode
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/startup_delay
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/strobe
+    chown cameraserver system /sys/class/misc/pm8941-flash/device/vph_pwr_droop
 
 on post-fs
      # we will remap this as /mnt/sdcard with the sdcard fuse tool
@@ -88,7 +65,6 @@ on post-fs
      mkdir /dev/socket/scd 0755 system system
      mkdir /data/scd 0755 system system
 
-
 on post-fs-data
     # SONY: Start early TA-users
     mkdir /data/etc 0755 root shell
@@ -98,13 +74,13 @@ on post-fs-data
 
     mkdir /data/credmgr 0770 system credmgr_client
 
-        # SONY: Create dir for Widevine keybox
-        mkdir /data/persist/wv 0700 system system
+    # SONY: Create dir for Widevine keybox
+    mkdir /data/persist/wv 0700 system system
 
-        mkdir /data/misc/systemkeys 0700 system system
-        mkdir /data/misc/keystore 0700 keystore keystore
-        mkdir /data/misc/keychain 0771 system system
-        installkey /data
+    mkdir /data/misc/systemkeys 0700 system system
+    mkdir /data/misc/keystore 0700 keystore keystore
+    mkdir /data/misc/keychain 0771 system system
+    installkey /data
 
     mkdir /idd/lost+found 0770 root root
     mkdir /idd/output 0755 idd idd
@@ -134,14 +110,12 @@ service iddd /system/bin/iddd
     user idd
     group idd log inet
 
-
 # Start Credential manager daemon
 service credmgrd /system/bin/credmgrd
     user system
     group credmgr_client
     socket credmgr stream 0660 system credmgr_client
     class main
-
 
 #doesn't exist on shinano. Keept for compat purpose
 # Start Security Daemon
@@ -217,22 +191,3 @@ service cameraserver /system/bin/cameraserver
     ioprio rt 4
 #    seclabel u:r:cameraserver:s0
     writepid /dev/cpuset/foreground/tasks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

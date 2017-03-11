@@ -55,9 +55,11 @@ on init
     setprop ro.bt.bdaddr_path "/data/etc/bluetooth_bdaddr"
     chown bluetooth bluetooth ${ro.bt.bdaddr_path}
 
-    # bluetooth LPM
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+    setprop ro.bluetooth.hfp.ver 1.6
+    setprop bluetooth.a2dp.sink.enabled false
+    setprop bluetooth.enable_timeout_ms 12000
+    chown bluetooth net_bt_admin /proc/bluetooth/wakeup/proto
+    chmod 0664 /proc/bluetooth/wakeup/proto
 
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
@@ -104,13 +106,31 @@ on boot
     write /sys/module/qpnp_power_on/parameters/forcecrash_on 1
 
     # Bluetooth
-    chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
-    chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/state
+    # bluetooth LPM
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+
+    # BT DUN port-bridge		
+    chmod 0660 /dev/smd7		
+    chown bluetooth bluetooth /dev/smd7
+
     chmod 0660 /sys/class/rfkill/rfkill0/state
-    chown bluetooth net_bt /dev/ttyHS0
+    chown bluetooth net_bt_admin /dev/ttyHS0
     chmod 0660 /dev/ttyHS0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
+
+    #Create QMUX deamon socket area
+    mkdir /dev/socket/qmux_radio 0770 radio radio
+    chmod 2770 /dev/socket/qmux_radio
+    mkdir /dev/socket/qmux_audio 0770 media audio
+    chmod 2770 /dev/socket/qmux_audio
+    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
+    chmod 2770 /dev/socket/qmux_bluetooth
+    mkdir /dev/socket/qmux_gps 0770 gps gps
+    chmod 2770 /dev/socket/qmux_gps
 
     # Create PERFD deamon related dirs
     mkdir /data/misc/perfd 0755 root system
@@ -405,6 +425,10 @@ on post-fs-data
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
+
+on property:bluetooth.isEnabled=true
+#    start btwlancoex
+    write /sys/class/bluetooth/hci0/idle_timeout 7000
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
