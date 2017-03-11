@@ -19,6 +19,7 @@ TARGET_SPECIFIC_HEADER_PATH += device/sony/shinano-common/include
 
 # Platform
 BOARD_VENDOR_PLATFORM := shinano
+PRODUCT_PLATFORM:= shinano
 
 # Kernel information
 BOARD_KERNEL_BASE     := 0x00000000
