@@ -37,6 +37,7 @@
 ###########
 #credmgrd
 /system/bin/credmgrd 					u:object_r:credmgrd_exec:s0
+/system/bin/credmgrfirstboot.sh			u:object_r:credmgrd_exec:s0
 /dev/socket/credmgr						u:object_r:credmgrd_socket:s0
 /data/credmgr(/.*)?						u:object_r:credmgrd_data_file:s0
 /cache/CredentialManagerData			u:object_r:credmgrd_data_file:s0

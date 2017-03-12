@@ -55,6 +55,9 @@ PRODUCT_PACKAGES += \
 	libshims_signal \
 	libshims_idd
 
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/bin/credmgrfirstboot.sh:system/bin/credmgrfirstboot.sh
+
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService \

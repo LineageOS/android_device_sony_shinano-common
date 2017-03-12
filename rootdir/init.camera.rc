@@ -72,8 +72,6 @@ on post-fs-data
 
     mkdir /data/media 0770 media_rw media_rw
 
-    mkdir /data/credmgr 0770 system credmgr_client
-
     # SONY: Create dir for Widevine keybox
     mkdir /data/persist/wv 0700 system system
 
@@ -98,6 +96,9 @@ on post-fs-data
 
     # SONY: Import MiscTA to System properties
     exec -- /system/bin/taimport property
+
+    #Wait /data to init credmgrd
+    start initcredmgr
  
 service taimport /system/bin/taimport
     class late_start
@@ -110,12 +111,25 @@ service iddd /system/bin/iddd
     user idd
     group idd log inet
 
+# This script init /cache/CredentialManagerData if /data/credmgr doesn't meet our requirements
+service initcredmgr /system/bin/credmgrfirstboot.sh
+    class main
+    user system
+    group credmgr_client
+    oneshot
+
+# When credmgrfirstboot is ready it set sys.credmgrdready=true.
+# Start credmgrd after that
+on property:sys.credmgrdready=true
+start credmgrd
+
 # Start Credential manager daemon
 service credmgrd /system/bin/credmgrd
     user system
     group credmgr_client
     socket credmgr stream 0660 system credmgr_client
     class main
+    disabled
 
 #doesn't exist on shinano. Keept for compat purpose
 # Start Security Daemon

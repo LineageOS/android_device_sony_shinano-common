@@ -63,4 +63,18 @@ allow credmgrd ion_device:chr_file { ioctl open read };
 #============= credmgrd ==============
 allow credmgrd cache_file:dir search;
 
+#============= credmgr init script ==============
+allow credmgrd cache_file:dir add_name;
+allow credmgrd cache_file:file { create getattr open read unlink write };
+allow credmgrd credmgrd_data_file:dir { getattr rename search };
+allow credmgrd devpts:chr_file { getattr ioctl open read write };
+allow credmgrd init:unix_stream_socket connectto;
+allow credmgrd property_socket:sock_file write;
+allow credmgrd shell_exec:file { getattr read };
+allow credmgrd system_data_file:dir { add_name remove_name write };
+allow credmgrd system_file:file execute_no_trans;
+allow credmgrd system_prop:property_service set;
+allow credmgrd toolbox_exec:file { execute execute_no_trans getattr open read };
+allow credmgrd credmgrd_data_file:dir { relabelto reparent rmdir };
+allow credmgrd system_data_file:dir { create relabelfrom setattr };
 
