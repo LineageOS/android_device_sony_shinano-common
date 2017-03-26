@@ -40,4 +40,6 @@ allow system_server iddd_exec:file { getattr open read };
 allow iddd tmpfs:lnk_file read;
 #============= iddd ==============
 allow iddd iddd_exec:file execute_no_trans;
+allow iddd iddd_file:dir create;
+allow iddd proc:file { getattr open read };
 

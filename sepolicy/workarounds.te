@@ -14,6 +14,8 @@ allow qti_init_shell toolbox_exec:file entrypoint;
 
 #============= mm-qcamerad ==============
 allow mm-qcamerad camera_device:chr_file { ioctl open read write };
+allow mm-qcamerad ta_data_file:dir { getattr open read };
+
 
 #============= thermanager ==============
 allow thermanager sysfs:file { open read };
@@ -37,6 +39,7 @@ allow wv tee_device:chr_file { ioctl open read write };
 
 #============= mediaserver ==============
 allow mediaserver sensorservice_service:service_manager find;
+allow mediaserver ta_data_file:dir { getattr open read };
 
 #============= rmt_storage ==============
 allow rmt_storage self:capability dac_override;
