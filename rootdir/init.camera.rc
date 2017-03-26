@@ -205,3 +205,10 @@ service cameraserver /system/bin/cameraserver
     ioprio rt 4
 #    seclabel u:r:cameraserver:s0
     writepid /dev/cpuset/foreground/tasks
+
+service updatemiscta /system/bin/updatemiscta
+    class main
+    user updatemiscta
+    group trimarea
+    oneshot
+
