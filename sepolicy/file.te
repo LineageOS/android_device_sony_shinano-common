@@ -1,7 +1,4 @@
 type sysfs_vibrator, fs_type, sysfs_type;
-# TAD
-type secd_socket, file_type;
-type secd_data_file, file_type;
 
 # idd
 type iddd_file, file_type, data_file_type;
