@@ -178,7 +178,7 @@ service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
     class trimarea
     user tad
     group tad trimarea root
-    socket tad stream 0660 system trimarea
+    socket tad stream 0770 system trimarea
 # tad_static is in rootfs, normal file_context does not work
     seclabel u:r:tad:s0
  
