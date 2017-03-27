@@ -24,11 +24,6 @@
 # Taimport
 /data/etc(/.*)                           u:object_r:ta_data_file:s0
 
-#TA
-/dev/socket/secd_credmgr_sock            u:object_r:secd_socket:s0
-/dev/socket/secd_devsec_sock             u:object_r:secd_socket:s0
-/dev/socket/secd_ebl_sock                u:object_r:secd_socket:s0
-
 /system/bin/scd 						u:object_r:scd_exec:s0
 /data/scd								u:object_r:scd_data:s0
 /data/scd(/.*)							u:object_r:scd_data:s0
