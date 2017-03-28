@@ -81,6 +81,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    bluetooth.hfp.client=1 \
+    ro.bluetooth.alwaysbleon=true
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     e2fsck
@@ -151,14 +155,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true
 
-# Voice Call
+# Voice Call and Audio Recording
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.fluencetype=none \
     persist.audio.dualmic.config=endfire \
     persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.voicecomm=true \
     persist.audio.fluence.voicerec=false \
-    persist.audio.fluence.speaker=true
+    persist.audio.fluence.audiorec=true \
+    persist.audio.fluence.speaker=true \
+    persist.audio.handset.mic.type=analog
 
 # aDSP
 PRODUCT_PROPERTY_OVERRIDES += \
