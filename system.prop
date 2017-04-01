@@ -38,3 +38,11 @@ qcom.hw.aac.encoder=true
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
 audio.offload.video=true
+
+# Semc
+ro.semc.version.sw_revision=23.5.A.1.291
+ro.semc.version.sw_variant=GLOBAL-LTECA
+ro.semc.version.sw_type=user
+ro.semc.version.fs_revision=23.5.A.1.291
+ro.semc.version.fs=GENERIC
+ro.semc.version.cust.active=
