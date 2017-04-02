@@ -40,6 +40,7 @@ allow credmgrd mm-qcamerad:unix_stream_socket connectto;
 allow credmgrd tee_device:chr_file rw_file_perms;
 
 #credmgrd suntrold
+allow credmgrd suntrold_sock_socket:dir search;
 allow credmgrd suntrold_sock_socket:unix_dgram_socket sendto;
 allow credmgrd suntrold_sock_socket:unix_stream_socket connectto;
 allow credmgrd suntrold_sock_socket:sock_file write;
@@ -54,6 +55,7 @@ allow credmgrd iddd_file:unix_dgram_socket sendto;
 
 
 #/mnt/idd is tmpfs
+allow credmgrd tmpfs:dir search;
 allow credmgrd tmpfs:lnk_file read;
 
 #credmgrd ion
