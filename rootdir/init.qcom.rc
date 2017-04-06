@@ -229,22 +229,6 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet5/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet6/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet7/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio2/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio3/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio4/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio5/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb2/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb3/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb2/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb3/accept_ra 2
 
     # To prevent out of order acknowledgements from making
     # connection tracking to treat them as not belonging to
@@ -279,11 +263,6 @@ on boot
 on post-fs
     #export LD_PRELOAD libNimsWrap.so
 
-    # MHL driver. To support MHL power off charge,
-    # the insmod must be done before chargemon.
-    insmod /system/lib/modules/mhl_sii8620_8061_drv.ko
-
-    exec /system/bin/chargemon
     write /sys/class/power_supply/battery/shutdown_at_low_batt 1
 
     # Change to socket location on libkeyctrl/suntory for /data encryption
@@ -444,12 +423,6 @@ on property:ro.radio.noril=true
     stop ril-daemon
     stop netmgrd
 
-# start GNS/Sensor interface daemon
-service gsiff_daemon /system/bin/gsiff_daemon
-    class late_start
-    user gps
-    group gps net_raw misc
-
 service qseecomd /system/bin/qseecomd
     class core
     user root
@@ -546,6 +519,13 @@ service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps qcom_oncrpc inet net_raw qcom_diag net_admin wifi
+
+service scdnotifier_nitz /system/bin/scdnotifier nitz
+    class main
+    user system
+    group system
+    oneshot
+    disabled
 
 on property:gsm.nitz.time=*
     start scdnotifier_nitz
@@ -656,12 +636,6 @@ service mediadrm /system/bin/mediadrmserver
     user root
     group bluetooth net_bt_admin net_bt
     seclabel u:r:uim:s0
-
-service ptt_socket_app /system/bin/ptt_socket_app
-    class main
-    user system
-    group system
-    oneshot
 
 service imsqmidaemon /system/bin/imsqmidaemon
     class main
