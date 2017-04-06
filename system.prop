@@ -46,3 +46,6 @@ ro.semc.version.sw_type=user
 ro.semc.version.fs_revision=23.5.A.1.291
 ro.semc.version.fs=GENERIC
 ro.semc.version.cust.active=
+
+# Storage
+ro.sys.sdcardfs=true
