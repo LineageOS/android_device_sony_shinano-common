@@ -22,6 +22,7 @@ on init
 :/system/bin/suntrold|libshims_signal.so \
 :/system/lib/hw/camera.qcom.so|libsonycamera.so \
 :/system/vendor/lib/libwvm.so|libdtcpipplayer.so \
+:/system/vendor/lib/lib-imsvt.so|/system/lib/lib-imsvt_shim.so \
 "
 
 	mkdir /idd 0751 idd idd

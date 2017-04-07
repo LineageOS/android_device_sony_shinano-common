@@ -48,3 +48,13 @@ persist.audio.fluence.voicerec=false
 persist.audio.fluence.audiorec=true
 persist.audio.fluence.speaker=true
 persist.audio.handset.mic.type=analog
+# Storage
+# IMS
+persist.ims.vcel_rtcp_report=5
+persist.ims.disableUserAgent=1
+persist.radio.jbims=1
+persist.radio.ROTATION_ENABLE=1
+persist.radio.VT_ENABLE=1
+persist.radio.VT_HYBRID_ENABLE=1
+persist.radio.VT_USE_MDM_TIME=0
+

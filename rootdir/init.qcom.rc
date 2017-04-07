@@ -546,6 +546,15 @@ service mediadrm /system/bin/mediadrmserver
     group bluetooth net_bt_admin net_bt
     seclabel u:r:uim:s0
 
+# IMS
+service ims_regmanager /system/bin/exe-ims-regmanagerprocessnative
+   class late_start
+   group net_bt_admin inet radio wifi
+   disabled
+
+on property:persist.ims.regmanager.mode=1
+   start ims_regmanager
+
 service imsqmidaemon /system/bin/imsqmidaemon
     class late_start
     user system

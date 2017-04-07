@@ -91,6 +91,12 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
     $(COMMON_PATH)/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 
+# IMS
+PRODUCT_PACKAGES += \
+    ims \
+    ims-common \
+    lib-imsvt_shim
+
 # Bluetooth
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
