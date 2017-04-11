@@ -128,7 +128,6 @@ service credmgrd /system/bin/credmgrd
     user system
     group credmgr_client
     socket credmgr stream 0660 system credmgr_client
-    class main
     disabled
 
 # Secure Config Transfer service
