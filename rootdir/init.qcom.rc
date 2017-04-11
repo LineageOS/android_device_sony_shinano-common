@@ -395,10 +395,6 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
-    # communicate with mpdecision and thermald
-    mkdir /dev/socket/mpdecision 0770 system system
-    chmod 2770 /dev/socket/mpdecision
-
     # SONY: Create a dir on data partition not to be deleted during mr and wipedata
     mkdir /data/persist 0770 system system
 
@@ -536,12 +532,6 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale 2
 
-service mpdecision /system/bin/mpdecision --avg_comp
-    class main
-    user root
-    group system
-    disabled
-
 service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
@@ -553,7 +543,6 @@ on property:gsm.nitz.time=*
 on property:dev.bootcomplete=1
     rm /data/system/perfd/default_values
     setprop sys.io.scheduler "row"
-    start mpdecision
 
 # Start suntrold
 service suntrold /system/bin/suntrold
