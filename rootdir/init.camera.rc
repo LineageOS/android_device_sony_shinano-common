@@ -38,7 +38,6 @@ on early-boot
     #SONY early boot
     start ta_qmi_service
     start sct_service
-    start mlog_qmi_service
 
 on boot
     # PM8941 flash
@@ -96,9 +95,6 @@ on post-fs-data
 
     # SONY: Import MiscTA to System properties
     exec -- /system/bin/taimport property
-
-    #Wait /data to init credmgrd
-    start initcredmgr
  
 service taimport /system/bin/taimport
     class late_start
@@ -113,7 +109,7 @@ service iddd /system/bin/iddd
 
 # This script init /cache/CredentialManagerData if /data/credmgr doesn't meet our requirements
 service initcredmgr /system/bin/credmgrfirstboot.sh
-    class main
+    class late_start
     user system
     group credmgr_client
     oneshot
@@ -177,7 +173,6 @@ service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
     socket tad stream 0770 system trimarea
 # tad_static is in rootfs, normal file_context does not work
     seclabel u:r:tad:s0
-
 service updatemiscta /system/bin/updatemiscta
     class main
     user updatemiscta
