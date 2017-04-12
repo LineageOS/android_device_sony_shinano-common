@@ -21,8 +21,8 @@ allow thermanager sysfs_battery_supply:dir search;
 allow thermanager sysfs_battery_supply:file { open read write };
 
 #============= scd ==============
-allow scd scd_data:dir { getattr search };
-allow scd scd_data:file { getattr open read write };
+allow scd scd_data:dir { getattr search write add_name };
+allow scd scd_data:file { getattr open read write create };
 allow scd socket_device:dir { add_name remove_name write };
 allow scd socket_device:sock_file { create getattr setattr unlink write };
 allow scd sysfs:file { getattr open read };
