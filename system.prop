@@ -16,6 +16,7 @@ rqbalance.normal.down_threshold=0 130 220 300
 
 # Ril
 ro.use_data_netmgrd=true
+ro.ril.enable.amr.wideband=1
 
 # Camera
 ro.qc.sdk.camera.facialproc=false
