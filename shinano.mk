@@ -192,7 +192,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # HDMI
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.demo.hdmirotationlock=false
+    persist.demo.hdmirotationlock=false \
+    ro.hdmi.enable=true
 
 # Time
 PRODUCT_PROPERTY_OVERRIDES += \
