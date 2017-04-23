@@ -1,18 +1,14 @@
+# TODO: useless now?
 
-
-allow mm-qcamerad camera_data_file:sock_file rw_file_perms;
-allow mm-qcamerad camera_data_file:unix_dgram_socket sendto;
-allow mm-qcamerad camera_data_file:unix_stream_socket connectto;
-allow mm-qcamerad system_prop:property_service set;
-
+#============= cameraserver ==============
 allow cameraserver camera_data_file:unix_dgram_socket sendto;
 allow cameraserver camera_data_file:unix_stream_socket connectto;
+allow cameraserver camera_device:chr_file { ioctl open read write };
 
 allow cameraserver ion_device:chr_file { ioctl open read };
 
-#============= cameraserver ==============
-allow cameraserver camera_device:chr_file { ioctl open read write };
 allow cameraserver mm-qcamerad:unix_stream_socket connectto;
+
 allow cameraserver credmgrd:unix_stream_socket connectto;
 allow cameraserver credmgrd_socket:sock_file write;
 

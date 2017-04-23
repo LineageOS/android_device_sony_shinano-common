@@ -1,48 +1,6 @@
-#============= iddd ==============
-allow iddd system_file:file execute_no_trans;
 
-#============= init ==============
-allow init debugfs:file write;
-allow init tad_block_device:blk_file setattr;
 
-#============= qti_init_shell ==============
-allow qti_init_shell iddd_file:dir { getattr open read remove_name rmdir write };
-allow qti_init_shell tad:unix_stream_socket connectto;
-allow qti_init_shell tad_socket:sock_file write;
-allow qti_init_shell toolbox_exec:file entrypoint;
-
-#============= mm-qcamerad ==============
-allow mm-qcamerad camera_device:chr_file { ioctl open read write };
-allow mm-qcamerad ta_data_file:dir { getattr open read search };
-
-#============= thermanager ==============
-allow thermanager sysfs:file { open read };
-allow thermanager sysfs_battery_supply:dir search;
-allow thermanager sysfs_battery_supply:file { open read write };
-
-#============= scd ==============
-allow scd scd_data:dir { getattr search write add_name };
-allow scd scd_data:file { getattr open read write create };
-allow scd socket_device:dir { add_name remove_name write };
-allow scd socket_device:sock_file { create getattr setattr unlink write };
-allow scd sysfs:file { getattr open read };
-
-#============= wv ==============
-allow wv ion_device:chr_file { ioctl open read };
-allow wv suntrold:unix_stream_socket connectto;
-allow wv suntrold_sock_socket:dir search;
-allow wv suntrold_sock_socket:sock_file write;
-allow wv tad:unix_stream_socket connectto;
-allow wv tad_socket:sock_file write;
-allow wv tee_device:chr_file { ioctl open read write };
-
-#============= mediaserver ==============
-allow mediaserver sensorservice_service:service_manager find;
-allow mediaserver sysfs:file write;
-allow mediaserver sysfs_battery_supply:dir search;
-allow mediaserver sysfs_battery_supply:file { getattr open read };
-allow mediaserver ta_data_file:dir { getattr open read };
-
-#============= rmt_storage ==============
+#TODO: shouldnot exist
 allow rmt_storage self:capability dac_override;
+
 

@@ -1,50 +1,47 @@
 #credmgrd define
-type credmgrd, domain; 
+type credmgrd, domain;
 type credmgrd_exec, exec_type, file_type;
 type credmgrd_data_file, file_type;
 type credmgrd_socket, file_type;
-init_daemon_domain(credmgrd); 
+init_daemon_domain(credmgrd);
 
 #credmgrd self
 allow credmgrd self:socket create_socket_perms;
 allow credmgrd self:file rw_file_perms;
 allow credmgrd self:dir rw_file_perms;
 allow credmgrd self:fifo_file rw_file_perms;
-allow credmgrd credmgrd_data_file:file { getattr lock open read setattr write };
 allow credmgrd cache_file:dir { remove_name write };
 allow credmgrd credmgrd_data_file:dir { add_name open read remove_name write };
-allow credmgrd credmgrd_data_file:file { create unlink };
+allow credmgrd credmgrd_data_file:file { create getattr lock open read setattr unlink write };
 
 
 #credmgdr tad
+allow credmgrd tad:unix_stream_socket connectto;
 allow credmgrd tad_block_device:blk_file { read write ioctl open };
 allow credmgrd tad_socket:unix_dgram_socket sendto;
 allow credmgrd tad_socket:unix_stream_socket connectto;
-allow credmgrd tad:unix_stream_socket connectto;
 allow credmgrd tad_socket:sock_file write;
 
 #credmgrd camera server
 allow credmgrd camera_socket:file { read write getattr open };
-allow credmgrd camera_socket:unix_stream_socket sendto;
-allow credmgrd camera_socket:unix_stream_socket connectto;
+allow credmgrd camera_socket:unix_stream_socket { connectto sendto }; 
 
 #credmgrd mediaserver
 allow mediaserver credmgrd:unix_stream_socket connectto;
 
 #credmgrd mm-qcamera
 allow credmgrd mm-qcamerad:file { read write getattr open };
-allow credmgrd mm-qcamerad:unix_stream_socket sendto;
-allow credmgrd mm-qcamerad:unix_stream_socket connectto;
+allow credmgrd mm-qcamerad:unix_stream_socket { connectto sendto };
 
 #credmgrd qseecomd tee
 allow credmgrd tee_device:chr_file rw_file_perms;
 
 #credmgrd suntrold
+allow credmgrd suntrold:unix_stream_socket connectto;
 allow credmgrd suntrold_sock_socket:dir search;
 allow credmgrd suntrold_sock_socket:unix_dgram_socket sendto;
 allow credmgrd suntrold_sock_socket:unix_stream_socket connectto;
 allow credmgrd suntrold_sock_socket:sock_file write;
-allow credmgrd suntrold:unix_stream_socket connectto;
 
 #credmgrd iddd
 allow credmgrd iddd:unix_dgram_socket sendto;
@@ -61,22 +58,25 @@ allow credmgrd tmpfs:lnk_file read;
 #credmgrd ion
 allow credmgrd ion_device:chr_file { ioctl open read };
 
-#credmgrd files: 
-#============= credmgrd ==============
-allow credmgrd cache_file:dir search;
 
 #============= credmgr init script ==============
-allow credmgrd cache_file:dir add_name;
+allow credmgrd cache_file:dir { add_name search };
 allow credmgrd cache_file:file { create getattr open read unlink write };
-allow credmgrd credmgrd_data_file:dir { getattr rename search };
+allow credmgrd credmgrd_data_file:dir { getattr relabelto reparent rename rmdir search };
 allow credmgrd devpts:chr_file { getattr ioctl open read write };
-allow credmgrd init:unix_stream_socket connectto;
 allow credmgrd property_socket:sock_file write;
 allow credmgrd shell_exec:file { getattr read };
 allow credmgrd system_data_file:dir { add_name remove_name write };
 allow credmgrd system_file:file execute_no_trans;
 allow credmgrd system_prop:property_service set;
-allow credmgrd toolbox_exec:file { execute execute_no_trans getattr open read };
-allow credmgrd credmgrd_data_file:dir { relabelto reparent rmdir };
 allow credmgrd system_data_file:dir { create relabelfrom setattr };
+
+#TODO: wrong labeled on dest socket?
+allow credmgrd init:unix_stream_socket connectto;
+
+#TODO: remove
+allow credmgrd toolbox_exec:file { execute execute_no_trans getattr open read };
+type credmgr, domain;
+type credmgr_exec, exec_type, file_type;
+init_daemon_domain(credmgr);
 

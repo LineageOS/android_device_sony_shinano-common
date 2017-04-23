@@ -1,46 +1,32 @@
-type iddd, domain; 
+# iddd daemon
+type iddd, domain;
 
-type iddd_exec, exec_type, file_type; 
+type iddd_exec, exec_type, file_type;
 init_daemon_domain(iddd)
-
-allow iddd self:socket create_socket_perms;
-allow iddd iddd_file:fifo_file rw_file_perms;
-allow iddd iddd_file:file rw_file_perms;
-allow iddd iddd_file:dir rw_file_perms;
-allow iddd iddd_file:dir { add_name remove_name search };
-allow iddd iddd_file:file { create rename unlink };
-allow iddd iddd_file:sock_file { create setattr unlink write };
-
 
 type_transition iddd system_data_file:file iddd_file;
 
-type credmgr, domain;
-type credmgr_exec, exec_type, file_type;
-init_daemon_domain(credmgr);
+allow iddd self:socket create_socket_perms;
+allow iddd iddd_file:sock_file { create setattr unlink write };
 
+allow iddd iddd_file:fifo_file rw_file_perms;
+allow iddd iddd_file:file rw_file_perms;
+allow iddd iddd_file:file { create rename unlink };
+allow iddd iddd_file:dir rw_file_perms;
+allow iddd iddd_file:dir { add_name create remove_name search };
 
-type scd, domain;
-type scd_exec, exec_type, file_type;
-type scd_data, file_type;
-init_daemon_domain(scd)
+# TODO: label the right way / Allow context change
+allow iddd system_file:file execute_no_trans;
+allow iddd iddd_exec:file execute_no_trans;
 
-type wv,domain;
-type wv_exec, exec_type, file_type;
-init_daemon_domain(wv)
-
-#iddd logd
+# Allow iddd send to logd
 allow iddd logd:unix_stream_socket connectto;
 allow iddd logdr_socket:sock_file write;
 
-#============= system_server ==============
-allow system_server credmgr_exec:dir search;
-allow system_server credmgr_exec:file { getattr open read };
-allow system_server iddd_exec:dir search;
-allow system_server iddd_exec:file { getattr open read };
+# Allow file system create (we use tmpfs now)
 allow iddd tmpfs:lnk_file read;
-#============= iddd ==============
-allow iddd iddd_exec:file execute_no_trans;
-allow iddd iddd_file:dir create;
+allow iddd tmpfs:dir search;
+
+# Allow proc socket search
 allow iddd proc:file { getattr open read };
 
-allow iddd tmpfs:dir search;
