@@ -61,15 +61,15 @@ allow credmgrd ion_device:chr_file { ioctl open read };
 
 #============= credmgr init script ==============
 allow credmgrd cache_file:dir { add_name search };
-allow credmgrd cache_file:file { create getattr open read unlink write };
-allow credmgrd credmgrd_data_file:dir { getattr relabelto reparent rename rmdir search };
-allow credmgrd devpts:chr_file { getattr ioctl open read write };
+allow credmgrd credmgrd_data_file:dir { add_name getattr relabelto reparent rename rmdir search };
+allow credmgrd credmgrd_data_file:file { append getattr open read unlink write };
+allow credmgrd credmgrd_prop:property_service set;
+allow credmgrd init:unix_stream_socket connectto;
 allow credmgrd property_socket:sock_file write;
 allow credmgrd shell_exec:file { getattr read };
-allow credmgrd system_data_file:dir { add_name remove_name write };
 allow credmgrd system_file:file execute_no_trans;
 allow credmgrd system_prop:property_service set;
-allow credmgrd system_data_file:dir { create relabelfrom setattr };
+allow credmgrd system_data_file:dir { add_name create relabelfrom remove_name setattr write };
 
 #TODO: wrong labeled on dest socket?
 allow credmgrd init:unix_stream_socket connectto;

@@ -30,3 +30,6 @@ allow iddd tmpfs:dir search;
 # Allow proc socket search
 allow iddd proc:file { getattr open read };
 
+# Allow idd to read ro.semc
+allow iddd ta_prop:file { getattr open read };
+
