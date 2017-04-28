@@ -373,6 +373,9 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
+    # Create directory for TZ Apps
+    mkdir /data/misc/qsee 0770 system system
+
     # SONY: Create a dir on data partition not to be deleted during mr and wipedata
     mkdir /data/persist 0770 system system
 
@@ -419,7 +422,7 @@ on property:ro.radio.noril=true
 service qseecomd /system/bin/qseecomd
     class core
     user root
-    group drmpc root
+    group drmrpc root
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -457,7 +460,7 @@ on property:ro.data.large_tcp_window_size=true
 service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
-    group gps qcom_oncrpc inet net_raw qcom_diag net_admin wifi
+    group gps inet net_raw qcom_diag net_admin wifi
 
 service scdnotifier_nitz /system/bin/scdnotifier nitz
     class main
