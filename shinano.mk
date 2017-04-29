@@ -98,7 +98,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
    FMRadio \
    brcm-uim-sysfs \
-   libfmjni
+   libfmradio.v4l2-fm
 
 # GPS
 PRODUCT_COPY_FILES += \
