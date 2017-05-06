@@ -145,7 +145,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.pcm.enable=enable \
     av.offload.enable=enable \
     av.streaming.offload.enable=enable \
-    audio.deep_buffer.media=1
+    audio.deep_buffer.media=true
 
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
