@@ -98,6 +98,10 @@ on post-fs-data
     setprop init.taimport.ready true
     # taimport ready, use this as trigger for multi-cdf-symlinker
 
+    # create credmgrinit log file
+    touch /cache/credmgr.log
+    restorecon -R /cache/credmgr.log
+ 
 service taimport /system/bin/taimport
     class late_start
     user root

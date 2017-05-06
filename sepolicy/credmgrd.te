@@ -3,6 +3,7 @@ type credmgrd, domain;
 type credmgrd_exec, exec_type, file_type;
 type credmgrd_data_file, file_type;
 type credmgrd_socket, file_type;
+type credmgrd_prop, property_type;
 init_daemon_domain(credmgrd);
 
 #credmgrd self
@@ -13,7 +14,6 @@ allow credmgrd self:fifo_file rw_file_perms;
 allow credmgrd cache_file:dir { remove_name write };
 allow credmgrd credmgrd_data_file:dir { add_name open read remove_name write };
 allow credmgrd credmgrd_data_file:file { create getattr lock open read setattr unlink write };
-
 
 #credmgdr tad
 allow credmgrd tad:unix_stream_socket connectto;
@@ -50,7 +50,6 @@ allow credmgrd iddd_file:sock_file write;
 allow credmgrd iddd_file:unix_stream_socket connectto;
 allow credmgrd iddd_file:unix_dgram_socket sendto;
 
-
 #/mnt/idd is tmpfs
 allow credmgrd tmpfs:dir search;
 allow credmgrd tmpfs:lnk_file read;
@@ -58,13 +57,12 @@ allow credmgrd tmpfs:lnk_file read;
 #credmgrd ion
 allow credmgrd ion_device:chr_file { ioctl open read };
 
-
 #============= credmgr init script ==============
 allow credmgrd cache_file:dir { add_name search };
+allow credmgrd cache_file:file { create getattr open read unlink write };
 allow credmgrd credmgrd_data_file:dir { add_name getattr relabelto reparent rename rmdir search };
 allow credmgrd credmgrd_data_file:file { append getattr open read unlink write };
 allow credmgrd credmgrd_prop:property_service set;
-allow credmgrd init:unix_stream_socket connectto;
 allow credmgrd property_socket:sock_file write;
 allow credmgrd shell_exec:file { getattr read };
 allow credmgrd system_file:file execute_no_trans;
@@ -74,9 +72,5 @@ allow credmgrd system_data_file:dir { add_name create relabelfrom remove_name se
 #TODO: wrong labeled on dest socket?
 allow credmgrd init:unix_stream_socket connectto;
 
-#TODO: remove
 allow credmgrd toolbox_exec:file { execute execute_no_trans getattr open read };
-type credmgr, domain;
-type credmgr_exec, exec_type, file_type;
-init_daemon_domain(credmgr);
 

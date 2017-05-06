@@ -1,6 +1,9 @@
 allow vold diag_data_file:dir { read open ioctl };
 allow vold tee_prop:file { getattr open read };
 allow vold firmware_file:file { getattr open read };
+allow vold iddd_file:dir { open read };
+allow vold tee_device:unix_stream_socket connectto;
+allow vold tee_device:sock_file write;
 allow vold iddd_file:dir read;
 allow vold tee_device:unix_stream_socket connectto;
 allow vold tee_device:sock_file write;
