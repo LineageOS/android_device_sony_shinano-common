@@ -15,7 +15,13 @@
 #
 
 on init
-	export LD_SHIM_LIBS /system/vendor/lib/libwvm.so|libshims_wvm.so:/system/bin/credmgrd|libshims_signal.so:/system/bin/iddd|libshims_idd.so:/system/bin/suntrold|libshims_signal.so:/system/vendor/lib/libwvm.so|libdtcpipplayer.so
+	export LD_SHIM_LIBS " \
+/system/vendor/lib/libwvm.so|libshims_wvm.so \
+:/system/bin/credmgrd|libshims_signal.so \
+:/system/bin/iddd|libshims_idd.so \
+:/system/bin/suntrold|libshims_signal.so \
+:/system/vendor/lib/libwvm.so|libdtcpipplayer.so \
+"
 
 	mkdir /idd 0751 idd idd
 	mkdir /rca 0750 idd idd
