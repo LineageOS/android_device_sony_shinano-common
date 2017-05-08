@@ -56,6 +56,9 @@ TARGET_PROVIDES_GPS_LOC_API := true
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_shinano
 
+# Keystore
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+
 # SELinux
 BOARD_SEPOLICY_DIRS += \
     device/sony/shinano-common/sepolicy
