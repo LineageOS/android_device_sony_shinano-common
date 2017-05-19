@@ -15,11 +15,11 @@
 # limitations under the License.
 #
 
-import /init.qcom.power.rc
-import /init.sony.rc
-import /init.sony.usb.rc
-import /init.platform-common.rc
-import /init.camera.rc
+import /vendor/etc/init/hw/init.qcom.power.rc
+import /vendor/etc/init/hw/init.sony.rc
+import /vendor/etc/init/hw/init.sony.usb.rc
+import /vendor/etc/init/hw/init.platform-common.rc
+import /vendor/etc/init/hw/init.camera.rc
 
 on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
