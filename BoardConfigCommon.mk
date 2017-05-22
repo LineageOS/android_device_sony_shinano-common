@@ -42,7 +42,7 @@ BOARD_HAVE_BCM_FM := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/shinano-common/bluetooth
-BOARD_CUSTOM_BT_CONFIG := $(DEVICE_PATH)/bluetooth/vnd_generic.txt
+BOARD_CUSTOM_BT_CONFIG := device/sony/shinano-common/bluetooth/vnd_shinano.txt
 
 # CM Hardware
 BOARD_HARDWARE_CLASS += device/sony/shinano-common/cmhw
