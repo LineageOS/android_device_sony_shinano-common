@@ -20,6 +20,7 @@ on init
 :/system/bin/credmgrd|libshims_signal.so \
 :/system/bin/iddd|libshims_idd.so \
 :/system/bin/suntrold|libshims_signal.so \
+:/system/lib/hw/camera.qcom.so|libsonycamera.so \
 :/system/vendor/lib/libwvm.so|libdtcpipplayer.so \
 "
 
