@@ -148,6 +148,9 @@ on boot
 
     # Send single UNSOL_CALL_RING notification
     setprop ro.telephony.call_ring.multiple false
+    
+    # Create folder for timekeep
+    mkdir /data/time/ 0700 system system
 
     # port-bridge
     chmod 0660 /dev/smd0
@@ -494,11 +497,6 @@ service qcom-sensor-sh /system/bin/sh /system/etc/init.qcom-sensor.sh
     user root
     oneshot
 
-service time_daemon /system/bin/time_daemon
-    class late_start
-    user root
-    group root
-
 # HexagonDSP FastRPC daemon
 service adsprpcd /system/bin/adsprpcd
    class main
@@ -552,3 +550,10 @@ service mpdecision /system/bin/mpdecision --avg_comp
     user root
     group bluetooth net_bt
     seclabel u:r:uim:s0
+
+# OSS time
+service timekeep /system/bin/timekeep restore
+    class late_start
+    user root
+    group root
+    oneshot
