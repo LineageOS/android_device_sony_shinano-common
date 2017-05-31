@@ -77,6 +77,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/dsi_config.xml:system/etc/data/dsi_config.xml \
     $(LOCAL_PATH)/configs/qmi_config.xml:system/etc/data/qmi_config.xml
 
+# Media profile
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
+    $(COMMON_PATH)/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
+
 # Bluetooth
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
