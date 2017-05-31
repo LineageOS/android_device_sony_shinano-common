@@ -1,3 +1,23 @@
 on init
     write /sys/class/android_usb/android0/idVendor 0fce
     write /sys/class/android_usb/android0/idProduct 6182
+
+on boot
+	write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
+	write /sys/module/msm_pm/modes/cpu1/power_collapse/suspend_enabled 1
+	write /sys/module/msm_pm/modes/cpu3/power_collapse/suspend_enabled 1
+	write /sys/module/msm_pm/modes/cpu4/power_collapse/suspend_enabled 1
+
+	write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+	write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "interactive"
+	write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "interactive"
+	write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "interactive"
+
+	write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq  300000
+	write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1500000
+	write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq  300000
+	write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1500000
+	write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq  300000
+	write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1500000
+	write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq  300000
+	write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1500000
