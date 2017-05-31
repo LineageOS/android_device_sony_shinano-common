@@ -1,29 +1,3 @@
-# Ril
-ro.use_data_netmgrd=true
-ro.ril.enable.amr.wideband=1
-
-# Camera
-ro.qc.sdk.camera.facialproc=false
-ro.qc.sdk.gestures.camera=false
-camera.disable_zsl_mode=1 
-persist.camera.HAL3.enabled=0
-
-# Dalvik
-dalvik.vm.boot-dex2oat-threads=4
-dalvik.vm.dex2oat-threads=2
-dalvik.vm.image-dex2oat-threads=4
-
-# Misc
-persist.data.qmi.adb_logmask=0
-
-# Audio
-af.fast_track_multiplier=1
-audio_hal.period_size=192
-qcom.hw.aac.encoder=true
-audio.offload.pcm.16bit.enable=true
-audio.offload.pcm.24bit.enable=true
-audio.offload.video=true
-
 # Semc
 ro.semc.version.sw_revision=23.5.A.1.291
 ro.semc.version.sw_variant=GLOBAL-LTECA
@@ -31,6 +5,3 @@ ro.semc.version.sw_type=user
 ro.semc.version.fs_revision=23.5.A.1.291
 ro.semc.version.fs=GENERIC
 ro.semc.version.cust.active=
-
-# Storage
-ro.sys.sdcardfs=true
