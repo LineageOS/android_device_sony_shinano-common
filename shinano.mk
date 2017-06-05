@@ -72,7 +72,11 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     tfa9890_amp
-    
+
+# Assertive Display
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/ad_calib.cfg:system/etc/ad_calib.cfg
+
 # RIL
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/netmgr_config.xml:system/etc/data/netmgr_config.xml \
