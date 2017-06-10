@@ -472,10 +472,6 @@ service scdnotifier_nitz /system/bin/scdnotifier nitz
 on property:gsm.nitz.time=*
     start scdnotifier_nitz
 
-on property:dev.bootcomplete=1
-    rm /data/system/perfd/default_values
-    setprop sys.io.scheduler "row"
-
 # Start suntrold
 service suntrold /system/bin/suntrold
     user system
