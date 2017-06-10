@@ -153,4 +153,4 @@ on property:init.svc.recovery=running
 
 on property:dev.bootcomplete=1
     rm /data/system/perfd/default_values
-    setprop sys.io.scheduler "row"
+    setprop sys.io.scheduler "bfq"
