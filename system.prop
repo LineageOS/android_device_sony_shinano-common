@@ -39,3 +39,11 @@ ro.qti.sensors.tilt=false
 ro.qti.sensors.tilt_detector=true
 ro.qti.sensors.dpc=false
 ro.qti.sensors.wu=false
+
+# Audio config
+ro.qc.sdk.audio.fluencetype=fluence
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+persist.audio.fluence.audiorec=true
+persist.audio.fluence.speaker=true
+persist.audio.handset.mic.type=analog
