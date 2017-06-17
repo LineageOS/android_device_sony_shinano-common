@@ -260,8 +260,6 @@ on boot
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
 on post-fs
-    #export LD_PRELOAD libNimsWrap.so
-
     write /sys/class/power_supply/battery/shutdown_at_low_batt 1
 
     # Change to socket location on libkeyctrl/suntory for /data encryption

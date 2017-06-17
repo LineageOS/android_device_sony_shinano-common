@@ -6,9 +6,6 @@ ro.semc.version.fs_revision=23.5.A.1.291
 ro.semc.version.fs=GENERIC
 ro.semc.version.cust.active=
 
-# Config for CNE on non-Qualcomm Wi-Fi chip
-persist.cne.rat.wlan.chip.oem=nqc
-
 # aDSP sensors
 ## max rate
 ro.qti.sensors.max_accel_rate=false
