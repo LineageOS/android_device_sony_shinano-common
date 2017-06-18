@@ -105,9 +105,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/gps/sap.conf:system/etc/sap.conf
 
 PRODUCT_PACKAGES += \
-    com.qualcomm.location \
     gps.msm8974
-
 
 # RQBalance-PowerHAL configuration
 PRODUCT_COPY_FILES += \
