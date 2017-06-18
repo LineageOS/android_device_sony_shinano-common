@@ -147,6 +147,10 @@ on property:init.svc.bootanim=stopped
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
+    # Set max mA current for usb/dc charger
+    write /sys/class/power_supply/qpnp-dc/current_max 1800000
+    write /sys/class/power_supply/usb/current_max 1500000
+
 on property:init.svc.recovery=running
     trigger enable-low-power
 
