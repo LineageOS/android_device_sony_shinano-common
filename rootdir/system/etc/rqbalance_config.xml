@@ -18,37 +18,36 @@
     <batterysave>
         <cpuquiet min_cpus="1" max_cpus="2"/>
         <rqbalance balance_level="80"/>
-        <rqbalance down_thresholds="0 100 300 500 4294967295 4294967295 4294967295 4294967295"/>
-        <rqbalance   up_thresholds="200 400 600 4294967295 4294967295 4294967295 4294967295 4294967295"/>
+        <rqbalance down_thresholds="0 400 550 700"/>
+        <rqbalance   up_thresholds="200 580 750 4294967295"/>
     </batterysave>
 
     <balanced>
         <cpuquiet min_cpus="2" max_cpus="4"/>
         <rqbalance balance_level="40"/>
-        <rqbalance down_thresholds="0 130 220 300 4294967295 4294967295 4294967295 4294967295"/>
-        <rqbalance   up_thresholds="65 145 300 4294967295 4294967295 4294967295 4294967295 4294967295"/>
+        <rqbalance down_thresholds="0 280 515 585"/>
+        <rqbalance   up_thresholds="100 400 625 4294967295"/>
     </balanced>
 
     <performance>
         <cpuquiet min_cpus="4" max_cpus="4"/>
         <rqbalance balance_level="40"/>
-        <rqbalance down_thresholds="0 130 220 300 4294967295 4294967295 4294967295 4294967295"/>
-        <rqbalance   up_thresholds="65 145 300 4294967295 4294967295 4294967295 4294967295 4294967295"/>
+        <rqbalance down_thresholds="0 280 515 585"/>
+        <rqbalance   up_thresholds="100 400 625 4294967295"/>
     </performance>
 
     <video_decoding>
         <cpuquiet min_cpus="1" max_cpus="4"/>
         <rqbalance balance_level="40"/>
-        <rqbalance down_thresholds="0 90 220 300 4294967295 4294967295 4294967295 4294967295"/>
-        <rqbalance   up_thresholds="65 115 300 4294967295 4294967295 4294967295 4294967295 4294967295"/>
+        <rqbalance down_thresholds="0 280 515 585"/>
+        <rqbalance   up_thresholds="100 400 625 4294967295"/>
     </video_decoding>
 
     <video_encoding>
         <cpuquiet min_cpus="3" max_cpus="4"/>
         <rqbalance balance_level="60"/>
-        <rqbalance down_thresholds="0 130 220 300 4294967295 4294967295 4294967295 4294967295"/>
-        <rqbalance   up_thresholds="65 145 300 4294967295 4294967295 4294967295 4294967295 4294967295"/>
+        <rqbalance down_thresholds="0 280 515 585"/>
+        <rqbalance   up_thresholds="100 400 625 4294967295"/>
     </video_encoding>
 
 </rqbalance_config>
-
