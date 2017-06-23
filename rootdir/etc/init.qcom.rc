@@ -62,9 +62,6 @@ on init
 on fs
     mount_all ./vendor/etc/fstab.qcom
 
-    # Mount ZRAM
-    swapon_all ./vendor/etc/fstab.qcom
-
     # Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
@@ -345,6 +342,10 @@ on post-fs-data
 
     # SONY: Create dir for marlin sdata
     mkdir /data/persist/marlin 0700 system system
+
+on property:sys.boot_completed=1
+    # Enable ZRAM on boot_complete
+    swapon_all /vendor/etc/fstab.qcom
 
 on property:bluetooth.isEnabled=true
 #    start btwlancoex
