@@ -517,7 +517,7 @@ service qcom-sensor-sh /system/bin/sh /system/etc/init.qcom-sensor.sh
 service time_daemon /system/bin/time_daemon
     class late_start
     user root
-    group root radio qcom_diag
+    group root
 
 service charger /sbin/healthd -c
     class charger
