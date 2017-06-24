@@ -216,9 +216,6 @@ on boot
     chmod 660 /dev/rtc0
     chown system system /dev/rtc0
 
-    # Enable DEBUG_SUSPEND, DEBUG_EXIT_SUSPEND, and DEBUG_WAKEUP
-    write /sys/module/wakelock/parameters/debug_mask 7
-
     # To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
@@ -260,8 +257,6 @@ on boot
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
 on post-fs
-    write /sys/class/power_supply/battery/shutdown_at_low_batt 1
-
     # Change to socket location on libkeyctrl/suntory for /data encryption
     # Create suntory data directory
     mkdir /dev/socket/suntory 0755 system system
