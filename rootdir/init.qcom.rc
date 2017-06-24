@@ -51,13 +51,13 @@ on init
 
     # Bluetooth address setting
     setprop ro.bt.bdaddr_path "/data/etc/bluetooth_bdaddr"
-    chown bluetooth bluetooth ${ro.bt.bdaddr_path}
+    chown bluetooth bluetooth ro.bt.bdaddr_path
 
+    #Enable Bluetooth HFP 1.6
     setprop ro.bluetooth.hfp.ver 1.6
+
+    #Disable Bluetooth A2DP SNK
     setprop bluetooth.a2dp.sink.enabled false
-    setprop bluetooth.enable_timeout_ms 12000
-    chown bluetooth net_bt_admin /proc/bluetooth/wakeup/proto
-    chmod 0664 /proc/bluetooth/wakeup/proto
 
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
@@ -110,8 +110,8 @@ on boot
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
 
-    # BT DUN port-bridge		
-    chmod 0660 /dev/smd7		
+    # BT DUN port-bridge
+    chmod 0660 /dev/smd7
     chown bluetooth bluetooth /dev/smd7
 
     chmod 0660 /sys/class/rfkill/rfkill0/state
