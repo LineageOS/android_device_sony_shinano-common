@@ -470,16 +470,6 @@ service loc_launcher /system/bin/loc_launcher
     class late_start
     group gps inet net_raw qcom_diag net_admin wifi
 
-service scdnotifier_nitz /system/bin/scdnotifier nitz
-    class main
-    user system
-    group system
-    oneshot
-    disabled
-
-on property:gsm.nitz.time=*
-    start scdnotifier_nitz
-
 # Start suntrold
 service suntrold /system/bin/suntrold
     user system
