@@ -98,7 +98,8 @@ PRODUCT_COPY_FILES += \
 # Media profile
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
-    $(COMMON_PATH)/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
+    $(COMMON_PATH)/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+    $(COMMON_PATH)/media_profiles.xml:system/etc/media_profiles.xml
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
