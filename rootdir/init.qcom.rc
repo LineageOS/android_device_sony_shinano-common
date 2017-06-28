@@ -136,9 +136,13 @@ on boot
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
 
-	#Create NETMGR daemon socket area
-	mkdir /dev/socket/netmgr 0750 radio radio
+    #Create NETMGR daemon socket area
+    mkdir /dev/socket/netmgr 0750 radio radio
 
+    # Wlan Interface Port
+    setprop wifi.interface wlan0
+
+    # Send single UNSOL_CALL_RING notification
     setprop ro.telephony.call_ring.multiple false
 
     # port-bridge
