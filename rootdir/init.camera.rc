@@ -76,15 +76,8 @@ on post-fs-data
     mkdir /data/etc 0755 root shell
     exec -- /system/bin/taimport
 
-    mkdir /data/media 0770 media_rw media_rw
-
     # SONY: Create dir for Widevine keybox
     mkdir /data/persist/wv 0700 system system
-
-    mkdir /data/misc/systemkeys 0700 system system
-    mkdir /data/misc/keystore 0700 keystore keystore
-    mkdir /data/misc/keychain 0771 system system
-    installkey /data
 
     mkdir /idd/lost+found 0770 root root
     mkdir /idd/output 0755 idd idd

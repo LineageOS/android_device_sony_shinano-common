@@ -286,21 +286,7 @@ on post-fs
     chown system system /sys/class/leds/led:rgb_blue/pause_hi_multi
 
 on post-fs-data
-    # create directory for DRM plug-ins - give drm the read/write access to
-    # the following directory.
-    mkdir /data/drm 0770 drm drm
-
-    # create directory for MediaDrm plug-ins - give drm the read/write access to
-    # the following directory.
-    mkdir /data/mediadrm 0770 mediadrm mediadrm
-
-
-    # Create the directories used by the Wireless subsystem
-    mkdir /data/misc/wifi 0770 wifi wifi
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-    # to observe dnsmasq.leases file for dhcp information of soft ap.
+    # Observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp dhcp /data/misc/dhcp
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
@@ -328,7 +314,6 @@ on post-fs-data
     mkdir /data/nfc/param 0770 nfc nfc
 
     # QCOM Sensors
-    mkdir /data/system 0775 system system
     mkdir /data/system/sensors 0775 system system
     mkdir /data/misc/sensors 0775 system system
     write /data/system/sensors/settings 1
@@ -547,7 +532,6 @@ service media /system/bin/mediaserver
     user media
     group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm credmgr_client system
     ioprio rt 4
-
 
 service mediadrm /system/bin/mediadrmserver
     class main
