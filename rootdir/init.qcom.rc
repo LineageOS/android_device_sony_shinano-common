@@ -513,6 +513,12 @@ service time_daemon /system/bin/time_daemon
     user root
     group root
 
+# HexagonDSP FastRPC daemon
+service adsprpcd /system/bin/adsprpcd
+   class main
+   user media
+   group media
+
 service charger /sbin/healthd -c
     class charger
     seclabel u:r:healthd:s0
