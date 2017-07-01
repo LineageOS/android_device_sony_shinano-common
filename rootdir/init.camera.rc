@@ -48,19 +48,19 @@ on early-boot
 
 on boot
     # PM8941 flash
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/current1
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/current2
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/fault_status
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/fine_current1
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/fine_current2
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/flash_timer
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/mask_clamp_current
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/mask_enable
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/max_current
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/mode
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/startup_delay
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/strobe
-    chown cameraserver system /sys/class/misc/pm8941-flash/device/vph_pwr_droop
+    chown media system /sys/class/misc/pm8941-flash/device/current1
+    chown media system /sys/class/misc/pm8941-flash/device/current2
+    chown media system /sys/class/misc/pm8941-flash/device/fault_status
+    chown media system /sys/class/misc/pm8941-flash/device/fine_current1
+    chown media system /sys/class/misc/pm8941-flash/device/fine_current2
+    chown media system /sys/class/misc/pm8941-flash/device/flash_timer
+    chown media system /sys/class/misc/pm8941-flash/device/mask_clamp_current
+    chown media system /sys/class/misc/pm8941-flash/device/mask_enable
+    chown media system /sys/class/misc/pm8941-flash/device/max_current
+    chown media system /sys/class/misc/pm8941-flash/device/mode
+    chown media system /sys/class/misc/pm8941-flash/device/startup_delay
+    chown media system /sys/class/misc/pm8941-flash/device/strobe
+    chown media system /sys/class/misc/pm8941-flash/device/vph_pwr_droop
 
 on post-fs
      # we will remap this as /mnt/sdcard with the sdcard fuse tool
