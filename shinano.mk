@@ -68,10 +68,10 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
+    $(COMMON_PATH)/configs/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     $(COMMON_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(COMMON_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-    $(COMMON_PATH)/configs/mixer_paths_auxpcm.xml:system/etc/mixer_paths_auxpcm.xml
+    $(COMMON_PATH)/configs/audio/mixer_paths_auxpcm.xml:system/etc/mixer_paths_auxpcm.xml
 
 PRODUCT_PACKAGES += \
     tfa9890_amp
