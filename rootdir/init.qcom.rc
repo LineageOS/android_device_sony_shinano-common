@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-import /init.device-common.rc
+import /init.platform-common.rc
 import /init.sony.usb.rc
 import /init.qcom.power.rc
 import /init.camera.rc
