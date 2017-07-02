@@ -227,9 +227,6 @@ vendor/lib/libquipc_os_api.so
 vendor/lib/libquipc_ulp_adapter.so
 vendor/lib/libulp2.so
 
-# HW Config
-etc/pre_hw_config.sh
-
 # IRSC
 bin/irsc_util
 
@@ -239,9 +236,6 @@ vendor/firmware/keymaster/keymaster.b01
 vendor/firmware/keymaster/keymaster.b02
 vendor/firmware/keymaster/keymaster.b03
 vendor/firmware/keymaster/keymaster.mdt
-
-# Media config
-etc/media_profiles.xml
 
 # Modem
 bin/netmgrd
@@ -314,9 +308,3 @@ lib/libta.so
 # Time
 bin/time_daemon
 -vendor/lib/libtime_genoff.so
-
-# Touchscreen
-bin/clearpad_fwloader
-
-# WiFi
-bin/radish
