@@ -1,57 +1,87 @@
 # Audio
 vendor/lib/libacdbloader.so
+vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
+vendor/lib/libaudioalsa.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 
 # ADSP
 vendor/lib/libadsprpc.so
+bin/adsprpcd
+vendor/lib/libfastcvadsp_stub.so
+vendor/lib/libfastcvopt.so
 
 # Camera
-bin/credmgrd
+bin/credmgrd|220874582f2c22cfcca380ca2870e1eB9ab366ae
 bin/iddd
+bin/idd-logreader
 bin/mm-qcamera-daemon
-etc/iddd.conf
-etc/firmware/cpp_firmware_v1_1_1.fw
-etc/firmware/cpp_firmware_v1_1_6.fw
-etc/firmware/cpp_firmware_v1_2_0.fw
 lib/hw/camera.qcom.so:lib/hw/camera.vendor.qcom.so
 lib/lib_get_secure_mode.so
 lib/lib_get_rooting_status.so
 lib/libcamera_clientsemc.so
-lib/libcredential-manager-keystore.so
+lib/libcameralight.so
+lib/libcammw.so
 lib/libcredential-manager-service.so
 lib/libidd.so
-lib/liblights-core.so
+lib/libkeyctrl.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libprotobuf-c.so
 lib/libqomx_core.so
-lib/libsys-utils.so
+lib/libsony_face.so
+vendor/CredentialManagerData
+vendor/lib/libactuator_dw9714.so
+vendor/lib/libactuator_dw9714_camcorder.so
+vendor/lib/libactuator_dw9714_camera.so
+vendor/lib/libactuator_dw9716.so
+vendor/lib/libactuator_dw9716_camcorder.so
+vendor/lib/libactuator_dw9716_camera.so
+vendor/lib/libactuator_iu074.so
+vendor/lib/libactuator_iu074_camcorder.so
+vendor/lib/libactuator_iu074_camera.so
+vendor/lib/libactuator_ov8825.so
+vendor/lib/libactuator_ov8825_camcorder.so
+vendor/lib/libactuator_ov8825_camera.so
+vendor/lib/libactuator_ov12830.so
+vendor/lib/libactuator_ov12830_camcorder.so
+vendor/lib/libactuator_ov12830_camera.so
+vendor/lib/libactuator_rohm_bu64243gwz.so
+vendor/lib/libactuator_rohm_bu64243gwz_camcorder.so
+vendor/lib/libactuator_rohm_bu64243gwz_camera.so
 vendor/lib/libfastcvopt.so
-vendor/lib/libjpegdhw.so
-vendor/lib/libjpegehw.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
+vendor/lib/libmmcamera2_frame_algorithm.so
+vendor/lib/libmmcamera2_iface_modules.so
+vendor/lib/libmmcamera2_imglib_modules.so
+vendor/lib/libmmcamera2_isp_modules.so
+vendor/lib/libmmcamera2_is.so
 vendor/lib/libmmcamera2_pproc_modules.so
+vendor/lib/libmmcamera2_sensor_modules.so
+vendor/lib/libmmcamera2_stats_algorithm.so
+vendor/lib/libmmcamera2_stats_modules.so
 vendor/lib/libmmcamera2_vpe_module.so
 vendor/lib/libmmcamera2_wnr_module.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_hdr_lib.so
 vendor/lib/libmmcamera_imglib.so
+vendor/lib/libmmcamera_ofilm_oty5f03_eeprom.so
 vendor/lib/libmmcamera_sunny_p12v01m_eeprom.so
 vendor/lib/libmmcamera_sunny_p5v23c_eeprom.so
+vendor/lib/libmmcamera_sunny_q8v18a_eeprom.so
+vendor/lib/libmmcamera_tintless_algo.so
+vendor/lib/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib/libmmcamera_truly_cm7700_eeprom.so
-vendor/lib/libmmcamera_tuning.so
 vendor/lib/libmmcamera_wavelet_lib.so
-vendor/lib/libmmjpeg.so
-vendor/lib/libmmqjpeg_codec.so
-vendor/lib/libqomx_jpegdec.so
-vendor/lib/libqomx_jpegenc.so
+vendor/camera/flash.dat
+vendor/camera/jpeg_fsc.dat
+vendor/lib/liboemcamera.so
 
 # Cacao
 lib/camera/libexcal_object_tracker_plugin.so
@@ -93,14 +123,16 @@ lib/libcald_server.so
 lib/libcald_util.so
 lib/libexcal_core.so
 lib/libexcal_system.so
-lib/libface.so
-lib/libface_wrapper.so
 lib/libsomc_chokoballpal.so
 lib/libsony_chokoball.so
 lib/libsony_chokoballrsc.so
-lib/libsony_face.so
 
 # Chromatix
+vendor/lib/libchromatix_imx132_common.so
+vendor/lib/libchromatix_imx132_default_video.so
+vendor/lib/libchromatix_imx132_liveshot.so
+vendor/lib/libchromatix_imx132_preview.so
+vendor/lib/libchromatix_imx132_snapshot.so
 vendor/lib/libchromatix_imx134_common.so
 vendor/lib/libchromatix_imx134_default_video.so
 vendor/lib/libchromatix_imx134_hfr_120.so
@@ -110,6 +142,8 @@ vendor/lib/libchromatix_imx134_snapshot.so
 vendor/lib/libchromatix_imx135_common.so
 vendor/lib/libchromatix_imx135_default_video.so
 vendor/lib/libchromatix_imx135_hfr_120.so
+vendor/lib/libchromatix_imx135_hfr_60.so
+vendor/lib/libchromatix_imx135_hfr_90.so
 vendor/lib/libchromatix_imx135_preview.so
 vendor/lib/libchromatix_imx135_snapshot.so
 vendor/lib/libchromatix_imx135_video_hd.so
@@ -205,30 +239,27 @@ etc/firmware/venus.mdt
 
 # DRM
 bin/qseecomd
-vendor/lib/libdrmdiag.so
+bin/wvkbd
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libQSEEComAPI.so
-vendor/lib/librpmb.so
-vendor/lib/libssd.so
+vendor/lib/libtzdrmgenprov.so
 
 # GPS
--app/com.qualcomm.location.apk:priv-app/com.qualcomm.location/com.qualcomm.location.apk
-bin/gsiff_daemon
-etc/permissions/com.qualcomm.location.xml
+bin/loc_launcher
+lib/hw/gps.default.so
+lib/libgps.utils.so
 lib/libloc_api_v02.so
-lib/libloc_ds_api.so
+lib/libloc_core.so
+lib/libloc_eng.so
 vendor/lib/hw/flp.default.so
+vendor/lib/libflp.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
-vendor/lib/liblocationservice.so
+vendor/lib/libloc_ext.so
+vendor/lib/libloc_xtra.so
 vendor/lib/libquipc_os_api.so
-vendor/lib/libquipc_ulp_adapter.so
-vendor/lib/libulp2.so
-
-# HW Config
-etc/pre_hw_config.sh
 
 # IRSC
 bin/irsc_util
@@ -240,22 +271,32 @@ vendor/firmware/keymaster/keymaster.b02
 vendor/firmware/keymaster/keymaster.b03
 vendor/firmware/keymaster/keymaster.mdt
 
-# Media config
-etc/media_profiles.xml
-
 # Modem
 bin/netmgrd
 bin/qmuxd
 bin/rmt_storage
+etc/permissions/ConnectivityExt.xml
+framework/ConnectivityExt.jar
+lib/libmdmdetect.so
 lib/libpin-cache.so
 lib/libstartup-reason.so
+vendor/lib/libconnctrl.so
+vendor/lib/libcneapiclient.so
+vendor/lib/libconfigdb.so
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
-vendor/lib/libdsnetutils.so
 vendor/lib/libdsutils.so
 vendor/lib/libidl.so
+vendor/lib/liblqe.so
 vendor/lib/libnetmgr.so
+vendor/lib/libperipheral_client.so
 vendor/lib/libril-qc-qmi-1.so
+vendor/lib/libril-qc-radioconfig.so
+vendor/lib/libsmemlog.so
+vendor/lib/libsystem_health_mon.so
+vendor/lib/libxml.so
+vendor/lib/libxtadapter.so
+vendor/lib/libwqe.so
 
 # Playready
 etc/firmware/cmnlib.b00
@@ -269,10 +310,10 @@ vendor/lib/libqcci_legacy.so
 vendor/lib/libqdi.so
 vendor/lib/libqdp.so
 vendor/lib/libqmi_cci.so
+vendor/lib/libqmi_client_helper.so
 vendor/lib/libqmi_client_qmux.so
 vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_csi.so
-vendor/lib/libqmi_csvt_srvc.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 vendor/lib/libqmi.so
@@ -299,24 +340,73 @@ etc/firmware/tzsuntory.b03
 etc/firmware/tzsuntory.mdt
 
 # Sensors
+bin/sensors.qcom
+vendor/lib/hw/activity_recognition.msm8974.so
 vendor/lib/hw/sensors.msm8974.so
+vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
 
 # TA
 bin/taimport
-bin/ta_param_loader
 bin/ta_qmi_service
 bin/mlog_qmi_service
+bin/updatemiscta
 lib/libMiscTaAccessor.so
 lib/libmiscta.so
-lib/libta.so
+-lib/libta.so
+lib/lib_asb_tee.so
+lib/libcredential-manager-service.so
+lib/lib_extended_boot_lock.so
+lib/lib_get_hwc_revision.so
+lib/lib_get_rooting_status.so
+lib/lib_get_s1_cert_common_name.so
+lib/lib_get_secure_mode.so
+lib/libidd.so
+lib/libMiscTaAccessor.so
+lib/libMiscTAApi.so
+lib/libmiscta.so
+lib/libprotobuf-c.so
+lib/lib_s1_verification.so
+lib/libstartup-reason.so
+lib/lib_uncontrolled_rooting_status.so
 
 # Time
 bin/time_daemon
+-app/TimeService/TimeService.apk
 -vendor/lib/libtime_genoff.so
+-vendor/lib/libTimeService.so
 
-# Touchscreen
-bin/clearpad_fwloader
+# NFC
+vendor/firmware/libpn547_fw.so
 
-# WiFi
-bin/radish
+# aptX (Moto griffin - NCLS25.86-11-4-6-5)
+vendor/lib/libaptX-1.0.0-rel-Android21-ARMv7A.so|b03772672144d4b750a5672c2922aded93bb0512
+vendor/lib/libaptXScheduler.so|6a0a2d564fde8434018b9840ce81d976b4d4ab28
+
+# tzwvcpybuf
+etc/firmware/tzwvcpybuf.b00
+etc/firmware/tzwvcpybuf.b01
+etc/firmware/tzwvcpybuf.b02
+etc/firmware/tzwvcpybuf.b03
+etc/firmware/tzwvcpybuf.mdt
+
+# Widevine firmware
+etc/firmware/tzwidevine.b00
+etc/firmware/tzwidevine.b01
+etc/firmware/tzwidevine.b02
+etc/firmware/tzwidevine.b03
+etc/firmware/tzwidevine.mdt
+
+# Perf
+vendor/lib/libqc-opt.so
+
+# Media
+lib/libdtcpipplayer.so
+
+# Misc
+bin/scd
+bin/sct_service
+bin/suntrold
+lib/libcrashlevelmatrix.so
+lib/libscdclient.so
+vendor/lib/liboemcrypto.so
