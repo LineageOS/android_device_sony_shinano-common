@@ -234,8 +234,3 @@
 /dev/pmem_adsp*           0660   system     audio
 /dev/pmem_camera*         0660   system     camera
 /dev/msm_hw3dm            0660   system     graphics
-
-# cpuquiet rqbalance permissions
-/sys/devices/system/cpu/cpuquiet/rqbalance/balance_level             0660 system system
-/sys/devices/system/cpu/cpuquiet/rqbalance/nr_run_thresholds         0660 system system
-/sys/devices/system/cpu/cpuquiet/rqbalance/nr_down_run_thresholds    0660 system system
