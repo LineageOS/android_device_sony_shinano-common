@@ -539,6 +539,12 @@ service mediadrm /system/bin/mediadrmserver
     group mediadrm drmrpc trimarea
     ioprio rt 4
 
+service mpdecision /system/bin/mpdecision --avg_comp
+    class main
+    user root
+    group root readproc
+    disabled
+
 # brcm-uim-sysfs (BT/FM/ANT+)
  service uim /system/bin/brcm-uim-sysfs
     class late_start
