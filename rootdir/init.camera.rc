@@ -30,7 +30,6 @@ on init
 on early-fs
     wait /dev/block/mmcblk0p1
     class_start trimarea
-    exec u:r:qti_init_shell:s0 -- /sbin/wait4tad_static
 
 on fs
     # mount apps_log
