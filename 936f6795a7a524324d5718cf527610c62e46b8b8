@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_7bacfaa0",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 10191
+      },
+      "writtenOn": "2017-07-04T06:07:37Z",
+      "side": 1,
+      "message": "Small typo, its a firmware",
+      "revId": "936f6795a7a524324d5718cf527610c62e46b8b8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
