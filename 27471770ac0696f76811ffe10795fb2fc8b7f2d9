@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_7b839a04",
+        "filename": "setup-makefiles.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-04T06:23:24Z",
+      "side": 1,
+      "message": "That would be just one file, why not use it directly instead of a loop?",
+      "revId": "27471770ac0696f76811ffe10795fb2fc8b7f2d9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
