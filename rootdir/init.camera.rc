@@ -30,7 +30,7 @@ on init
 on early-fs
     wait /dev/block/mmcblk0p1
     class_start trimarea
-    exec u:r:qti_init_shell:s0 -- /sbin/wait4tad_static
+    exec u:r:qti_init_shell:s0 -- /system/bin/wait4tad_static
 
 on fs
     # mount apps_log
@@ -171,8 +171,8 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
 
 # SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
-service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
-#service tad_static /sbin/tad_static /data/credmgr/ta_part.bin 0,16
+service tad_static /system/bin/tad_static /dev/block/bootdevice/by-name/TA 0,16
+#service tad_static /system/bin/tad_static /data/credmgr/ta_part.bin 0,16
     class trimarea
     user tad
     group tad trimarea root
