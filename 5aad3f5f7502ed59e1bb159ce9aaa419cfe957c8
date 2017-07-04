@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_db93c64d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-04T06:26:14Z",
+      "side": 1,
+      "message": "This does a lot more than that. Besides, do we even use core_control? (Or is it different from core_ctl which is what I\u0027m mixing it up with)",
+      "revId": "5aad3f5f7502ed59e1bb159ce9aaa419cfe957c8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
