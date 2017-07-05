@@ -2325,35 +2325,34 @@
 
     <path name="voice-handset">
         <path name="handset" />
-        <path name="handset-voice-cfg" />
     </path>
 
     <path name="voice-handset-hac">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-eq1">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-eq2">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-wv">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-eq1-wv">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-eq2-wv">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-tmus">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-speaker">
