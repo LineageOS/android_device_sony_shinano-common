@@ -495,7 +495,7 @@ service qcom-sensor-sh /system/bin/sh /system/etc/init.qcom-sensor.sh
 
 service time_daemon /system/bin/time_daemon
     class late_start
-    user root
+    user root radio
     group root
 
 # HexagonDSP FastRPC daemon

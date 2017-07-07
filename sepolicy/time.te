@@ -1,0 +1,3 @@
+allow time_daemon qmuxd_socket:sock_file read;
+allow time_daemon qmuxd_socket:unix_stream_socket connectto;
+
