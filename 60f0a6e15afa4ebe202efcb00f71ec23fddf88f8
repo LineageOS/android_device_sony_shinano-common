@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_cd4463b9",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "Unused. Just a list of files",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_8d165ba6",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "Is this not source built?",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_4d1053a8",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_ed260716",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_0d224b01",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_ad20fff7",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_cd1b03c9",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "Not ta. this is camera related, also unrelated.",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_6d7af7f2",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "Unused.",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_8d7dfbe9",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "All mostly needed for camera, could also put this under DRM",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_2d84efd2",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "Why use this?",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_4d87f3d7",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "Does this not differ between devices? As in why move this to common?",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_ed6da733",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "We don\u0027t have L1 on unlocked anyways, so what\u0027s the point of adding these?",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_0d69eb24",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "IMS would be a better header. Add this only when it works",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_ad779f01",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-07T06:41:16Z",
+      "side": 1,
+      "message": "Are all of these used? Some are, but I\u0027m unsure about things  like wvkbd",
+      "revId": "60f0a6e15afa4ebe202efcb00f71ec23fddf88f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
