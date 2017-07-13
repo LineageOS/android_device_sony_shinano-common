@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "073426c1_7a0871fc",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 33
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 15257
+      },
+      "writtenOn": "2017-07-13T11:45:48Z",
+      "side": 1,
+      "message": "This lib is just a duplicated libril-qc-qmi-1.so and isn\u0027t actually used, at first i thought it could be used by Dual variants but even there it doesn\u0027t exists.",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 29
+      },
+      "revId": "60bccd44dacf824d68932ce36bc25c2d820a07ba",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
