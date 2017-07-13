@@ -22,6 +22,29 @@
       "revId": "60bccd44dacf824d68932ce36bc25c2d820a07ba",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f32788c9_b13e3256",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 33
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 15257
+      },
+      "writtenOn": "2017-07-13T20:02:06Z",
+      "side": 1,
+      "message": "Unneeded lib",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 35
+      },
+      "revId": "60bccd44dacf824d68932ce36bc25c2d820a07ba",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
