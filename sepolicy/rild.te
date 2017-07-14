@@ -1,0 +1,2 @@
+# Allow rild read to ro.semc
+allow rild ta_prop:file { read open getattr };
