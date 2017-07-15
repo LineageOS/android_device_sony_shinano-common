@@ -11,11 +11,34 @@
 # Hardware tunables
 /sys/devices/virtual/timed_output/vibrator/vtg_level   -- u:object_r:sysfs_vibrator:s0
 
-#iddd
-/system/bin/iddd        u:object_r:iddd_exec:s0
-/idd(/.*)?                      u:object_r:iddd_file:s0
-/mnt/idd						u:object_r:iddd_file:s0
-/system/bin/idd-logreader		 u:object_r:iddd_exec:s0
+#line 1 "vendor/semc/system/sepolicy/IDD_-_In_Device_Diagnostics/1.1.1/idd/file_contexts"
+/system/bin/iddd u:object_r:idd_exec:s0
+/system/bin/idd-logreader u:object_r:idd_exec:s0
+
+/mnt/idd u:object_r:idd_root_dir:s0
+/mnt/idd(/.*)? u:object_r:idd_data_file:s0
+/mnt/idd/socket(/.*)? u:object_r:idd_socket_file:s0
+/mnt/idd/output(/.*)? u:object_r:idd_output_file:s0
+/mnt/idd/fsck(/.*)? u:object_r:idd_fsck_file:s0
+/mnt/idd/crashdata(/.*)? u:object_r:idd_crashdata_file:s0
+/mnt/idd/lost\+found(/.*)? u:object_r:lostfound_file:s0
+
+/idd u:object_r:idd_root_dir:s0
+/idd(/.*)? u:object_r:idd_data_file:s0
+/idd/socket(/.*)? u:object_r:idd_socket_file:s0
+/idd/output(/.*)? u:object_r:idd_output_file:s0
+/idd/fsck(/.*)? u:object_r:idd_fsck_file:s0
+/idd/crashdata(/.*)? u:object_r:idd_crashdata_file:s0
+/idd/lost\+found(/.*)? u:object_r:lostfound_file:s0
+
+/mnt/rca u:object_r:idd_rca_dir:s0
+/mnt/rca(/.*)? u:object_r:idd_rca_file:s0
+
+/dev/block/platform/msm_sdcc.1/by-name/apps_log u:object_r:appslog_block_device:s0
+#line 1 "vendor/semc/system/sepolicy/IDD_-_In_Device_Diagnostics/1.1.1/startup-prober/file_contexts"
+/system/bin/startup-prober u:object_r:startupprober_exec:s0
+/mnt/idd/startup-prober(/.*)? u:object_r:startupprober_file:s0
+/idd/startup-prober(/.*)? u:object_r:startupprober_file:s0
 
 # HCI
 /dev/ttyHS0                              u:object_r:hci_attach_dev:s0
