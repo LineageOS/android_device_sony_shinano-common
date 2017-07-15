@@ -11,11 +11,30 @@
 # Hardware tunables
 /sys/devices/virtual/timed_output/vibrator/vtg_level   -- u:object_r:sysfs_vibrator:s0
 
-#iddd
-/system/bin/iddd        u:object_r:iddd_exec:s0
-/idd(/.*)?                      u:object_r:iddd_file:s0
-/mnt/idd						u:object_r:iddd_file:s0
-/system/bin/idd-logreader		 u:object_r:iddd_exec:s0
+# In Device Diagnostics (idd)
+/system/bin/iddd                                         u:object_r:iddd_exec:s0
+/system/bin/idd-logreader                                u:object_r:iddd_exec:s0
+
+#line 1 "vendor/semc/system/sepolicy/IDD_-_In_Device_Diagnostics/1.1.1/idd/file_contexts"
+/mnt/idd                                                 u:object_r:iddd_root_dir:s0
+/mnt/idd(/.*)?                                           u:object_r:iddd_data_file:s0
+/mnt/idd/socket(/.*)?                                    u:object_r:iddd_socket_file:s0
+/mnt/idd/output(/.*)?                                    u:object_r:iddd_output_file:s0
+/mnt/idd/crashdata(/.*)?                                 u:object_r:iddd_crashdata_file:s0
+/mnt/idd/lost\+found(/.*)?                               u:object_r:lostfound_file:s0
+
+/idd                                                     u:object_r:iddd_root_dir:s0
+/idd(/.*)?                                               u:object_r:iddd_data_file:s0
+/idd/socket(/.*)?                                        u:object_r:iddd_socket_file:s0
+/idd/output(/.*)?                                        u:object_r:iddd_output_file:s0
+/idd/crashdata(/.*)?                                     u:object_r:iddd_crashdata_file:s0
+/idd/lost\+found(/.*)?                                   u:object_r:lostfound_file:s0
+
+#/idd(/.*)?                      u:object_r:iddd_file:s0
+#/mnt/idd			u:object_r:iddd_file:s0
+
+/mnt/rca                                                 u:object_r:iddd_rca_dir:s0
+/mnt/rca(/.*)?                                           u:object_r:iddd_rca_file:s0
 
 # HCI
 /dev/ttyHS0                              u:object_r:hci_attach_dev:s0

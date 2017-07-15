@@ -19,6 +19,7 @@ import /init.platform-common.rc
 import /init.sony.usb.rc
 import /init.qcom.power.rc
 import /init.camera.rc
+import /init.sony-platform.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -371,11 +372,6 @@ on post-fs-data
     mkdir /data/pc 0600 radio radio
     mkdir /cache/pc 0770 radio system
 
-    exec u:r:qti_init_shell:s0 -- /system/bin/rm -r /idd/lost+found
-    mkdir /idd/lost+found 0770 root root
-    mkdir /idd/output 0755 idd idd
-    mkdir /idd/socket 0711 idd idd
-    restorecon_recursive /idd
     start wvkbd_installer
 
 on property:bluetooth.isEnabled=true
