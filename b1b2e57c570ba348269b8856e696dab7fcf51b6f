@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9894c6a0_ae79d046",
+        "filename": "rootdir/init.camera.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 15257
+      },
+      "writtenOn": "2017-07-15T23:38:33Z",
+      "side": 0,
+      "message": "You missed this one, since libshims_signal.so is not built anymore",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "b1b2e57c570ba348269b8856e696dab7fcf51b6f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
