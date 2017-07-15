@@ -16,7 +16,6 @@
 
 on init
 	export LD_SHIM_LIBS " \
-:/system/bin/credmgrd|libshims_signal.so \
 :/system/bin/iddd|libshims_idd.so \
 :/system/bin/suntrold|libshims_signal.so \
 :/system/lib/hw/camera.qcom.so|libsonycamera.so \
