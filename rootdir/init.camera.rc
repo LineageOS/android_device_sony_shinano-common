@@ -24,8 +24,7 @@ on init
 :/system/vendor/lib/libwvm.so|libdtcpipplayer.so \
 "
 
-	mkdir /idd 0751 idd idd
-	mkdir /rca 0750 idd idd
+    mkdir /rca 0750 idd idd
 
 on early-fs
     wait /dev/block/mmcblk0p1
@@ -33,13 +32,20 @@ on early-fs
     exec u:r:qti_init_shell:s0 -- /sbin/wait4tad_static
 
 on fs
+
+    # SONY: creat mount point for idd
+    mkdir /idd 0751 idd idd
+
+    # SONY: setup idd partition
+    chown idd idd /idd
+    chmod 0751 /idd
+    exec u:r:qti_init_shell:s0 -- /system/bin/rm -r /idd/lost+found
+    symlink /idd /mnt/idd
+    restorecon_recursive   /idd
+
     # mount apps_log
     #wait /dev/block/platform/msm_sdcc.1/by-name/apps_log
     #mount ext4 /dev/block/platform/msm_sdcc.1/by-name/apps_log /idd nosuid nodev noatime noexec barrier=0 discard
-    chown idd idd /idd
-    chmod 0751 /idd
-    #exec /system/bin/rm -r /idd/lost+found
-    symlink /idd /mnt/idd
 
 on early-boot
     #SONY early boot
