@@ -53,7 +53,6 @@ PRODUCT_PACKAGES += \
 	tad_static \
 	wait4tad_static \
 	libshims_wvm \
-	libshims_signal \
 	libshims_idd \
         libsonycamera
 
