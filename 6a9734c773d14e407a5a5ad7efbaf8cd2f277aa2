@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b8000b1_cc705a13",
+        "filename": "shinano.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 14419
+      },
+      "writtenOn": "2017-07-16T08:52:12Z",
+      "side": 1,
+      "message": "These are removed in a previous commit\nhttps://review.lineageos.org/#/c/179843/",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "6a9734c773d14e407a5a5ad7efbaf8cd2f277aa2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
