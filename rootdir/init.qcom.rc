@@ -261,6 +261,9 @@ on boot
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
 on post-fs
+    # Create folder for timekeep
+    mkdir /data/time/ 0700 system system
+
     # Change to socket location on libkeyctrl/suntory for /data encryption
     # Create suntory data directory
     mkdir /dev/socket/suntory 0755 system system
@@ -439,6 +442,13 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale 2
 
+# OSS time
+service timekeep /system/bin/timekeep restore
+    class late_start
+    user root
+    group root
+    oneshot
+
 service ril-daemon2 /system/bin/rild -c 2
     class main
     socket rild2 stream 660 root radio
@@ -492,11 +502,6 @@ service qcom-sensor-sh /system/bin/sh /system/etc/init.qcom-sensor.sh
     class main
     user root
     oneshot
-
-service time_daemon /system/bin/time_daemon
-    class late_start
-    user root
-    group root
 
 # HexagonDSP FastRPC daemon
 service adsprpcd /system/bin/adsprpcd
