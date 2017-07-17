@@ -26,6 +26,9 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+# time
+/dev/alarm                0664   system     radio
+
 # the DIAG device node is not world writable/readable.
 /dev/diag                 0660   system     qcom_diag
 
