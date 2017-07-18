@@ -45,10 +45,6 @@ on init
 
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
-    
-    wait /dev/block/mmcblk0p1
-    chown tad tad /dev/block/mmcblk0p1
-    chmod 0770 /dev/block/mmcblk0p1
 
     # Bluetooth address setting
     setprop ro.bt.bdaddr_path "/data/etc/bluetooth_bdaddr"
@@ -262,31 +258,14 @@ on boot
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
 on post-fs
-    # Change to socket location on libkeyctrl/suntory for /data encryption
-    # Create suntory data directory
-    mkdir /dev/socket/suntory 0755 system system
-    mkdir /data/suntory 0755 system system
-
-    # led RGB
-    chown system system /sys/class/leds/rgb/sync_state
-    chown system system /sys/class/leds/rgb/start_blink
-    chown system system /sys/class/leds/led:rgb_red/brightness
-    chown system system /sys/class/leds/led:rgb_red/lut_pwm
-    chown system system /sys/class/leds/led:rgb_red/step_duration
-    chown system system /sys/class/leds/led:rgb_red/pause_lo_multi
-    chown system system /sys/class/leds/led:rgb_red/pause_hi_multi
-    chown system system /sys/class/leds/led:rgb_green/brightness
-    chown system system /sys/class/leds/led:rgb_green/lut_pwm
-    chown system system /sys/class/leds/led:rgb_green/step_duration
-    chown system system /sys/class/leds/led:rgb_green/pause_lo_multi
-    chown system system /sys/class/leds/led:rgb_green/pause_hi_multi
-    chown system system /sys/class/leds/led:rgb_blue/brightness
-    chown system system /sys/class/leds/led:rgb_blue/lut_pwm
-    chown system system /sys/class/leds/led:rgb_blue/step_duration
-    chown system system /sys/class/leds/led:rgb_blue/pause_lo_multi
-    chown system system /sys/class/leds/led:rgb_blue/pause_hi_multi
 
 on post-fs-data
+    # Create directory for TZ Apps
+    mkdir /data/misc/qsee 0770 system system
+
+    # we will remap this as /mnt/sdcard with the sdcard fuse tool
+    mkdir /data/misc/camera 0770 camera camera
+
     # Observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp dhcp /data/misc/dhcp
 
@@ -355,22 +334,6 @@ on post-fs-data
     chown system /dev/block/platform/msm_sdcc.1/by-name
 
     setprop vold.post_fs_data_done 1
-
-    # Create directory for TZ Apps
-    mkdir /data/misc/qsee 0770 system system
-
-    # SONY: Create a dir on data partition not to be deleted during mr and wipedata
-    mkdir /data/persist 0770 system system
-
-    # SONY: Create dir for Widevine keybox
-    mkdir /data/persist/wv 0700 system system
-
-    # SONY: Create dir for marlin sdata
-    mkdir /data/persist/marlin 0700 system system
-
-    # SONY: Create a dir for pin-cache components
-    mkdir /data/pc 0600 radio radio
-    mkdir /cache/pc 0770 radio system
 
     start wvkbd_installer
 
@@ -457,11 +420,6 @@ service suntrold /system/bin/suntrold
     group system
     oneshot
     class main
-
-# Modem Log QMI service
-service mlog_qmi_service /system/bin/mlog_qmi_service
-	class late_start
-    user root
 
 # Thermal Manager service
 service thermanager /system/bin/thermanager /system/etc/thermanager.xml
