@@ -45,10 +45,6 @@ on init
 
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
-    
-    wait /dev/block/mmcblk0p1
-    chown tad tad /dev/block/mmcblk0p1
-    chmod 0770 /dev/block/mmcblk0p1
 
     # Bluetooth address setting
     setprop ro.bt.bdaddr_path "/data/etc/bluetooth_bdaddr"
@@ -457,11 +453,6 @@ service suntrold /system/bin/suntrold
     group system
     oneshot
     class main
-
-# Modem Log QMI service
-service mlog_qmi_service /system/bin/mlog_qmi_service
-	class late_start
-    user root
 
 # Thermal Manager service
 service thermanager /system/bin/thermanager /system/etc/thermanager.xml

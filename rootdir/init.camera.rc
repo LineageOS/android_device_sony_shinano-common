@@ -24,16 +24,6 @@ on init
 :/system/vendor/lib/libwvm.so|libdtcpipplayer.so \
 "
 
-on early-fs
-    wait /dev/block/mmcblk0p1
-    class_start trimarea
-    exec u:r:qti_init_shell:s0 -- /sbin/wait4tad_static
-
-on early-boot
-    #SONY early boot
-    start ta_qmi_service
-    start sct_service
-
 on boot
     # PM8941 flash
     chown media system /sys/class/misc/pm8941-flash/device/current1
@@ -106,17 +96,6 @@ service credmgrd /system/bin/credmgrd
     user system
     group credmgr_client
     socket credmgr stream 0660 system credmgr_client
-    disabled
-
-# Secure Config Transfer service
-service sct_service /system/bin/sct_service
-    user root
-    disabled
- 
-# Trim Area QMI service
-service ta_qmi_service /system/bin/ta_qmi_service
-    user ta_qmi
-    group ta_qmi trimarea system root net_raw wakelock
     disabled
 
 service scd /system/bin/scd
