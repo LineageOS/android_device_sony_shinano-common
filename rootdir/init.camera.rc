@@ -24,16 +24,6 @@ on init
 :/system/vendor/lib/libwvm.so|libdtcpipplayer.so \
 "
 
-on early-fs
-    wait /dev/block/mmcblk0p1
-    class_start trimarea
-    exec u:r:qti_init_shell:s0 -- /sbin/wait4tad_static
-
-on early-boot
-    #SONY early boot
-    start ta_qmi_service
-    start sct_service
-
 on boot
     # PM8941 flash
     chown media system /sys/class/misc/pm8941-flash/device/current1
