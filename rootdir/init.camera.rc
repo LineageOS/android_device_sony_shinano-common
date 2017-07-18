@@ -24,16 +24,6 @@ on init
 :/system/vendor/lib/libwvm.so|libdtcpipplayer.so \
 "
 
-on early-fs
-    wait /dev/block/mmcblk0p1
-    class_start trimarea
-    exec u:r:qti_init_shell:s0 -- /sbin/wait4tad_static
-
-on early-boot
-    #SONY early boot
-    start ta_qmi_service
-    start sct_service
-
 on boot
     # PM8941 flash
     chown media system /sys/class/misc/pm8941-flash/device/current1
@@ -50,44 +40,10 @@ on boot
     chown media system /sys/class/misc/pm8941-flash/device/strobe
     chown media system /sys/class/misc/pm8941-flash/device/vph_pwr_droop
 
-on post-fs
-     # we will remap this as /mnt/sdcard with the sdcard fuse tool
-     mkdir /data/misc/camera 0770 camera camera
-     mkdir /data/misc/cameraserver 0700 cameraserver cameraserver
-
-     # create directory for scd
-     mkdir /dev/socket/scd 0755 system system
-     mkdir /data/scd 0755 system system
-
 on post-fs-data
-    # SONY: Start early TA-users
-    mkdir /data/etc 0755 root shell
-    exec -- /system/bin/taimport
-
-    # SONY: Create dir for Widevine keybox
-    mkdir /data/persist/wv 0700 system system
-
-    # SONY: Camera
-    mkdir /data/camera 0770 media camera
-    chown media camera /sys/devices/sony_camera_0/info
-    chmod 0770 /sys/devices/sony_camera_0/info
-    chown media camera /sys/devices/sony_camera_1/info
-    chmod 0770 /sys/devices/sony_camera_1/info
-
-    # SONY: Import MiscTA to System properties
-    exec -- /system/bin/taimport property
-    setprop init.taimport.ready true
-    # taimport ready, use this as trigger for multi-cdf-symlinker
-
     # create credmgrinit log file
     touch /cache/credmgr.log
     restorecon -R /cache/credmgr.log
- 
-service taimport /system/bin/taimport
-    class late_start
-    user root
-    group system
-    oneshot
 
 # This script init /cache/CredentialManagerData if /data/credmgr doesn't meet our requirements
 service initcredmgr /system/bin/credmgrfirstboot.sh
@@ -107,22 +63,6 @@ service credmgrd /system/bin/credmgrd
     group credmgr_client
     socket credmgr stream 0660 system credmgr_client
     disabled
-
-# Secure Config Transfer service
-service sct_service /system/bin/sct_service
-    user root
-    disabled
- 
-# Trim Area QMI service
-service ta_qmi_service /system/bin/ta_qmi_service
-    user ta_qmi
-    group ta_qmi trimarea system root net_raw wakelock
-    disabled
-
-service scd /system/bin/scd
-    class late_start
-    user system
-    group system
 
 #service wvkbd_installer /system/bin/logwrapper /system/bin/wvkbd
 service wvkbd_installer /system/bin/wvkbd
@@ -144,20 +84,3 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
 #    group camera system inet input graphics
     group camera system inet input graphics credmgr_client cameraserver
 #    seclabel u:r:mm-qcamerad:s0
-
-# SONY: TrimArea Daemon
-# Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
-service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
-#service tad_static /sbin/tad_static /data/credmgr/ta_part.bin 0,16
-    class trimarea
-    user tad
-    group tad trimarea root
-    socket tad stream 0770 system trimarea
-# tad_static is in rootfs, normal file_context does not work
-    seclabel u:r:tad:s0
-service updatemiscta /system/bin/updatemiscta
-    class main
-    user updatemiscta
-    group trimarea
-    oneshot
-
