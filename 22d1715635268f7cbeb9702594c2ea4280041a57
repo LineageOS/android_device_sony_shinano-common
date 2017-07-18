@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed5f25c5_a89dd90f",
+        "filename": "rootdir/fstab.qcom",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 15697
+      },
+      "writtenOn": "2017-07-18T16:52:38Z",
+      "side": 0,
+      "message": "Dont remove panic. Could have weird side effects when userdata isnot mountable.",
+      "range": {
+        "startLine": 12,
+        "startChar": 128,
+        "endLine": 12,
+        "endChar": 140
+      },
+      "revId": "22d1715635268f7cbeb9702594c2ea4280041a57",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
