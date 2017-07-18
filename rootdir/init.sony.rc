@@ -1,5 +1,13 @@
 # This file includes specific init configs used by Sony devices
 
+on init
+    # SONY: Start the TrimArea Daemon.
+    wait /dev/block/mmcblk0p1
+    chown tad tad /dev/block/mmcblk0p1
+    chmod 0770 /dev/block/mmcblk0p1
+    class_start trimarea
+    exec u:r:tad:s0 system -- /sbin/wait4tad_static
+
 on fs
     # SONY: create mount point for idd
     mkdir /idd 0751 idd idd
@@ -16,6 +24,53 @@ on-post-fs-data
     mkdir /mnt/idd/output 0755 idd idd
     mkdir /mnt/idd/socket 0711 idd idd
     restorecon_recursive /mnt/idd
+
+    # SONY: Start early TA-users
+    mkdir /data/etc 0755 root shell
+    exec /system/bin/taimport
+
+    # SONY: Create a dir on data partition not to be deleted during mr and wipedata
+    mkdir /data/persist 0770 persist_rw persist_rw
+
+    # SONY: Create dir for Widevine keybox
+    mkdir /data/persist/wv 0700 system system
+
+    # SONY: Create dir for marlin sdata
+    mkdir /data/persist/marlin 0700 system system
+
+    # SONY: Create a dir for pin-cache components
+    mkdir /data/pc 0600 radio radio
+    mkdir /cache/pc 0770 radio system
+
+    # SONY: Import MiscTA to System properties
+    exec /system/bin/taimport property
+
+    # SONY: Camera
+    chown media camera /sys/devices/sony_camera_0/info
+    chmod 0770 /sys/devices/sony_camera_0/info
+    chown media camera /sys/devices/sony_camera_1/info
+    chmod 0770 /sys/devices/sony_camera_1/info
+
+on early-boot
+    start ta_qmi_service
+    start sct_service
+    start mlog_qmi_service
+
+# Trim Area QMI service
+service ta_qmi_service /system/bin/ta_qmi_service
+    user ta_qmi
+    group ta_qmi trimarea system root net_raw
+    disabled
+
+# Secure Config Transfer service
+service sct_service /system/bin/sct_service
+    user root
+    disabled
+
+# Modem Log QMI service
+service mlog_qmi_service /system/bin/mlog_qmi_service
+    user root
+    disabled
 
 service iddd /system/bin/iddd
     class main
