@@ -1,3 +1,5 @@
 allow priv_app device:dir { open read getattr };
 allow priv_app cache_private_backup_file:dir { getattr setattr };
+allow priv_app ta_prop:file { open read };
+
 allow vold cache_file:dir create;
