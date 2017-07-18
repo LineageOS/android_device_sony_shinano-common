@@ -1,0 +1,23 @@
+# This file includes specific init configs used by Sony devices
+
+on fs
+    # SONY: create mount point for idd
+    mkdir /idd 0751 idd idd
+
+    # SONY: setup idd partition
+    chown idd idd /idd
+    chmod 0751 /idd
+    exec u:r:qti_init_shell:s0 -- /system/bin/rm -r /idd/lost+found
+    symlink /idd /mnt/idd
+    restorecon_recursive   /idd
+
+on-post-fs-data
+    mkdir /mnt/idd/lost+found 0770 root root
+    mkdir /mnt/idd/output 0755 idd idd
+    mkdir /mnt/idd/socket 0711 idd idd
+    restorecon_recursive /mnt/idd
+
+service iddd /system/bin/iddd
+    class main
+    user idd
+    group idd log inet trimarea
