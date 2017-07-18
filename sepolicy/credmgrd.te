@@ -49,6 +49,7 @@ allow credmgrd iddd_file:dir search;
 allow credmgrd iddd_file:sock_file write;
 allow credmgrd iddd_file:unix_stream_socket connectto;
 allow credmgrd iddd_file:unix_dgram_socket sendto;
+allow credmgrd iddd_file:lnk_file { read };
 
 #/mnt/idd is tmpfs
 allow credmgrd tmpfs:dir search;
