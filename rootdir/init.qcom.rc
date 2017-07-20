@@ -20,6 +20,7 @@ import /init.sony.rc
 import /init.sony.usb.rc
 import /init.platform-common.rc
 import /init.camera.rc
+import /init.sony.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
