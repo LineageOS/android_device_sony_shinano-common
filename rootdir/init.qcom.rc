@@ -17,7 +17,6 @@
 
 import /init.qcom.power.rc
 import /init.sony.rc
-import /init.sony.usb.rc
 import /init.platform-common.rc
 import /init.camera.rc
 
@@ -28,20 +27,8 @@ on early-init
 on init
     symlink /dev/block/platform/msm_sdcc.1 /dev/block/bootdevice
 
-    # Enable subsystem restart
-    write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
-    write /sys/bus/msm_subsys/devices/subsys0/restart_level "RELATED"
-    write /sys/bus/msm_subsys/devices/subsys1/restart_level "RELATED"
-    write /sys/bus/msm_subsys/devices/subsys2/restart_level "RELATED"
-    write /sys/bus/msm_subsys/devices/subsys3/restart_level "RELATED"
-
     # for backwards compatibility
     symlink /sdcard /storage/sdcard0
-
-    mkdir /tmp
-    mount tmpfs tmpfs /tmp nosuid mode=0755,uid=0,gid=0
-    chmod 0664 /proc/rdtag
-    chown root system /proc/rdtag
 
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
@@ -50,20 +37,7 @@ on init
     chown tad tad /dev/block/mmcblk0p1
     chmod 0770 /dev/block/mmcblk0p1
 
-    # Bluetooth address setting
-    setprop ro.bt.bdaddr_path "/data/etc/bluetooth_bdaddr"
-    chown bluetooth bluetooth ro.bt.bdaddr_path
-
-    #Enable Bluetooth HFP 1.6
-    setprop ro.bluetooth.hfp.ver 1.6
-
-    #Disable Bluetooth A2DP SNK
-    setprop bluetooth.a2dp.sink.enabled false
-
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
-
-    # Enable panic on out of memory
-    write /proc/sys/vm/panic_on_oom 2
 
     # Setup zram options
     write /sys/block/zram0/comp_algorithm lz4
@@ -79,14 +53,6 @@ on init
 
 on fs
     mount_all ./fstab.qcom
-    mkdir /lta-label 0555 system system
-    wait /dev/block/platform/msm_sdcc.1/by-name/LTALabel
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/LTALabel /lta-label nosuid nodev noatime noexec ro barrier=0
-    chown system system /lta-label
-    chmod 0555 /lta-label
-
-    # Mount ZRAM
-    swapon_all fstab.qcom
 
     # Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
@@ -98,18 +64,12 @@ on early-boot
 
     write /sys/kernel/boot_adsp/boot 1
 
-    # Run pre_hw_config.sh before entering charge only mode.
-    exec /system/bin/sh /system/etc/pre_hw_config.sh
-
 on boot
     write /sys/module/qpnp_power_on/parameters/forcecrash_on 1
 
     # Bluetooth
     chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/state
-    # bluetooth LPM
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
 
     # BT DUN port-bridge
     chmod 0660 /dev/smd7
@@ -265,38 +225,12 @@ on post-fs
     # Create folder for timekeep
     mkdir /data/time/ 0700 system system
 
-    # Change to socket location on libkeyctrl/suntory for /data encryption
-    # Create suntory data directory
-    mkdir /dev/socket/suntory 0755 system system
-    mkdir /data/suntory 0755 system system
-
-    # led RGB
-    chown system system /sys/class/leds/rgb/sync_state
-    chown system system /sys/class/leds/rgb/start_blink
-    chown system system /sys/class/leds/led:rgb_red/brightness
-    chown system system /sys/class/leds/led:rgb_red/lut_pwm
-    chown system system /sys/class/leds/led:rgb_red/step_duration
-    chown system system /sys/class/leds/led:rgb_red/pause_lo_multi
-    chown system system /sys/class/leds/led:rgb_red/pause_hi_multi
-    chown system system /sys/class/leds/led:rgb_green/brightness
-    chown system system /sys/class/leds/led:rgb_green/lut_pwm
-    chown system system /sys/class/leds/led:rgb_green/step_duration
-    chown system system /sys/class/leds/led:rgb_green/pause_lo_multi
-    chown system system /sys/class/leds/led:rgb_green/pause_hi_multi
-    chown system system /sys/class/leds/led:rgb_blue/brightness
-    chown system system /sys/class/leds/led:rgb_blue/lut_pwm
-    chown system system /sys/class/leds/led:rgb_blue/step_duration
-    chown system system /sys/class/leds/led:rgb_blue/pause_lo_multi
-    chown system system /sys/class/leds/led:rgb_blue/pause_hi_multi
-
 on post-fs-data
     # Observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp dhcp /data/misc/dhcp
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
-    mkdir /data/tombstones 0755 system system
-    mkdir /data/tombstones/vendor 0755 system system
     mkdir /data/pc 0700 radio radio
 
     # Create directory used by audio subsystem
@@ -312,10 +246,6 @@ on post-fs-data
     chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
-
-    # NFC local data and nfcee xml storage
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
 
     # QCOM Sensors
     mkdir /data/system/sensors 0775 system system
@@ -361,19 +291,6 @@ on post-fs-data
 
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
-
-    # SONY: Create a dir on data partition not to be deleted during mr and wipedata
-    mkdir /data/persist 0770 system system
-
-    # SONY: Create dir for Widevine keybox
-    mkdir /data/persist/wv 0700 system system
-
-    # SONY: Create dir for marlin sdata
-    mkdir /data/persist/marlin 0700 system system
-
-    # SONY: Create a dir for pin-cache components
-    mkdir /data/pc 0600 radio radio
-    mkdir /cache/pc 0770 radio system
 
     start wvkbd_installer
 
