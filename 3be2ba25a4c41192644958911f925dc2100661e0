@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa9dfef8_47869a14",
+        "filename": "sepolicy/priv_app.te",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 15697
+      },
+      "writtenOn": "2017-07-20T08:15:35Z",
+      "side": 1,
+      "message": "don\u0027t look good. \nNo way to give the app a domain?",
+      "range": {
+        "startLine": 3,
+        "startChar": 6,
+        "endLine": 3,
+        "endChar": 14
+      },
+      "revId": "3be2ba25a4c41192644958911f925dc2100661e0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
