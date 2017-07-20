@@ -1,4 +1,7 @@
 # This file includes specific init configs used by Sony devices
+# init.sony.rc
+
+import /init.sony-platform.rc
 
 on fs
     # SONY: create mount point for idd
