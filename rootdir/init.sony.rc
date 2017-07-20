@@ -1,0 +1,4 @@
+#This file includes specific shit for sony
+# init. sony.rc
+
+import /init.sony-platform.rc
