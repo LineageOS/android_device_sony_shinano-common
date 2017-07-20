@@ -59,7 +59,7 @@ allow credmgrd ion_device:chr_file { ioctl open read };
 
 #============= credmgr init script ==============
 allow credmgrd cache_file:dir { add_name search };
-allow credmgrd cache_file:file { create getattr open read unlink write };
+allow credmgrd cache_file:file { append create getattr open read unlink write };
 allow credmgrd credmgrd_data_file:dir { add_name getattr relabelto reparent rename rmdir search };
 allow credmgrd credmgrd_data_file:file { append getattr open read unlink write };
 allow credmgrd credmgrd_prop:property_service set;
