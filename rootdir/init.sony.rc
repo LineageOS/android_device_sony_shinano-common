@@ -1,4 +1,14 @@
 # This file includes specific init configs used by Sony devices
+# init.sony.rc
+
+import /init.sony-platform.rc
+
+on init
+    mkdir /tmp
+    mount tmpfs tmpfs /tmp nosuid mode=0755,uid=0,gid=0
+    chmod 0664 /proc/rdtag
+    chown root system /proc/rdtag
+
 
 on fs
     # SONY: create mount point for idd
