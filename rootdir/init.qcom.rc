@@ -17,7 +17,6 @@
 
 import /init.qcom.power.rc
 import /init.sony.rc
-import /init.sony.usb.rc
 import /init.platform-common.rc
 import /init.camera.rc
 
@@ -37,11 +36,6 @@ on init
 
     # for backwards compatibility
     symlink /sdcard /storage/sdcard0
-
-    mkdir /tmp
-    mount tmpfs tmpfs /tmp nosuid mode=0755,uid=0,gid=0
-    chmod 0664 /proc/rdtag
-    chown root system /proc/rdtag
 
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
@@ -97,9 +91,6 @@ on early-boot
     setrlimit 8 67108864 67108864
 
     write /sys/kernel/boot_adsp/boot 1
-
-    # Run pre_hw_config.sh before entering charge only mode.
-    exec /system/bin/sh /system/etc/pre_hw_config.sh
 
 on boot
     write /sys/module/qpnp_power_on/parameters/forcecrash_on 1
@@ -295,8 +286,6 @@ on post-fs-data
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
-    mkdir /data/tombstones 0755 system system
-    mkdir /data/tombstones/vendor 0755 system system
     mkdir /data/pc 0700 radio radio
 
     # Create directory used by audio subsystem
@@ -312,10 +301,6 @@ on post-fs-data
     chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
-
-    # NFC local data and nfcee xml storage
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
 
     # QCOM Sensors
     mkdir /data/system/sensors 0775 system system
