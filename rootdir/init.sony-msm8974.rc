@@ -1,0 +1,215 @@
+# Init file for msm8974 board
+# init.sony-msm8974.rc
+
+on init
+    # SONY: Start the TrimArea Daemon. It must be started before fota-ua
+    wait /dev/block/mmcblk0p1
+    chown tad tad /dev/block/mmcblk0p1
+    chmod 0770 /dev/block/mmcblk0p1
+    class_start trimarea
+    exec u:r:tad:s0 system -- /sbin/wait4tad_static
+
+    # Bluetooth address setting
+    setprop ro.bt.bdaddr_path "/data/etc/bluetooth_bdaddr"
+    chown bluetooth bluetooth ro.bt.bdaddr_path
+
+    # Enable Bluetooth HFP 1.6
+    setprop ro.bluetooth.hfp.ver 1.6
+
+    # Bluetooth LPM
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+
+    # Disable Bluetooth A2DP SNK
+    setprop bluetooth.a2dp.sink.enabled false
+
+    # Enable subsystem restart
+    # adsp ssr
+    write /sys/bus/msm_subsys/devices/subsys0/restart_level "SYSTEM"
+    # modem ssr
+    write /sys/bus/msm_subsys/devices/subsys1/restart_level "RELATED"
+    # wcnss ssr
+    write /sys/bus/msm_subsys/devices/subsys2/restart_level "RELATED"
+    # venus ssr
+    write /sys/bus/msm_subsys/devices/subsys3/restart_level "RELATED"
+
+    # Enable panic on out of memory
+    write /proc/sys/vm/panic_on_oom 2
+
+    #Configure Zram.
+    write /proc/sys/vm/swappiness 100
+
+on fs
+    # Swapping (using ZRAM)
+    write /proc/sys/vm/page-cluster 0
+    write /sys/block/zram0/comp_algorithm lz4
+    swapon_all fstab.qcom
+
+    mkdir /mnt/media_rw/remote 0770 media_rw media_rw
+    mkdir /mnt/runtime/default/remote 0775 root sdcard_rw
+    mkdir /mnt/runtime/read/remote 0775 root sdcard_rw
+    mkdir /mnt/runtime/write/remote 0775 root sdcard_rw
+
+    # Mount LTA-Label
+    mkdir /lta-label 0555 system system
+    wait /dev/block/platform/msm_sdcc.1/by-name/LTALabel
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/LTALabel /lta-label nosuid nodev noatime noexec ro barrier=0 context=u:object_r:lta_label:s0
+    chown system system /lta-label
+    chmod 0555 /lta-label
+
+on post-fs
+    # Change to socket location on libkeyctrl/suntory for /data encryption
+    # Create suntory data directory
+    mkdir /dev/socket/suntory 0755 system system
+    mkdir /data/suntory 0755 system system
+
+    # led RGB
+    chown system system /sys/class/leds/rgb/sync_state
+    chown system system /sys/class/leds/rgb/start_blink
+    chown system system /sys/class/leds/led:rgb_red/brightness
+    chown system system /sys/class/leds/led:rgb_red/lut_pwm
+    chown system system /sys/class/leds/led:rgb_red/step_duration
+    chown system system /sys/class/leds/led:rgb_red/pause_lo_multi
+    chown system system /sys/class/leds/led:rgb_red/pause_hi_multi
+    chown system system /sys/class/leds/led:rgb_green/brightness
+    chown system system /sys/class/leds/led:rgb_green/lut_pwm
+    chown system system /sys/class/leds/led:rgb_green/step_duration
+    chown system system /sys/class/leds/led:rgb_green/pause_lo_multi
+    chown system system /sys/class/leds/led:rgb_green/pause_hi_multi
+    chown system system /sys/class/leds/led:rgb_blue/brightness
+    chown system system /sys/class/leds/led:rgb_blue/lut_pwm
+    chown system system /sys/class/leds/led:rgb_blue/step_duration
+    chown system system /sys/class/leds/led:rgb_blue/pause_lo_multi
+    chown system system /sys/class/leds/led:rgb_blue/pause_hi_multi
+    # panel ID
+    chown system system /sys/devices/mdss_dsi_panel/panel_id
+    chmod 0440 /sys/devices/mdss_dsi_panel/panel_id
+
+on post-fs-data
+    # SONY: Start early TA-users
+    mkdir /data/etc 0755 root shell
+    exec /system/bin/taimport
+
+    # SONY: Create a dir on data partition not to be deleted during mr and wipedata
+    mkdir /data/persist 0770 persist_rw persist_rw
+
+    # SONY: Create dir for Widevine keybox
+    mkdir /data/persist/wv 0700 system system
+
+    # SONY: Create dir for marlin sdata
+    mkdir /data/persist/marlin 0700 system system
+
+    # SONY: Create a dir for pin-cache components
+    mkdir /cache/pc 0770 radio system
+
+    # SONY: Camera
+    chown media camera /sys/devices/sony_camera_0/info
+    chmod 0770 /sys/devices/sony_camera_0/info
+    chown media camera /sys/devices/sony_camera_1/info
+    chmod 0770 /sys/devices/sony_camera_1/info
+
+    # SONY: Import MiscTA to System properties
+    exec /system/bin/taimport property
+
+on early-boot
+    #SONY early boot
+    start ta_qmi_service
+    start sct_service
+    start mlog_qmi_service
+
+# SONY: TrimArea Daemon
+# Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
+service tad_static /sbin/tad_static /dev/block/platform/msm_sdcc.1/by-name/TA 0,16
+    user tad
+    group tad root
+    socket tad stream 0660 system trimarea
+    class trimarea
+# tad_static is in rootfs, normal file_context does not work
+    seclabel u:r:tad:s0
+
+service updatemiscta /system/bin/updatemiscta
+    class main
+    user updatemiscta
+    group trimarea
+    oneshot
+
+# Trim Area QMI service
+service ta_qmi_service /system/bin/ta_qmi_service
+    user ta_qmi
+    group ta_qmi trimarea system root net_raw wakelock
+    disabled
+
+# Secure Config Transfer service
+service sct_service /system/bin/sct_service
+    user root
+    disabled
+
+# Modem Log QMI service
+service mlog_qmi_service /system/bin/mlog_qmi_service
+    user root
+    disabled
+
+# Thermal Manager service
+service thermanager /system/bin/thermanager /system/etc/thermanager.xml
+    class main
+    user root
+    group root
+
+# All services that use qseecomd daemon listeners should
+# start on sys.listeners.registered property to make sure that
+# all of its service listeners are registered before calling them
+on property:sys.listeners.registered=true
+    start wvkbd_installer
+
+service wvkbd_installer /system/bin/wvkbd
+    user system
+    group system
+    oneshot
+    disabled
+
+# Start suntrold
+service suntrold /system/bin/suntrold
+    user system
+    group system
+    oneshot
+    class main
+
+service mpdecision /system/bin/mpdecision --avg_comp
+    class main
+    user root
+    group root system readproc
+    disabled
+
+#start camera server as daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
+    class late_start
+    user camera
+    group camera system inet input graphics
+
+service qseecomd /system/bin/qseecomd
+    class core
+    user root
+    group root persist_rw
+
+# HexagonDSP FastRPC daemon
+service adsprpcd /system/bin/adsprpcd
+    class main
+    user media
+    group media
+
+service audiod /system/bin/audiod
+    class late_start
+    user system
+    group system
+
+# Wi-Fi and BT MAC addresses
+service macaddrsetup /system/bin/macaddrsetup /sys/devices/platform/bcmdhd_wlan/macaddr
+    class core
+    user system
+    group system bluetooth
+    disabled
+    oneshot
+
+# Wait for /data before writing MAC
+on property:vold.post_fs_data_done=1
+    start macaddrsetup
