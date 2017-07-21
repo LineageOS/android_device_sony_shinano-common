@@ -58,8 +58,12 @@ PRODUCT_PACKAGES += \
 	libshims_idd \
         libsonycamera
 
+# Credential Manager
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/bin/credmgrfirstboot.sh:system/bin/credmgrfirstboot.sh
+    $(COMMON_PATH)/rootdir/system/bin/credmgrd:system/bin/credmgrd \
+    $(COMMON_PATH)/rootdir/system/bin/credmgrfirstboot.sh:system/bin/credmgrfirstboot.sh \
+	$(COMMON_PATH)/rootdir/system/lib/libcredential-manager-service.so:system/lib/libcredential-manager-service.so \
+	$(COMMON_PATH)/rootdir/system/vendor/CredentialManagerData:system/vendor/CredentialManagerData
 
 # ANT+
 PRODUCT_PACKAGES += \
