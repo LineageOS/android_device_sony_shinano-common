@@ -17,104 +17,31 @@
 
 import /init.qcom.power.rc
 import /init.sony.rc
-import /init.sony.usb.rc
-import /init.platform-common.rc
-import /init.camera.rc
+import /init.shims.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
-    chown system system /sys/kernel/debug/kgsl/proc
 
 on init
     symlink /dev/block/platform/msm_sdcc.1 /dev/block/bootdevice
 
-    # Enable subsystem restart
-    write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
-    write /sys/bus/msm_subsys/devices/subsys0/restart_level "RELATED"
-    write /sys/bus/msm_subsys/devices/subsys1/restart_level "RELATED"
-    write /sys/bus/msm_subsys/devices/subsys2/restart_level "RELATED"
-    write /sys/bus/msm_subsys/devices/subsys3/restart_level "RELATED"
-
-    # for backwards compatibility
+    # Support legacy paths
+    symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
-
-    mkdir /tmp
-    mount tmpfs tmpfs /tmp nosuid mode=0755,uid=0,gid=0
-    chmod 0664 /proc/rdtag
-    chown root system /proc/rdtag
-
-    mkdir /dev/bus 0755 root root
-    mkdir /dev/bus/usb 0755 root root
-    
-    wait /dev/block/mmcblk0p1
-    chown tad tad /dev/block/mmcblk0p1
-    chmod 0770 /dev/block/mmcblk0p1
-
-    # Bluetooth address setting
-    setprop ro.bt.bdaddr_path "/data/etc/bluetooth_bdaddr"
-    chown bluetooth bluetooth ro.bt.bdaddr_path
-
-    #Enable Bluetooth HFP 1.6
-    setprop ro.bluetooth.hfp.ver 1.6
-
-    #Disable Bluetooth A2DP SNK
-    setprop bluetooth.a2dp.sink.enabled false
-
-    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
-
-    # Enable panic on out of memory
-    write /proc/sys/vm/panic_on_oom 2
-
-    # Setup zram options
-    write /sys/block/zram0/comp_algorithm lz4
-
-    # Create a tmpfs for dynamic network mounting
-    mkdir /storage/removable/remote 0700 root system
-    mount tmpfs tmpfs /storage/removable/remote mode=0755,uid=0,gid=0
-
-    # Set the property to indicate type of virtual display to 0
-    # 0 indicates that virtual display is not a Wifi display and that the
-    # session is not exercised through RemoteDisplay in the android framework
-    setprop persist.sys.wfd.virtual 0
-
-on fs
-    mount_all ./fstab.qcom
-    mkdir /lta-label 0555 system system
-    wait /dev/block/platform/msm_sdcc.1/by-name/LTALabel
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/LTALabel /lta-label nosuid nodev noatime noexec ro barrier=0
-    chown system system /lta-label
-    chmod 0555 /lta-label
-
-    # Mount ZRAM
-    swapon_all fstab.qcom
-
-    # Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
+    # Disable subsystem debugging
+    write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
+    # Start adsp modem
     write /sys/kernel/boot_adsp/boot 1
 
-    # Run pre_hw_config.sh before entering charge only mode.
-    exec /system/bin/sh /system/etc/pre_hw_config.sh
-
 on boot
-    write /sys/module/qpnp_power_on/parameters/forcecrash_on 1
-
     # Bluetooth
     chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/state
-    # bluetooth LPM
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
-
-    # BT DUN port-bridge
-    chmod 0660 /dev/smd7
-    chown bluetooth bluetooth /dev/smd7
-
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_admin /dev/ttyHS0
     chmod 0660 /dev/ttyHS0
@@ -146,13 +73,11 @@ on boot
     # Send single UNSOL_CALL_RING notification
     setprop ro.telephony.call_ring.multiple false
 
-    # port-bridge
-    chmod 0660 /dev/smd0
-    chown system system /dev/smd0
-
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     # Graphics
+    chown system system /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/pwrscale/policy
+
     chown system graphics /sys/class/graphics/fb0/idle_time
     chmod 0664 /sys/devices/virtual/graphics/fb0/idle_time
     chown system graphics /sys/class/graphics/fb0/dynamic_fps
@@ -163,6 +88,9 @@ on boot
     chmod 0664 /sys/devices/virtual/graphics/fb0/modes
     chown system graphics /sys/class/graphics/fb0/mode
     chmod 0664 /sys/devices/virtual/graphics/fb0/mode
+
+    chown system system /sys/devices/virtual/graphics/fb0/rgb
+    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
     chown system graphics /sys/class/graphics/fb1/hpd
     chmod 0664 /sys/devices/virtual/graphics/fb1/hpd
@@ -191,16 +119,6 @@ on boot
     chown system graphics /sys/class/graphics/fb1/hdcp/tp
     chmod 0664 /sys/devices/virtual/graphics/fb1/hdcp/tp
 
-    # create symlink for fb1 as HDMI
-    symlink /dev/graphics/fb1 /dev/graphics/hdmi
-
-    # Change owner and group to get adopter/device ids from MHL driver
-    chown system system /sys/class/mhl/sii8334/adopter_id
-    chown system system /sys/class/mhl/sii8334/device_id
-
-    # For bridgemgr daemon to inform the USB driver of the correct transport
-    chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
-
     # For setting tcp delayed ack
     chown system system /sys/kernel/ipv4/tcp_delack_seg
     chown system system /sys/kernel/ipv4/tcp_use_userconfig
@@ -217,9 +135,6 @@ on boot
     # Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max 2097152
     write /proc/sys/net/core/wmem_max 2097152
-
-    chmod 660 /dev/rtc0
-    chown system system /dev/rtc0
 
     # To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
@@ -243,9 +158,7 @@ on boot
     # Set the default message loglevel to KERN_INFO
     write /proc/sys/kernel/printk "6 6 1 7"
 
-    chown system /sys/devices/virtual/timed_output/vibrator/vtg_level
-
-    # charger
+    # Charger
     chown root system /sys/module/qpnp_charger/parameters/charger_monitor
     chown root system /sys/class/power_supply/battery/input_current_max
     chown root system /sys/class/power_supply/battery/input_current_trim
@@ -254,72 +167,41 @@ on boot
     chmod 0644 /sys/class/power_supply/battery/input_current_max
     chmod 0644 /sys/class/power_supply/battery/input_current_trim
     chmod 0644 /sys/class/power_supply/battery/voltage_min
-
-    # thermananger
     chmod 0644 /sys/class/power_supply/usb/current_max
 
-    chown system system /sys/devices/virtual/graphics/fb0/rgb
-    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
+on fs
+    # Adaptive LMK
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
 
 on post-fs
-    # Change to socket location on libkeyctrl/suntory for /data encryption
-    # Create suntory data directory
-    mkdir /dev/socket/suntory 0755 system system
-    mkdir /data/suntory 0755 system system
-
-    # led RGB
-    chown system system /sys/class/leds/rgb/sync_state
-    chown system system /sys/class/leds/rgb/start_blink
-    chown system system /sys/class/leds/led:rgb_red/brightness
-    chown system system /sys/class/leds/led:rgb_red/lut_pwm
-    chown system system /sys/class/leds/led:rgb_red/step_duration
-    chown system system /sys/class/leds/led:rgb_red/pause_lo_multi
-    chown system system /sys/class/leds/led:rgb_red/pause_hi_multi
-    chown system system /sys/class/leds/led:rgb_green/brightness
-    chown system system /sys/class/leds/led:rgb_green/lut_pwm
-    chown system system /sys/class/leds/led:rgb_green/step_duration
-    chown system system /sys/class/leds/led:rgb_green/pause_lo_multi
-    chown system system /sys/class/leds/led:rgb_green/pause_hi_multi
-    chown system system /sys/class/leds/led:rgb_blue/brightness
-    chown system system /sys/class/leds/led:rgb_blue/lut_pwm
-    chown system system /sys/class/leds/led:rgb_blue/step_duration
-    chown system system /sys/class/leds/led:rgb_blue/pause_lo_multi
-    chown system system /sys/class/leds/led:rgb_blue/pause_hi_multi
+    # Create folder for timekeep
+    mkdir /data/time/ 0700 system system
 
 on post-fs-data
-    # Observe dnsmasq.leases file for dhcp information of soft ap.
-    chown dhcp dhcp /data/misc/dhcp
+    # Create directory for TZ Apps
+    mkdir /data/misc/qsee 0770 system system
+
+    # we will remap this as /mnt/sdcard with the sdcard fuse tool
+    mkdir /data/misc/camera 0770 camera camera
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
-    mkdir /data/tombstones 0755 system system
-    mkdir /data/tombstones/vendor 0755 system system
-    mkdir /data/pc 0700 radio radio
+    # Create the directories used by the Wireless subsystem
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp system /data/misc/dhcp
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
 
-    # IR Blaster
-    chown system system /dev/ttyHSL2
-    chmod 0660 /dev/ttyHSL2
-    chown system system /sys/devices/platform/ir_remote_control/enable
-    chmod 0220 /sys/devices/platform/ir_remote_control/enable
-
+    # We chown/chmod so mount is run as root + defaults
     chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
-
-    # NFC local data and nfcee xml storage
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
-
-    # QCOM Sensors
-    mkdir /data/system/sensors 0775 system system
-    mkdir /data/misc/sensors 0775 system system
-    write /data/system/sensors/settings 1
-    chmod 664 /data/system/sensors/settings
-    chown system /data/system/sensors/settings
 
     # Chown polling nodes as needed from UI running on system server
     chown system system /sys/devices/platform/msm_sdcc.1/polling
@@ -327,13 +209,12 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
-    chown system system /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/pwrscale/policy
-
-    # Create directories for gpsone_daemon services
-    mkdir /data/misc/gpsone_d 0770 system gps
-
-    # Create directories for QuIPS
-    mkdir /data/misc/quipc 0770 gps system
+    # QCOM Sensors
+    mkdir /data/system/sensors 0775 system system
+    chmod 664 /data/system/sensors/settings
+    chown system root /data/system/sensors/settings
+    write /data/system/sensors/settings 1
+    mkdir /data/misc/sensors 0775 system system
 
     # Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
@@ -341,10 +222,8 @@ on post-fs-data
     mkdir /data/misc/location/xtwifi 0770 gps gps
     mkdir /data/misc/location/gsiff 0770 gps gps
 
-    # Provide the access to hostapd.conf only to root and group
-    chmod 0660 /data/hostapd/hostapd.conf
-
-    mkdir /data/audio 0770 media audio
+    #Create directory for hostapd
+    mkdir /data/hostapd 0770 system wifi
 
     # Create /data/time folder for time-services
     mkdir /data/time 0700 system system
@@ -352,55 +231,39 @@ on post-fs-data
     # Enable Power save functionality for modem
     setprop persist.radio.add_power_save 1
 
-    chown system /dev/block/platform/msm_sdcc.1/by-name
-
     setprop vold.post_fs_data_done 1
 
-    # Create directory for TZ Apps
-    mkdir /data/misc/qsee 0770 system system
-
-    # SONY: Create a dir on data partition not to be deleted during mr and wipedata
-    mkdir /data/persist 0770 system system
-
-    # SONY: Create dir for Widevine keybox
-    mkdir /data/persist/wv 0700 system system
-
-    # SONY: Create dir for marlin sdata
-    mkdir /data/persist/marlin 0700 system system
-
-    # SONY: Create a dir for pin-cache components
-    mkdir /data/pc 0600 radio radio
-    mkdir /cache/pc 0770 radio system
-
-    start wvkbd_installer
-
 on property:bluetooth.isEnabled=true
-#    start btwlancoex
     write /sys/class/bluetooth/hci0/idle_timeout 7000
+
+service irsc_util /system/bin/irsc_util "/etc/sec_config"
+    class main
+    user root
+    oneshot
+
+service rmt_storage /system/bin/rmt_storage
+    class core
+    user root
+    group system wakelock
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps nfc diag wakelock qcom_diag
-
-# Wi-Fi and BT MAC addresses
-service macaddrsetup /system/bin/macaddrsetup /sys/devices/platform/bcmdhd_wlan/macaddr
-    class late_start
-    user root
-    oneshot
+    group radio audio bluetooth gps diag wakelock qcom_diag
 
 service netmgrd /system/bin/netmgrd
-    class late_start
+    class main
 
-on property:ro.radio.noril=true
-    stop ril-daemon
-    stop netmgrd
-
-service qseecomd /system/bin/qseecomd
+service sensors /system/bin/sensors.qcom
     class core
     user root
-    group drmrpc root
+    group root
+
+# Adjust socket buffer to enlarge TCP receive window for high bandwidth
+# but only if ro.data.large_tcp_window_size property is set.
+on property:ro.data.large_tcp_window_size=true
+    write /proc/sys/net/ipv4/tcp_adv_win_scale 2
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -431,9 +294,19 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-on property:ro.data.large_tcp_window_size=true
-    # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
-    write /proc/sys/net/ipv4/tcp_adv_win_scale 2
+service loc_launcher /system/bin/loc_launcher
+    #loc_launcher will start as root and set its uid to gps
+    class late_start
+    group gps inet net_raw qcom_diag net_admin wifi
+
+service charger /sbin/healthd -c
+    class charger
+    seclabel u:r:healthd:s0
+
+service time_daemon /system/bin/time_daemon
+    class late_start
+    user root
+    group root
 
 service ril-daemon2 /system/bin/rild -c 2
     class main
@@ -443,107 +316,9 @@ service ril-daemon2 /system/bin/rild -c 2
     disabled
     group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag log
 
+on property:ro.radio.noril=true
+    stop ril-daemon
+    stop netmgrd
+
 on property:persist.radio.multisim.config=dsds
     start ril-daemon2
-
-service loc_launcher /system/bin/loc_launcher
-    #loc_launcher will start as root and set its uid to gps
-    class late_start
-    group gps inet net_raw qcom_diag net_admin wifi
-
-# Start suntrold
-service suntrold /system/bin/suntrold
-    user system
-    group system
-    oneshot
-    class main
-
-# Modem Log QMI service
-service mlog_qmi_service /system/bin/mlog_qmi_service
-	class late_start
-    user root
-
-# Thermal Manager service
-service thermanager /system/bin/thermanager /system/etc/thermanager.xml
-    class main
-    user root
-    group root
-
-service irsc_util /system/bin/irsc_util "/etc/sec_config"
-    class main
-    user root
-    oneshot
-
-service rmt_storage /system/bin/rmt_storage
-    class core
-    user root
-    group system wakelock
-
-service sensors /system/bin/sensors.qcom
-    class core
-    user root
-    group root wakelock
-
-service qcom-sensor-sh /system/bin/sh /system/etc/init.qcom-sensor.sh
-    class main
-    user root
-    oneshot
-
-service time_daemon /system/bin/time_daemon
-    class late_start
-    user root
-    group root
-
-# HexagonDSP FastRPC daemon
-service adsprpcd /system/bin/adsprpcd
-   class main
-   user media
-   group media
-
-service charger /sbin/healthd -c
-    class charger
-    seclabel u:r:healthd:s0
-
-service audiod /system/bin/audiod
-    class late_start
-    user system
-    group system
-
-# Redefined Service
-service audioserver /system/bin/audioserver
-    class main
-    user audioserver
-    # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
-    group audio trimarea camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct qcom_diag
-    ioprio rt 4
-
-service drm /system/bin/drmserver
-    class main
-    user drm
-    group drm system inet drmrpc readproc trimarea
-
-
-service media /system/bin/mediaserver
-    class main
-    user media
-    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm credmgr_client system
-    ioprio rt 4
-
-service mediadrm /system/bin/mediadrmserver
-    class main
-    user media
-    group mediadrm drmrpc trimarea
-    ioprio rt 4
-
-service mpdecision /system/bin/mpdecision --avg_comp
-    class main
-    user root
-    group root readproc
-    disabled
-
-# brcm-uim-sysfs (BT/FM/ANT+)
- service uim /system/bin/brcm-uim-sysfs
-    class late_start
-    user root
-    group bluetooth net_bt_admin net_bt
-    seclabel u:r:uim:s0
