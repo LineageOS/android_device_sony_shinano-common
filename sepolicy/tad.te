@@ -1,0 +1,1 @@
+allow tad tad_socket:sock_file { write };
