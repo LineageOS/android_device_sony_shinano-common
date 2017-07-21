@@ -1,0 +1,48 @@
+# Init file for shinano devices
+# init.sony-platform.rc
+
+on boot
+    # PM8941 flash
+    chown media system /sys/class/misc/pm8941-flash/device/current1
+    chown media system /sys/class/misc/pm8941-flash/device/current2
+    chown media system /sys/class/misc/pm8941-flash/device/fault_status
+    chown media system /sys/class/misc/pm8941-flash/device/fine_current1
+    chown media system /sys/class/misc/pm8941-flash/device/fine_current2
+    chown media system /sys/class/misc/pm8941-flash/device/flash_timer
+    chown media system /sys/class/misc/pm8941-flash/device/mask_clamp_current
+    chown media system /sys/class/misc/pm8941-flash/device/mask_enable
+    chown media system /sys/class/misc/pm8941-flash/device/max_current
+    chown media system /sys/class/misc/pm8941-flash/device/mode
+    chown media system /sys/class/misc/pm8941-flash/device/startup_delay
+    chown media system /sys/class/misc/pm8941-flash/device/strobe
+    chown media system /sys/class/misc/pm8941-flash/device/vph_pwr_droop
+
+    # Touch
+    chown system system /sys/devices/virtual/input/clearpad/wakeup_gesture
+    chown system system /sys/devices/virtual/input/max1187x/wakeup_gesture
+
+    # Glove input
+    chown system system /sys/devices/virtual/input/clearpad/glove
+    chown system system /sys/devices/virtual/input/max1187x/glove
+    chmod 0660 /sys/devices/virtual/input/clearpad/glove
+    chmod 0660 /sys/devices/virtual/input/max1187x/glove
+
+# TFA9890 AMP
+service tfa9890_amp /system/bin/tfa9890_amp
+    class late_start
+    user root
+    group root
+    oneshot
+
+# brcm-uim-sysfs (BT/FM/ANT+)
+ service uim /system/bin/brcm-uim-sysfs
+    class late_start
+    user root
+    group bluetooth net_bt_admin net_bt
+    seclabel u:r:uim:s0
+
+# Wi-Fi and BT MAC addresses
+service macaddrsetup /system/bin/macaddrsetup /sys/devices/platform/bcmdhd_wlan/macaddr
+    class late_start
+    user root
+    oneshot
