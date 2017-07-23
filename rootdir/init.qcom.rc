@@ -489,10 +489,12 @@ service qcom-sensor-sh /system/bin/sh /system/etc/init.qcom-sensor.sh
     user root
     oneshot
 
-service time_daemon /system/bin/time_daemon
+# OSS time
+service timekeep /system/bin/timekeep restore
     class late_start
     user root
     group root
+    oneshot
 
 # HexagonDSP FastRPC daemon
 service adsprpcd /system/bin/adsprpcd
