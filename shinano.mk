@@ -50,7 +50,7 @@ PRODUCT_COPY_FILES += \
 
 # Recovery Init
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/init.qcom.power.rc:root/init.recovery.qcom.rc
+    $(COMMON_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc
 
 # Camera
 PRODUCT_COPY_FILES += \
