@@ -11,19 +11,18 @@ vendor/lib/soundfx/libqcvirt.so
 vendor/lib/libadsprpc.so
 
 # Camera
-bin/credmgrd
+bin/credmgrd|220874582f2c22cfcca380ca2870e1eB9ab366ae
 bin/iddd
 bin/mm-qcamera-daemon
+etc/flashled_calc_parameters.cfg
 etc/iddd.conf
-etc/firmware/cpp_firmware_v1_1_1.fw
-etc/firmware/cpp_firmware_v1_1_6.fw
-etc/firmware/cpp_firmware_v1_2_0.fw
 lib/hw/camera.qcom.so:lib/hw/camera.vendor.qcom.so
 lib/lib_get_secure_mode.so
 lib/lib_get_rooting_status.so
 lib/libcamera_clientsemc.so
-lib/libcredential-manager-keystore.so
-lib/libcredential-manager-service.so
+lib/libcameralight.so
+lib/libcammw.so
+lib/libcredential-manager-service.so|0a20a83de6be69a8ce1d0ed15f76a1bd3cdcfd31
 lib/libidd.so
 lib/liblights-core.so
 lib/libmmcamera_interface.so
@@ -31,27 +30,60 @@ lib/libmmjpeg_interface.so
 lib/libprotobuf-c.so
 lib/libqomx_core.so
 lib/libsys-utils.so
+vendor/CredentialManagerData
+vendor/lib/libactuator_dw9714.so
+vendor/lib/libactuator_dw9714_camcorder.so
+vendor/lib/libactuator_dw9714_camera.so
+vendor/lib/libactuator_dw9716.so
+vendor/lib/libactuator_dw9716_camcorder.so
+vendor/lib/libactuator_dw9716_camera.so
+vendor/lib/libactuator_iu074.so
+vendor/lib/libactuator_iu074_camcorder.so
+vendor/lib/libactuator_iu074_camera.so
+vendor/lib/libactuator_ov8825.so
+vendor/lib/libactuator_ov8825_camcorder.so
+vendor/lib/libactuator_ov8825_camera.so
+vendor/lib/libactuator_ov12830.so
+vendor/lib/libactuator_ov12830_camcorder.so
+vendor/lib/libactuator_ov12830_camera.so
+vendor/lib/libactuator_rohm_bu64243gwz.so
+vendor/lib/libactuator_rohm_bu64243gwz_camcorder.so
+vendor/lib/libactuator_rohm_bu64243gwz_camera.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
+vendor/lib/libmmcamera2_frame_algorithm.so
+vendor/lib/libmmcamera2_iface_modules.so
+vendor/lib/libmmcamera2_imglib_modules.so
+vendor/lib/libmmcamera2_isp_modules.so
+vendor/lib/libmmcamera2_is.so
 vendor/lib/libmmcamera2_pproc_modules.so
+vendor/lib/libmmcamera2_sensor_modules.so
+vendor/lib/libmmcamera2_stats_algorithm.so
+vendor/lib/libmmcamera2_stats_modules.so
 vendor/lib/libmmcamera2_vpe_module.so
 vendor/lib/libmmcamera2_wnr_module.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_hdr_lib.so
 vendor/lib/libmmcamera_imglib.so
+vendor/lib/libmmcamera_ofilm_oty5f03_eeprom.so
 vendor/lib/libmmcamera_sunny_p12v01m_eeprom.so
 vendor/lib/libmmcamera_sunny_p5v23c_eeprom.so
+vendor/lib/libmmcamera_sunny_q8v18a_eeprom.so
+vendor/lib/libmmcamera_tintless_algo.so
+vendor/lib/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib/libmmcamera_truly_cm7700_eeprom.so
-vendor/lib/libmmcamera_tuning.so
 vendor/lib/libmmcamera_wavelet_lib.so
 vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
+vendor/lib/liboemcamera.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
+vendor/camera/flash.dat
+vendor/camera/jpeg_fsc.dat
 
 # Cacao
 lib/camera/libexcal_object_tracker_plugin.so
@@ -93,14 +125,17 @@ lib/libcald_server.so
 lib/libcald_util.so
 lib/libexcal_core.so
 lib/libexcal_system.so
-lib/libface.so
-lib/libface_wrapper.so
 lib/libsomc_chokoballpal.so
 lib/libsony_chokoball.so
 lib/libsony_chokoballrsc.so
 lib/libsony_face.so
 
 # Chromatix
+vendor/lib/libchromatix_imx132_common.so
+vendor/lib/libchromatix_imx132_default_video.so
+vendor/lib/libchromatix_imx132_liveshot.so
+vendor/lib/libchromatix_imx132_preview.so
+vendor/lib/libchromatix_imx132_snapshot.so
 vendor/lib/libchromatix_imx134_common.so
 vendor/lib/libchromatix_imx134_default_video.so
 vendor/lib/libchromatix_imx134_hfr_120.so
@@ -110,6 +145,8 @@ vendor/lib/libchromatix_imx134_snapshot.so
 vendor/lib/libchromatix_imx135_common.so
 vendor/lib/libchromatix_imx135_default_video.so
 vendor/lib/libchromatix_imx135_hfr_120.so
+vendor/lib/libchromatix_imx135_hfr_60.so
+vendor/lib/libchromatix_imx135_hfr_90.so
 vendor/lib/libchromatix_imx135_preview.so
 vendor/lib/libchromatix_imx135_snapshot.so
 vendor/lib/libchromatix_imx135_video_hd.so
@@ -195,6 +232,9 @@ vendor/lib/libchromatix_skuf_ov5648_p5v23c_preview.so
 vendor/lib/libchromatix_skuf_ov5648_p5v23c_snapshot.so
 
 # Camera firmware
+etc/firmware/cpp_firmware_v1_1_1.fw
+etc/firmware/cpp_firmware_v1_1_6.fw
+etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/venus.b00
 etc/firmware/venus.b01
 etc/firmware/venus.b02
@@ -202,6 +242,10 @@ etc/firmware/venus.b03
 etc/firmware/venus.b04
 etc/firmware/venus.mbn
 etc/firmware/venus.mdt
+
+# Misc Firmware
+etc/firmware/leia_pfp_470.fw
+etc/firmware/leia_pm4_470.fw
 
 # DRM
 bin/qseecomd
@@ -304,12 +348,18 @@ vendor/lib/libsensor_reg.so
 
 # TA
 bin/taimport
-bin/ta_param_loader
 bin/ta_qmi_service
 bin/mlog_qmi_service
+bin/updatemiscta
 lib/libMiscTaAccessor.so
 lib/libmiscta.so
-lib/libta.so
+-lib/libta.so
+lib/lib_extended_boot_lock.so
+lib/lib_get_hwc_revision.so
+lib/lib_get_s1_cert_common_name.so
+lib/libMiscTAApi.so
+lib/lib_s1_verification.so
+lib/lib_uncontrolled_rooting_status.so
 
 # Time
 bin/time_daemon
