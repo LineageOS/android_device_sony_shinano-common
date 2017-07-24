@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bea9d2b8_adfb9822",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 44
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-24T11:57:45Z",
+      "side": 1,
+      "message": "Has there been a matching service entry added?",
+      "revId": "bc032181a874a58633b2e91399a12b25e5ebede1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f8c6525_443d33ac",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 44
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-24T11:57:45Z",
+      "side": 1,
+      "message": "See below",
+      "revId": "bc032181a874a58633b2e91399a12b25e5ebede1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15cab533_17f1d703",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 44
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-24T11:57:45Z",
+      "side": 1,
+      "message": "Is this used?",
+      "revId": "bc032181a874a58633b2e91399a12b25e5ebede1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf45877e_31a2e26d",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 44
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-24T11:57:45Z",
+      "side": 1,
+      "message": "fastcvopt already present here.",
+      "revId": "bc032181a874a58633b2e91399a12b25e5ebede1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caf363e4_6a065b10",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 44
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-24T11:57:45Z",
+      "side": 1,
+      "message": "Used by?",
+      "revId": "bc032181a874a58633b2e91399a12b25e5ebede1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbac4e79_5781ed53",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 44
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-24T11:57:45Z",
+      "side": 1,
+      "message": "Not building a gps hal anymore?",
+      "revId": "bc032181a874a58633b2e91399a12b25e5ebede1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ad5ae25_469057f0",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 44
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-24T11:57:45Z",
+      "side": 1,
+      "message": "I really, really doubt that these 2 are even used.",
+      "revId": "bc032181a874a58633b2e91399a12b25e5ebede1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a52fe73b_17bb3818",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 44
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-24T11:57:45Z",
+      "side": 1,
+      "message": "Is this not built from source?",
+      "revId": "bc032181a874a58633b2e91399a12b25e5ebede1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fcc1b25_9f07c11e",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 44
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-24T11:57:45Z",
+      "side": 1,
+      "message": "Tested?",
+      "revId": "bc032181a874a58633b2e91399a12b25e5ebede1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "572e4b2a_86d76b1e",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 44
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-24T11:57:45Z",
+      "side": 1,
+      "message": "Is this used anywhere?",
+      "revId": "bc032181a874a58633b2e91399a12b25e5ebede1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9c1e632_1c07c4be",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 44
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-24T11:57:45Z",
+      "side": 1,
+      "message": "What is this needed for?",
+      "revId": "bc032181a874a58633b2e91399a12b25e5ebede1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
