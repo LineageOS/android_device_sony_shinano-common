@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c03774f9_78201a0f",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 15697
+      },
+      "writtenOn": "2017-07-24T12:29:27Z",
+      "side": 1,
+      "message": "Are not idd and ta_static in device tree now?",
+      "revId": "996f727ed29f464a2fd45bf22274fb2d68e6a570",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
