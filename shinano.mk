@@ -50,7 +50,6 @@ PRODUCT_COPY_FILES += \
 
 # Camera (stock .575 blobs)
 PRODUCT_PACKAGES += \
-	libshims_wvm \
 	libshims_signal \
 	libshims_idd \
         libsonycamera
