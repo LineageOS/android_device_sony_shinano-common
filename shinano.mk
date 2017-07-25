@@ -55,8 +55,7 @@ PRODUCT_PACKAGES += \
 	wait4tad_static \
 	libshims_wvm \
 	libshims_signal \
-	libshims_idd \
-        libsonycamera
+	libshims_idd
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/bin/credmgrfirstboot.sh:system/bin/credmgrfirstboot.sh
