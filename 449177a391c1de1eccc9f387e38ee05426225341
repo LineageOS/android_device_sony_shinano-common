@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f3cf04b_9b0af906",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-25T05:37:02Z",
+      "side": 1,
+      "message": "Did you patch this? Hex edit the sony perm to android camera perm.",
+      "revId": "449177a391c1de1eccc9f387e38ee05426225341",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
