@@ -16,12 +16,10 @@
 
 on init
 	export LD_SHIM_LIBS " \
-/system/vendor/lib/libwvm.so|libshims_wvm.so \
-:/system/bin/credmgrd|libshims_signal.so \
+/system/bin/credmgrd|libshims_signal.so \
 :/system/bin/iddd|libshims_idd.so \
 :/system/bin/suntrold|libshims_signal.so \
 :/system/lib/hw/camera.qcom.so|libsonycamera.so \
-:/system/vendor/lib/libwvm.so|libdtcpipplayer.so \
 "
 
 on early-fs
