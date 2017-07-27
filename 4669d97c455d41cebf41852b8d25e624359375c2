@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f630848_a840099f",
+        "filename": "rootdir/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 15257
+      },
+      "writtenOn": "2017-07-27T23:42:16Z",
+      "side": 1,
+      "message": "Doesn\u0027t work/Isn\u0027t used",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 50
+      },
+      "revId": "4669d97c455d41cebf41852b8d25e624359375c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8ba4ce2_c5907a05",
+        "filename": "rootdir/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 15257
+      },
+      "writtenOn": "2017-07-27T23:42:16Z",
+      "side": 1,
+      "message": "?? Default timeout is fine",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 45
+      },
+      "revId": "4669d97c455d41cebf41852b8d25e624359375c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1ae2067_0b054369",
+        "filename": "rootdir/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 15257
+      },
+      "writtenOn": "2017-07-27T23:42:16Z",
+      "side": 1,
+      "message": "Only if device uses wake on proc",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 43
+      },
+      "revId": "4669d97c455d41cebf41852b8d25e624359375c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b15052e0_85ac2dbb",
+        "filename": "rootdir/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 15257
+      },
+      "writtenOn": "2017-07-27T23:42:16Z",
+      "side": 1,
+      "message": "Managed by uevent",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 39
+      },
+      "revId": "4669d97c455d41cebf41852b8d25e624359375c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
