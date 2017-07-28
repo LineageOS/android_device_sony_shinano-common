@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e03194e4_89a8d8f2",
+        "filename": "shinano.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 15697
+      },
+      "writtenOn": "2017-07-28T06:02:29Z",
+      "side": 1,
+      "message": "This looks confusing.",
+      "range": {
+        "startLine": 48,
+        "startChar": 18,
+        "endLine": 48,
+        "endChar": 72
+      },
+      "revId": "cc4482e94c0c643bf1c51c2f46d9b019e31d2521",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
