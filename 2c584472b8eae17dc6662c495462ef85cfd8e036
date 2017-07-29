@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cef79ef2_10b20b93",
+        "filename": "rootdir/init.qcom.rc",
+        "patchSetId": 17
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 15697
+      },
+      "writtenOn": "2017-07-29T15:16:04Z",
+      "side": 1,
+      "message": "Please add https://review.lineageos.org/#/c/181861/",
+      "range": {
+        "startLine": 312,
+        "startChar": 10,
+        "endLine": 312,
+        "endChar": 14
+      },
+      "revId": "2c584472b8eae17dc6662c495462ef85cfd8e036",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
