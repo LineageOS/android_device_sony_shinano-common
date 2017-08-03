@@ -64,6 +64,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/bin/credmgrfirstboot.sh:system/bin/credmgrfirstboot.sh
 
+# For SafetyNet
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.enable.safetynet=1
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/bin/sys-security.sh:system/bin/sys-security.sh
+
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService \
