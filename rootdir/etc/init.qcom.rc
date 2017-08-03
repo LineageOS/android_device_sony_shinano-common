@@ -483,6 +483,7 @@ service rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
+    shutdown critical
 
 service sensors /vendor/bin/sensors.qcom
     class core
