@@ -52,12 +52,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/init.qcom.power.rc:root/init.recovery.qcom.rc
 
-# Camera (stock .575 blobs)
-PRODUCT_PACKAGES += \
-	libshims_signal \
-	libshims_idd \
-        libsonycamera
-
+# Camera
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
 
