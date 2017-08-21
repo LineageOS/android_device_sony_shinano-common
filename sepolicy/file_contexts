@@ -11,52 +11,10 @@
 # Hardware tunables
 /sys/devices/virtual/timed_output/vibrator/vtg_level   -- u:object_r:sysfs_vibrator:s0
 
-# In Device Diagnostics (idd)
-/system/bin/iddd                                         u:object_r:iddd_exec:s0
-/system/bin/idd-logreader                                u:object_r:iddd_exec:s0
-/idd(/.*)?                                               u:object_r:iddd_file:s0
-/mnt/idd                                                 u:object_r:iddd_file:s0
-
 # HCI
 /dev/ttyHS0                              u:object_r:hci_attach_dev:s0
 /dev/brcm_bt_drv                         u:object_r:hci_attach_dev:s0
 
-# Taimport
-/data/etc(/.*)                           u:object_r:ta_data_file:s0
-
-/system/bin/scd 						u:object_r:scd_exec:s0
-/data/scd								u:object_r:scd_data:s0
-/data/scd(/.*)							u:object_r:scd_data:s0
-/system/bin/scdnotifier					u:object_r:scd_exec:s0
-
-/system/bin/wvkbd						u:object_r:wv_exec:s0
-
 # Bluetooth
 /system/bin/brcm-uim-sysfs                              u:object_r:brcm_uim_exec:s0
-
-###########
-#credmgrd
-/system/bin/credmgrd 					u:object_r:credmgrd_exec:s0
-/system/bin/credmgrfirstboot.sh			u:object_r:credmgrd_exec:s0
-/dev/socket/credmgr						u:object_r:credmgrd_socket:s0
-/data/credmgr(/.*)?						u:object_r:credmgrd_data_file:s0
-/cache/CredentialManagerData			u:object_r:credmgrd_data_file:s0
-/cache/credmgr.log						u:object_r:credmgrd_data_file:s0
-/ta(/.*)? -- 							u:object_r:ta_data_file:s0
-
-#cam_socket
-/data/misc/camera(/.*)					u:object_r:camera_data_file:s0
-/dev/block/mmcblk0p1					u:object_r:tad_block_device:s0
-
-# macaddrsetup
-/system/bin/macaddrsetup                 u:object_r:addrsetup_exec:s0
-/sys/devices/platform/bcmdhd_wlan/macaddr    u:object_r:sysfs_addrsetup:s0
-
-#KGSL
-/sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpuclk   				 u:object_r:sysfs_thermal:s0
-/sys/devices(/soc\.0)?/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk                  u:object_r:sysfs_thermal:s0
-/sys/devices(/soc\.0)?/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/reset_count                 u:object_r:sysfs_thermal:s0
-
-# ZRAM
-/sys/devices/virtual/block/zram0/mm_stat                                          u:object_r:sysfs_zram:s0
 

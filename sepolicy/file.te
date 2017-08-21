@@ -1,12 +1,6 @@
 type sysfs_vibrator, fs_type, sysfs_type;
 
-# idd
-type iddd_file, file_type, data_file_type;
-
 # BRCM BT FM
 type brcm_ldisc_sysfs, sysfs_type, fs_type;
 type brcm_uim_exec, exec_type, file_type;
-
-# Macaddr
-type sysfs_addrsetup, fs_type, sysfs_type;
 

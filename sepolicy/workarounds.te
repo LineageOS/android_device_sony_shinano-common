@@ -1,6 +1,0 @@
-
-
-#TODO: shouldnot exist
-allow rmt_storage self:capability dac_override;
-
-
