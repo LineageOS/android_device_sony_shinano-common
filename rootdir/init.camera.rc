@@ -48,14 +48,14 @@ on boot
     chown media system /sys/class/misc/pm8941-flash/device/strobe
     chown media system /sys/class/misc/pm8941-flash/device/vph_pwr_droop
 
-on post-fs
-     # we will remap this as /mnt/sdcard with the sdcard fuse tool
-     mkdir /data/misc/camera 0770 camera camera
-     mkdir /data/misc/cameraserver 0700 cameraserver cameraserver
+on post-fs-data
+    # we will remap this as /mnt/sdcard with the sdcard fuse tool
+    mkdir /data/misc/camera 0770 camera camera
+    mkdir /data/misc/cameraserver 0700 cameraserver cameraserver
 
-     # create directory for scd
-     mkdir /dev/socket/scd 0755 system system
-     mkdir /data/scd 0755 system system
+    # create directory for scd
+    mkdir /dev/socket/scd 0755 system system
+    mkdir /data/scd 0755 system system
 
 on post-fs-data
     # SONY: Start early TA-users
@@ -78,8 +78,9 @@ on post-fs-data
     # taimport ready, use this as trigger for multi-cdf-symlinker
 
     # create credmgrinit log file
-    touch /cache/credmgr.log
-    restorecon -R /cache/credmgr.log
+    # Actually, no need, because it will be created by credmgrfirstboot.sh
+    # touch /cache/credmgr.log
+    # restorecon -R /cache/credmgr.log
  
 service taimport /system/bin/taimport
     class late_start
