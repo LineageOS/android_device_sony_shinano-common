@@ -502,7 +502,7 @@ service adsprpcd /system/bin/adsprpcd
    user media
    group media
 
-service charger /sbin/healthd -c
+service charger /charger
     class charger
     seclabel u:r:healthd:s0
 
