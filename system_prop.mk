@@ -40,7 +40,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Audio HAL
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.audiorec=true \
-    persist.vendor.audio.fluence.speaker=true \
+    persist.vendor.audio.fluence.speaker=false \
     persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.voicerec=false \
     ro.vendor.audio.sdk.fluencetype=fluence
