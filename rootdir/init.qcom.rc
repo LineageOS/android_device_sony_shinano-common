@@ -142,6 +142,9 @@ on boot
 
     # Wlan Interface Port
     setprop wifi.interface wlan0
+    
+    # WiFi Firmware
+    chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
 
     # Send single UNSOL_CALL_RING notification
     setprop ro.telephony.call_ring.multiple false
