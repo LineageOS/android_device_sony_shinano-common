@@ -55,6 +55,11 @@
 /dev/smd3                 0660   bluetooth  bluetooth
 /dev/smd2                 0660   bluetooth  bluetooth
 
+# BT
+/dev/rfkill               0660 bluetooth bluetooth
+/dev/ttyHS0               0660 bluetooth bluetooth
+/dev/ttyMSM0              0660 bluetooth bluetooth
+
 /dev/radio0               0640   system     system
 /dev/smdcntl0             0640   radio      radio
 /dev/smdcntl1             0640   radio      radio
