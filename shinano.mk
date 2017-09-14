@@ -80,8 +80,8 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-   libbt-vendor   
-   
+    libbt-vendor
+
 # RIL
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/netmgr_config.xml:system/etc/data/netmgr_config.xml \
@@ -141,6 +141,9 @@ PRODUCT_PACKAGES += \
     NfcNci \
     com.android.nfc_extras \
     nfc_nci.pn54x.default
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.hardware.nfc_nci=pn54x.default
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
