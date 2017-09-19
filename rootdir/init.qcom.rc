@@ -47,7 +47,7 @@ on init
     mkdir /dev/bus/usb 0755 root root
 
     wait /dev/block/mmcblk0p1
-    chown tad tad /dev/block/mmcblk0p1
+    chown oem_5997 oem_5997 /dev/block/mmcblk0p1
     chmod 0770 /dev/block/mmcblk0p1
 
     # Bluetooth address setting
@@ -142,7 +142,7 @@ on boot
 
     # Wlan Interface Port
     setprop wifi.interface wlan0
-    
+
     # WiFi Firmware
     chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
 
@@ -519,25 +519,25 @@ service audioserver /system/bin/audioserver
     class main
     user audioserver
     # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
-    group audio trimarea camera drmrpc inet media mediadrm net_bt bluetooth net_bw_acct oem_2950
+    group audio oem_5993 camera drmrpc inet media mediadrm net_bt bluetooth net_bw_acct oem_2950
     ioprio rt 4
 
 service drm /system/bin/drmserver
     class main
     user drm
-    group drm system inet drmrpc readproc trimarea
+    group drm system inet drmrpc readproc oem_5993
 
 
 service media /system/bin/mediaserver
     class main
     user media
-    group audio camera inet net_bt bluetooth net_bw_acct drmrpc mediadrm credmgr_client system
+    group audio camera inet net_bt bluetooth net_bw_acct drmrpc mediadrm oem_5996 system
     ioprio rt 4
 
 service mediadrm /system/bin/mediadrmserver
     class main
     user media
-    group mediadrm drmrpc trimarea
+    group mediadrm drmrpc oem_5993
     ioprio rt 4
 
 service mpdecision /system/bin/mpdecision --avg_comp

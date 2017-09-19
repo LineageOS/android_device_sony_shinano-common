@@ -5,7 +5,7 @@ on fs
     mkdir /idd 0751 idd idd
 
     # SONY: setup idd partition
-    chown idd idd /idd
+    chown oem_5987 oem_5987 /idd
     chmod 0751 /idd
     exec u:r:qti_init_shell:s0 -- /system/bin/rm -r /idd/lost+found
     symlink /idd /mnt/idd
@@ -19,5 +19,5 @@ on-post-fs-data
 
 service iddd /system/bin/iddd
     class main
-    user idd
-    group idd log inet trimarea
+    user oem_5987
+    group oem_5987 log inet oem_5993
