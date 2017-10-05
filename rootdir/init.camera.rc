@@ -24,7 +24,7 @@ on init
 
 on early-fs
     wait /dev/block/mmcblk0p1
-    class_start oem_5993
+    class_start trimarea
     exec u:r:qti_init_shell:s0 -- /sbin/wait4tad_static
 
 on early-boot
@@ -144,11 +144,11 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     group camera system inet input graphics oem_5996 cameraserver
 #    seclabel u:r:mm-qcamerad:s0
 
-# SONY: oem_5993 Daemon
+# SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
 service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
 #service tad_static /sbin/tad_static /data/credmgr/ta_part.bin 0,16
-    class oem_5993
+    class trimarea
     user oem_5997
     group oem_5997 oem_5993 root
     socket tad stream 0770 system oem_5993
@@ -156,7 +156,7 @@ service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
     seclabel u:r:tad:s0
 service updatemiscta /system/bin/updatemiscta
     class main
-    user updatemiscta
+    user oem_5991
     group oem_5993
     oneshot
 

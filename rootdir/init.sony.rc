@@ -2,7 +2,7 @@
 
 on fs
     # SONY: create mount point for idd
-    mkdir /idd 0751 idd idd
+    mkdir /idd 0751 oem_5987 oem_5987
 
     # SONY: setup idd partition
     chown oem_5987 oem_5987 /idd
@@ -13,8 +13,8 @@ on fs
 
 on-post-fs-data
     mkdir /mnt/idd/lost+found 0770 root root
-    mkdir /mnt/idd/output 0755 idd idd
-    mkdir /mnt/idd/socket 0711 idd idd
+    mkdir /mnt/idd/output 0755 oem_5987 oem_5987
+    mkdir /mnt/idd/socket 0711 oem_5987 oem_5987
     restorecon_recursive /mnt/idd
 
 service iddd /system/bin/iddd
