@@ -20,6 +20,7 @@ on init
 :/system/bin/iddd|libshims_idd.so \
 :/system/bin/suntrold|libshims_signal.so \
 :/system/lib/hw/camera.qcom.so|libsonycamera.so \
+:/system/bin/mm-qcamera-daemon|libandroid.so \
 "
 
 on early-fs
