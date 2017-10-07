@@ -11,11 +11,11 @@ on fs
     symlink /idd /mnt/idd
     restorecon_recursive   /idd
 
-on-post-fs-data
-    mkdir /mnt/idd/lost+found 0770 root root
-    mkdir /mnt/idd/output 0755 oem_5987 oem_5987
-    mkdir /mnt/idd/socket 0711 oem_5987 oem_5987
-    restorecon_recursive /mnt/idd
+on post-fs-data
+    mkdir /idd/lost+found 0770 root root
+    mkdir /idd/output 0755 oem_5987 oem_5987
+    mkdir /idd/socket 0711 oem_5987 oem_5987
+    restorecon_recursive /idd
 
 service iddd /system/bin/iddd
     class main
