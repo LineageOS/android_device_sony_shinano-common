@@ -43,9 +43,6 @@ on init
     chmod 0664 /proc/rdtag
     chown root system /proc/rdtag
 
-    mkdir /dev/bus 0755 root root
-    mkdir /dev/bus/usb 0755 root root
-
     wait /dev/block/mmcblk0p1
     chown oem_5997 oem_5997 /dev/block/mmcblk0p1
     chmod 0770 /dev/block/mmcblk0p1
@@ -91,6 +88,8 @@ on fs
     # Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
+
+    symlink /sdcard /storage/sdcard0
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -148,7 +147,7 @@ on boot
 
     # Send single UNSOL_CALL_RING notification
     setprop ro.telephony.call_ring.multiple false
-    
+
     # Create folder for timekeep
     mkdir /data/time/ 0700 system system
 
