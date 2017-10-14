@@ -38,7 +38,7 @@ ro.qti.sensors.dpc=false
 ro.qti.sensors.wu=false
 
 # BT rfkill
-ro.rfkilldisabled=1
+ro.rfkilldisabled.uim=1
 
 # Assertive Display
 ro.qcom.ad=1

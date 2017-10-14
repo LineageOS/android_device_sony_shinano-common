@@ -163,5 +163,9 @@ PRODUCT_COPY_FILES += \
 # BCM Wifi
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4339/device-bcm.mk)
 
+# BT/FM (Broadcom): Adjust the sysfs patch for 3.4 kernel
+BOARD_HAVE_BCM_FM_SYSFS := "/sys/bus/platform/drivers/bcm_ldisc/bcm_ldisc/"
+BOARD_BRCM_HCI_NUM := 26
+
 # Include non-opensource parts
 $(call inherit-product, vendor/sony/shinano-common/shinano-common-vendor.mk)
