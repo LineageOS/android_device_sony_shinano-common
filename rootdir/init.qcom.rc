@@ -44,7 +44,7 @@ on init
     chown root system /proc/rdtag
 
     wait /dev/block/mmcblk0p1
-    chown oem_5997 oem_5997 /dev/block/mmcblk0p1
+    chown system system /dev/block/mmcblk0p1
     chmod 0770 /dev/block/mmcblk0p1
 
     # Bluetooth address setting
@@ -516,25 +516,25 @@ service audioserver /system/bin/audioserver
     class main
     user audioserver
     # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
-    group audio oem_5993 camera drmrpc inet media mediadrm net_bt bluetooth net_bw_acct oem_2950
+    group audio camera drmrpc inet media mediadrm net_bt bluetooth net_bw_acct oem_2950
     ioprio rt 4
 
 service drm /system/bin/drmserver
     class main
     user drm
-    group drm system inet drmrpc readproc oem_5993
+    group drm system inet drmrpc readproc
 
 
 service media /system/bin/mediaserver
     class main
     user media
-    group audio camera inet net_bt bluetooth net_bw_acct drmrpc mediadrm oem_5996 system
+    group audio camera inet net_bt bluetooth net_bw_acct drmrpc mediadrm system
     ioprio rt 4
 
 service mediadrm /system/bin/mediadrmserver
     class main
     user media
-    group mediadrm drmrpc oem_5993
+    group mediadrm drmrpc
     ioprio rt 4
 
 service mpdecision /system/bin/mpdecision --avg_comp

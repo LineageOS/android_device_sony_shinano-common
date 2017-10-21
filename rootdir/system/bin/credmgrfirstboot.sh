@@ -18,10 +18,10 @@ F_ERR(){
 }
 
 # If credmgrd data doesn't match our
-CREDMGRCNT=$(find $CREDFOLDER -group oem_5996 -type f -name "credmgr.db" | wc -l )
+CREDMGRCNT=$(find $CREDFOLDER -group system -type f -name "credmgr.db" | wc -l )
 
 echo -e "credmgr folder:\n$(ls -la $CREDFOLDER)\ncredmgr match (if any):" >> $LOG
-find $CREDFOLDER -group oem_5996 -type f -name "credmgr.db" >> $LOG
+find $CREDFOLDER -group system -type f -name "credmgr.db" >> $LOG
 
 
 if [ "x$CREDMGRCNT" == "x0" ]; then
@@ -34,7 +34,7 @@ if [ "x$CREDMGRCNT" == "x0" ]; then
 	# Put binary into /cache
 	mkdir $CREDFOLDER >> $LOG 2>&1
 	F_ERR $? "mkdir $CREDFOLDER"
-	chown system:oem_5996 $CREDFOLDER >> $LOG 2>&1
+	chown system:system $CREDFOLDER >> $LOG 2>&1
 	F_ERR $? "chown $CREDFOLDER"
 	chcon u:object_r:credmgrd_data_file:s0 $CREDFOLDER >> $LOG 2>&1
 	F_ERR $? "chcon $CREDFOLDER"

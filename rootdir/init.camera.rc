@@ -96,7 +96,7 @@ service taimport /system/bin/taimport
 service initcredmgr /system/bin/credmgrfirstboot.sh
     class late_start
     user system
-    group oem_5996
+    group cameraserver
     oneshot
 
 # When credmgrfirstboot is ready it set sys.credmgrdready=true.
@@ -119,8 +119,8 @@ service sct_service /system/bin/sct_service
  
 # Trim Area QMI service
 service ta_qmi_service /system/bin/ta_qmi_service
-    user oem_5998
-    group oem_5998 oem_5993 system root net_raw wakelock
+    user system
+    group system root net_raw wakelock
     disabled
 
 service scd /system/bin/scd
@@ -161,7 +161,7 @@ service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
     seclabel u:r:tad:s0
 service updatemiscta /system/bin/updatemiscta
     class main
-    user oem_5991
-    group oem_5993
+    user system
+    group system
     oneshot
 
