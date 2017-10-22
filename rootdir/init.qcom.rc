@@ -461,7 +461,7 @@ service loc_launcher /system/bin/loc_launcher
 # Start suntrold
 service suntrold /system/bin/suntrold
     user system
-    group system
+    group system camera
     oneshot
     class main
 
