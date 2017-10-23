@@ -95,8 +95,8 @@ service taimport /system/bin/taimport
 # This script init /cache/CredentialManagerData if /data/credmgr doesn't meet our requirements
 service initcredmgr /system/bin/credmgrfirstboot.sh
     class late_start
-    user system
-    group cameraserver
+    user root
+    group root
     oneshot
 
 # When credmgrfirstboot is ready it set sys.credmgrdready=true.
@@ -108,8 +108,7 @@ start credmgrd
 service credmgrd /system/bin/credmgrd
     user system
     group system camera media
-# TODO: 666 is not good for credmgrd socket
-    socket credmgr stream 0666 system camera
+    socket credmgr stream 0660 system camera
     disabled
 
 # Secure Config Transfer service

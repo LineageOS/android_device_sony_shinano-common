@@ -29,18 +29,23 @@ if [ "x$CREDMGRCNT" == "x0" ]; then
 	echo "CREDINIT: Dont match"
 	if [ -d "$CREDFOLDER" ]; then
 		echo "CREDINIT: Drop old credmgrdata"
-		mv -vf $CREDFOLDER ${CREDFOLDER}.old
+		mv -vf $CREDFOLDER ${CREDFOLDER}.$(date +"%Y-%m-%d")  >> $LOG 2>&1
 	fi
 	# Put binary into /cache
 	mkdir $CREDFOLDER >> $LOG 2>&1
 	F_ERR $? "mkdir $CREDFOLDER"
+	# Set perms on folder
 	chown system:system $CREDFOLDER >> $LOG 2>&1
 	F_ERR $? "chown $CREDFOLDER"
+	chmod 770 $CREDFOLDER >> $LOG 2>&1
+	F_ERR $? "chmod 770"
 	chcon u:object_r:credmgrd_data_file:s0 $CREDFOLDER >> $LOG 2>&1
 	F_ERR $? "chcon $CREDFOLDER"
 	echo "CREDINIT: cp initial file" >> $LOG 2>&1
 	cp -v /system/vendor/CredentialManagerData /cache/CredentialManagerData >> $LOG 2>&1
 	F_ERR $? "copy CredentialManagerData"
+	chown system:system /cache/CredentialManagerData >> $LOG 2>&1
+	F_ERR $? "chown CredentialManagerData"
 else
 	F_ERR 0 "credmgr found already. no preparation required."
 fi
