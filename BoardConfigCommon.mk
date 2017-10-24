@@ -65,9 +65,6 @@ TARGET_USES_64_BIT_BINDER := true
 # Camera
 TARGET_USES_MEDIA_EXTENSIONS := true
 
-# CM Hardware
-BOARD_HARDWARE_CLASS += device/sony/shinano-common/cmhw
-
 # Dumpstate
 BOARD_LIB_DUMPSTATE := libdumpstate.sony
 
