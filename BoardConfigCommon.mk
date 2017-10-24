@@ -65,9 +65,6 @@ TARGET_USES_64_BIT_BINDER := true
 # Camera
 TARGET_USES_MEDIA_EXTENSIONS := true
 
-# Dumpstate
-BOARD_LIB_DUMPSTATE := libdumpstate.sony
-
 # GPS
 TARGET_PROVIDES_GPS_LOC_API := true
 
