@@ -2,3 +2,4 @@ allow bluetooth hci_attach_dev:chr_file { open read write };
 allow bluetooth ta_data_file:file { open read };
 allow bluetooth ta_data_file:dir { search };
 allow bluetooth storage_stub_file:dir { getattr };
+allow bluetooth firmware_file:file r_file_perms;
