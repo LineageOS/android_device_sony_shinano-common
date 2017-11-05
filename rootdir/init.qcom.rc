@@ -453,7 +453,7 @@ service ril-daemon2 /system/bin/rild -c 2
 on property:persist.radio.multisim.config=dsds
     start ril-daemon2
 
-service loc_launcher /system/bin/loc_launcher
+service loc_launcher /system/vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet net_raw oem_2950 net_admin wifi
