@@ -501,6 +501,7 @@ service adsprpcd /system/bin/adsprpcd
    class main
    user media
    group media
+   seclabel u:r:adsprpcd:s0
 
 service charger /charger
     class charger

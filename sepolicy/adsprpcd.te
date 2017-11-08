@@ -1,0 +1,7 @@
+# access to qseecom qdsp_device
+allow adsprpcd tee_device:chr_file rw_file_perms;
+allowxperm adsprpcd tee_device:chr_file ioctl qseecom_sock_ipc_ioctls;
+
+# access to qseecom qdsp_device
+allow adsprpcd qdsp_device:chr_file rw_file_perms;
+allowxperm adsprpcd qdsp_device:chr_file ioctl adsprpcd_ioctls;

@@ -1,5 +1,22 @@
+# socket ioctls defined in the kernel in ? --> BT
 define(`TCGETS', `0x00005401')
 define(`TCSETS', `0x00005402')
 define(`TCFLSH', `0x0000540b')
 define(`TIOCSETD', `0x00005423')
 define(`IOCTLUNKNOWN', `0x000055c8')
+
+# ioctls for audio dsp defined in kernel in include/linux/msm_adsp.h
+define(`ADSP_IOCTL_ENABLE', `0x00005201')
+define(`ADSP_IOCTL_DISABLE', `0x00005202')
+define(`ADSP_IOCTL_DISABLE_ACK', `0x00005203')
+define(`ADSP_IOCTL_WRITE_COMMAND', `0x00005204')
+define(`ADSP_IOCTL_GET_EVENT', `0x00005205')
+define(`ADSP_IOCTL_SET_CLKRATE', `0x00005206')
+define(`ADSP_IOCTL_DISABLE_EVENT_RSP', `0x0000520a')
+define(`ADSP_IOCTL_REGISTER_PMEM', `0x0000520d')
+define(`ADSP_IOCTL_UNREGISTER_PMEM', `0x0000520e')
+define(`ADSP_IOCTL_ABORT_EVENT_READ', `0x0000520f')
+define(`ADSP_IOCTL_LINK_TASK', `0x00005210')
+
+# ioctls for mlog_qmi; extracted from the log
+define(`MLOG_QMI_UNKNOWN', `0x0000c304')
