@@ -15,12 +15,12 @@
 #
 
 on init
-	export LD_SHIM_LIBS " \
-/system/bin/credmgrd|libshims_signal.so \
-:/system/bin/iddd|libshims_idd.so \
-:/system/bin/suntrold|libshims_signal.so \
+export LD_SHIM_LIBS " \
+:/system/vendor/bin/credmgrd|libshims_signal.so \
+:/system/vendor/bin/iddd|libshims_idd.so \
+:/system/vendor/bin/suntrold|libshims_signal.so \
 :/system/lib/hw/camera.qcom.so|libsonycamera.so \
-:/system/bin/mm-qcamera-daemon|libandroid.so \
+:/system/vendor/bin/mm-qcamera-daemon|libandroid.so \
 :/system/lib/libcammw.so|libsensor.so \
 :/system/lib/libsomc_chokoballpal.so|libGraphicBuffer.so \
 :/system/lib/hw/camera.qcom.so|libsensor.so \
@@ -64,7 +64,7 @@ on post-fs-data
 on post-fs-data
     # SONY: Start early TA-users
     mkdir /data/etc 0755 root shell
-    exec -- /system/bin/taimport
+    exec -- /system/vendor/bin/taimport
 
     # SONY: Create dir for Widevine keybox
     mkdir /data/persist/wv 0700 system system
@@ -106,19 +106,19 @@ on property:sys.credmgrdready=true
 start credmgrd
 
 # Start Credential manager daemon
-service credmgrd /system/bin/credmgrd
+service credmgrd /system/vendor/bin/credmgrd
     user system
     group system camera media
     socket credmgr stream 0660 system camera
     disabled
 
 # Secure Config Transfer service
-service sct_service /system/bin/sct_service
+service sct_service /system/vendor/bin/sct_service
     user root
     disabled
  
 # Trim Area QMI service
-service ta_qmi_service /system/bin/ta_qmi_service
+service ta_qmi_service /system/vendor/bin/ta_qmi_service
     user system
     group system root net_raw wakelock
     disabled
@@ -128,8 +128,8 @@ service scd /system/bin/scd
     user system
     group system
 
-#service wvkbd_installer /system/bin/logwrapper /system/bin/wvkbd
-service wvkbd_installer /system/bin/wvkbd
+#service wvkbd_installer /system/bin/logwrapper /system/vendor/bin/wvkbd
+service wvkbd_installer /system/vendor/bin/wvkbd
     user system
     group system
     oneshot
@@ -142,7 +142,7 @@ on property:sys.listeners.registered=true
     start wvkbd_installer
 
 #service qcamerasvr /system/bin/logwrapper /system/bin/mm-qcamera-daemon
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera media system inet input graphics
@@ -159,7 +159,8 @@ service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
     
 # tad_static is in rootfs, normal file_context does not work
     seclabel u:r:tad:s0
-service updatemiscta /system/bin/updatemiscta
+
+service updatemiscta /system/vendor/bin/updatemiscta
     class main
     user system
     group system

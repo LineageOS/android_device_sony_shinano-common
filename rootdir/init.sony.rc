@@ -17,7 +17,7 @@ on post-fs-data
     mkdir /idd/socket 0711 system system
     restorecon_recursive /idd
 
-service iddd /system/bin/iddd
+service iddd /system/vendor/bin/iddd
     class main
     user system
     group system log inet cameraserver media

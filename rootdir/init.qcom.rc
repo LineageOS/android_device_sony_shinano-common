@@ -384,18 +384,18 @@ on property:bluetooth.isEnabled=true
     write /sys/class/bluetooth/hci0/idle_timeout 7000
 
 # QMUX must be in multiple groups to support external process connections
-service qmuxd /system/bin/qmuxd
+service qmuxd /system/vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps nfc diag wakelock oem_2950
 
 # Wi-Fi and BT MAC addresses
-service macaddrsetup /system/bin/macaddrsetup /sys/devices/platform/bcmdhd_wlan/macaddr
+service macaddrsetup /system/vendor/bin/macaddrsetup /sys/devices/platform/bcmdhd_wlan/macaddr
     class late_start
     user root
     oneshot
 
-service netmgrd /system/bin/netmgrd
+service netmgrd /system/vendor/bin/netmgrd
     class late_start
     user root
     group root wifi wakelock radio inet system
@@ -404,7 +404,7 @@ on property:ro.radio.noril=true
     stop ril-daemon
     stop netmgrd
 
-service qseecomd /system/bin/qseecomd
+service qseecomd /system/vendor/bin/qseecomd
     class core
     user root
     group drmrpc root
@@ -459,45 +459,45 @@ service loc_launcher /system/vendor/bin/loc_launcher
     group gps inet net_raw oem_2950 net_admin wifi
 
 # Start suntrold
-service suntrold /system/bin/suntrold
+service suntrold /system/vendor/bin/suntrold
     user system
     group system camera
     oneshot
     class main
 
 # Modem Log QMI service
-service mlog_qmi_service /system/bin/mlog_qmi_service
-	class late_start
+service mlog_qmi_service /system/vendor/bin/mlog_qmi_service
+    class late_start
     user root
 
 # Thermal Manager service
-service thermanager /system/bin/thermanager /system/etc/thermanager.xml
+service thermanager /system/vendor/bin/thermanager /system/vendor/etc/thermanager.xml
     class main
     user root
     group root
 
-service irsc_util /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /system/vendor/bin/irsc_util "/system/vendor/etc/sec_config"
     class main
     user root
     oneshot
 
-service rmt_storage /system/bin/rmt_storage
+service rmt_storage /system/vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
 
-service sensors /system/bin/sensors.qcom
+service sensors /system/vendor/bin/sensors.qcom
     class core
     user root
     group root wakelock
 
-service qcom-sensor-sh /system/bin/sh /system/etc/init.qcom-sensor.sh
+service qcom-sensor-sh /system/bin/sh /system/vendor/etc/init.qcom-sensor.sh
     class main
     user root
     oneshot
 
 # HexagonDSP FastRPC daemon
-service adsprpcd /system/bin/adsprpcd
+service adsprpcd /system/vendor/bin/adsprpcd
    class main
    user media
    group media
@@ -538,7 +538,7 @@ service mediadrm /system/bin/mediadrmserver
     group mediadrm drmrpc
     ioprio rt 4
 
-service mpdecision /system/bin/mpdecision --avg_comp
+service mpdecision /system/vendor/bin/mpdecision --avg_comp
     class main
     user root
     group root readproc
@@ -552,7 +552,7 @@ service mpdecision /system/bin/mpdecision --avg_comp
     seclabel u:r:uim:s0
 
 # OSS time
-service timekeep /system/bin/timekeep restore
+service timekeep /system/vendor/bin/timekeep restore
     class late_start
     user root
     group root
