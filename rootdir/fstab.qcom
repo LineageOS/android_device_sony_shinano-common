@@ -13,4 +13,4 @@
 tmpfs                                              /idd         tmpfs   size=8M,nosuid,nodev,noatime,noexec             defaults
 /devices/msm_sdcc.2/mmc_host*                      auto         auto    defaults                                        voldmanaged=sdcard1:auto,encryptable=userdata
 /devices/platform/xhci-hcd/usb*                    auto         auto    nosuid,nodev                                    voldmanaged=usbdisk:auto
-/dev/block/zram0                                   none         swap    defaults                                        zramsize=533413200,zramstreams=4,notrim
+/dev/block/zram0                                   none         swap    defaults                                        zramsize=536870912,zramstreams=4,notrim
