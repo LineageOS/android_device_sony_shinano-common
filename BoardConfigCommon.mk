@@ -59,6 +59,8 @@ BOARD_CUSTOM_BT_CONFIG := device/sony/shinano-common/bluetooth/vnd_shinano.txt
 BOARD_HAVE_BCM_FM_SYSFS := "/sys/bus/platform/drivers/bcm_ldisc/bcm_ldisc/"
 BOARD_BRCM_HCI_NUM := 26
 
+# Binder API version
+TARGET_USES_64_BIT_BINDER := true
 
 # Camera
 TARGET_USES_MEDIA_EXTENSIONS := true
