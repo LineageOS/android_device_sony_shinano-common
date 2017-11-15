@@ -18,3 +18,5 @@
 # Bluetooth
 /system/bin/brcm-uim-sysfs                              u:object_r:brcm_uim_exec:s0
 
+# WIFI
+/sys/module/bcmdhd/parameters/firmware_path             u:object_r:sysfs_wlan_fwpath:s0
