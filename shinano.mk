@@ -122,7 +122,7 @@ PRODUCT_PACKAGES += \
 
 # IPC Security Config
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
+    $(COMMON_PATH)/rootdir/system/etc/sec_config:system/vendor/etc/sec_config
 
 # Keystore
 PRODUCT_PACKAGES += \
