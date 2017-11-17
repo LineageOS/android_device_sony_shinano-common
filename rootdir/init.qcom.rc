@@ -297,6 +297,25 @@ on post-fs-data
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
+    # led RGB
+    chown system system /sys/class/leds/rgb/sync_state
+    chown system system /sys/class/leds/rgb/start_blink
+    chown system system /sys/class/leds/led:rgb_red/brightness
+    chown system system /sys/class/leds/led:rgb_red/lut_pwm
+    chown system system /sys/class/leds/led:rgb_red/step_duration
+    chown system system /sys/class/leds/led:rgb_red/pause_lo_multi
+    chown system system /sys/class/leds/led:rgb_red/pause_hi_multi
+    chown system system /sys/class/leds/led:rgb_green/brightness
+    chown system system /sys/class/leds/led:rgb_green/lut_pwm
+    chown system system /sys/class/leds/led:rgb_green/step_duration
+    chown system system /sys/class/leds/led:rgb_green/pause_lo_multi
+    chown system system /sys/class/leds/led:rgb_green/pause_hi_multi
+    chown system system /sys/class/leds/led:rgb_blue/brightness
+    chown system system /sys/class/leds/led:rgb_blue/lut_pwm
+    chown system system /sys/class/leds/led:rgb_blue/step_duration
+    chown system system /sys/class/leds/led:rgb_blue/pause_lo_multi
+    chown system system /sys/class/leds/led:rgb_blue/pause_hi_multi
+
     mkdir /data/tombstones 0755 system system
     mkdir /data/tombstones/vendor 0755 system system
     mkdir /data/pc 0700 radio radio
