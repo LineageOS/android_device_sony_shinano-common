@@ -5,7 +5,6 @@ rw_dir_file(uim, brcm_ldisc_sysfs)
 rw_dir_file(uim, bluetooth_data_file)
 rw_dir_file(uim, sysfs_bluetooth_writable)
 allow uim brcm_uim_exec:file { entrypoint getattr read execute };
-allow uim hci_attach_dev:chr_file { read write open };
 allow uim self:capability { net_admin dac_override };
 allow uim rootfs:lnk_file getattr;
 allow uim ta_data_file:dir search;
@@ -13,4 +12,11 @@ allow uim bluetooth_prop:sock_file write;
 allow uim ta_data_file:file r_file_perms;
 allow uim hci_attach_dev:chr_file ioctl; 
 
+# Access to qseecomd
+allow uim tee_device:chr_file rw_file_perms;
+
+# Access to serial port
+allow uim hci_attach_dev:chr_file rw_file_perms;
 allowxperm uim hci_attach_dev:chr_file ioctl uim_sock_ipc_ioctls;
+
+get_prop(uim, bluetooth_prop)
