@@ -5,6 +5,9 @@
 /dev/tfa98xx                         u:object_r:audio_device:s0
 /system/bin/tfa9890_amp              u:object_r:tfa_amp_exec:s0
 
+# Dumpstate service
+/system/vendor/bin/hw/android\.hardware\.dumpstate@1.0-service\.sony      u:object_r:hal_dumpstate_default_exec:s0
+
 # Modem
 /system/vendor/bin/mlog_qmi_service         u:object_r:mlog_qmi_exec:s0
 
