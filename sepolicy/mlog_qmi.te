@@ -5,7 +5,9 @@ type mlog_qmi_exec, exec_type, file_type;
 init_daemon_domain(mlog_qmi)
 
 allow mlog_qmi self:capability { net_raw net_bind_service };
-allow mlog_qmi self:socket create_socket_perms_no_ioctl;
+allow mlog_qmi self:socket create_socket_perms;
+# NOTE: using self:socket for the ioctl results in a denial
+allowxperm mlog_qmi mlog_qmi:socket ioctl mlog_qmi_ioctls;
 
 # Access to /dev/smem_log
 allow mlog_qmi smem_log_device:chr_file rw_file_perms;
