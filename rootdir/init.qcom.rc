@@ -511,7 +511,7 @@ service sensors /system/vendor/bin/sensors.qcom
     user root
     group root wakelock
 
-service qcom-sensor-sh /system/bin/sh /system/vendor/etc/init.qcom-sensor.sh
+service qcom-sensor-sh /system/vendor/bin/init.qcom-sensor.sh
     class main
     user root
     oneshot

@@ -94,7 +94,7 @@ service taimport /system/bin/taimport
     oneshot
 
 # This script init /cache/CredentialManagerData if /data/credmgr doesn't meet our requirements
-service initcredmgr /system/bin/credmgrfirstboot.sh
+service initcredmgr /system/vendor/bin/credmgrfirstboot.sh
     class late_start
     user root
     group root
