@@ -78,16 +78,11 @@ on post-fs-data
     chmod 0660 /sys/devices/sony_camera_1/info
 
     # SONY: Import MiscTA to System properties
-    exec -- /system/bin/taimport property
+    exec -- /system/vendor/bin/taimport property
     setprop init.taimport.ready true
     # taimport ready, use this as trigger for multi-cdf-symlinker
 
-    # create credmgrinit log file
-    # Actually, no need, because it will be created by credmgrfirstboot.sh
-    # touch /cache/credmgr.log
-    # restorecon -R /cache/credmgr.log
- 
-service taimport /system/bin/taimport
+service taimport /system/vendor/bin/taimport
     class late_start
     user root
     group system
