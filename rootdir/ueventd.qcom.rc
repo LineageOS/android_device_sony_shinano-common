@@ -233,8 +233,8 @@
 /dev/pn547              0660    nfc         nfc
 
 # TA
-/dev/block/bootdevice/by-name/TA 0770  tad      tad
-/dev/block/platform/msm_sdcc.1/by-name/TA 0770 tad tad
+/dev/block/bootdevice/by-name/TA 0770  system      root
+/dev/block/platform/msm_sdcc.1/by-name/TA 0770 system root
 
 /dev/cam                  0660   root       camera
 /dev/pmem                 0660   system     graphics
