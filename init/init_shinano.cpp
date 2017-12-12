@@ -31,11 +31,11 @@ static void import_kernel_nv(const std::string& key,
 
     // We only want the bootloader version
     if (key == "oemandroidboot.s1boot") {
-		property_set("ro.boot.oemandroidboot.s1boot", value.c_str());
+		android::init::property_set("ro.boot.oemandroidboot.s1boot", value.c_str());
     }
 }
 
 void vendor_load_properties()
 {
-    import_kernel_cmdline(0, import_kernel_nv);
+    android::init::import_kernel_cmdline(0, import_kernel_nv);
 }
