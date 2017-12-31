@@ -45,7 +45,7 @@ on init
 
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
-    
+
     wait /dev/block/mmcblk0p1
     chown tad tad /dev/block/mmcblk0p1
     chmod 0770 /dev/block/mmcblk0p1
@@ -382,7 +382,7 @@ on property:bluetooth.isEnabled=true
 service qmuxd /system/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps nfc diag wakelock qcom_diag
+    group radio audio bluetooth gps nfc diag wakelock oem_2950
 
 # Wi-Fi and BT MAC addresses
 service macaddrsetup /system/bin/macaddrsetup /sys/devices/platform/bcmdhd_wlan/macaddr
@@ -443,7 +443,7 @@ service ril-daemon2 /system/bin/rild -c 2
     socket rild-debug2 stream 660 radio system
     user root
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag log
+    group radio cache inet misc audio sdcard_r sdcard_rw oem_2950 log
 
 on property:persist.radio.multisim.config=dsds
     start ril-daemon2
@@ -451,7 +451,7 @@ on property:persist.radio.multisim.config=dsds
 service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
-    group gps inet net_raw qcom_diag net_admin wifi
+    group gps inet net_raw oem_2950 net_admin wifi
 
 # Start suntrold
 service suntrold /system/bin/suntrold
@@ -516,7 +516,7 @@ service audioserver /system/bin/audioserver
     class main
     user audioserver
     # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
-    group audio trimarea camera drmrpc inet media mediadrm net_bt bluetooth net_bw_acct qcom_diag
+    group audio trimarea camera drmrpc inet media mediadrm net_bt bluetooth net_bw_acct oem_2950
     ioprio rt 4
 
 service drm /system/bin/drmserver
