@@ -522,10 +522,6 @@ service charger /charger
     class charger
     seclabel u:r:healthd:s0
 
-service audiod /system/bin/audiod
-    class late_start
-    user system
-    group system
 
 # Redefined Service
 service audioserver /system/bin/audioserver
