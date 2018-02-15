@@ -78,6 +78,17 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 BOARD_SEPOLICY_DIRS += \
     device/sony/shinano-common/sepolicy
 
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /system/vendor/bin/credmgrd|/system/vendor/lib/libshims_signal.so \
+    /system/vendor/bin/iddd|/system/vendor/lib/libshims_idd.so \
+    /system/vendor/bin/suntrold|/system/vendor/lib/libshims_signal.so \
+    /system/lib/hw/camera.vendor.qcom.so|/system/vendor/lib/libsonycamera.so \
+    /system/vendor/bin/mm-qcamera-daemon|libandroid.so \
+    /system/lib/libcammw.so|libsensor.so \
+    /system/lib/libsomc_chokoballpal.so|/system/vendor/lib/libGraphicBuffer.so \
+    /system/lib/hw/camera.vendor.qcom.so|libsensor.so
+
 # Props for hotplugging
 TARGET_SYSTEM_PROP += device/sony/shinano-common/system.prop
 
