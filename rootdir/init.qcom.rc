@@ -172,6 +172,7 @@ on boot
     chown system graphics /sys/class/graphics/fb1/hpd
     chmod 0664 /sys/devices/virtual/graphics/fb1/hpd
     chown system graphics /sys/class/graphics/fb1/res_info
+    chmod 0664 /sys/class/graphics/fb1/res_info
     chmod 0664 /sys/devices/virtual/graphics/fb1/res_info
     chown system graphics /sys/class/graphics/fb1/vendor_name
     chmod 0664 /sys/devices/virtual/graphics/fb1/vendor_name
