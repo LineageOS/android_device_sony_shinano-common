@@ -51,3 +51,4 @@ persist.audio.fluence.voicerec=false
 persist.audio.fluence.audiorec=true
 persist.audio.fluence.speaker=false
 persist.audio.handset.mic.type=analog
+persist.audio.anc.enabled=true
