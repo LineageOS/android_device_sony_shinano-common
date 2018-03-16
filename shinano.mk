@@ -140,6 +140,9 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0-service
+
+PRODUCT_PACKAGES += \
     NfcNci \
     com.android.nfc_extras \
     nfc_nci.pn54x.default
