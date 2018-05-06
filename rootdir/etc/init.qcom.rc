@@ -429,7 +429,7 @@ service rmt_storage /vendor/bin/rmt_storage
     shutdown critical
 
 service sensors /vendor/bin/sensors.qcom
-    class core
+    class late_start
     user root
     group root wakelock
 
