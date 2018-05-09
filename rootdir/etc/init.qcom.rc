@@ -423,7 +423,7 @@ service rmt_storage /vendor/bin/rmt_storage
     shutdown critical
 
 service sensors /vendor/bin/sensors.qcom
-    class core
+    class main
     user root
     group root wakelock
 
