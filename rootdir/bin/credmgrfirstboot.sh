@@ -1,4 +1,4 @@
-#!/system/vendor/bin/sh
+#!/vendor/bin/sh
 CREDFOLDER=/data/credmgr
 LOG=/cache/credmgr.log
 
@@ -42,7 +42,7 @@ if [ "x$CREDMGRCNT" == "x0" ]; then
 	chcon u:object_r:credmgrd_data_file:s0 $CREDFOLDER >> $LOG 2>&1
 	F_ERR $? "chcon $CREDFOLDER"
 	echo "CREDINIT: cp initial file" >> $LOG 2>&1
-	cp -v /system/vendor/CredentialManagerData /cache/CredentialManagerData >> $LOG 2>&1
+	cp -v /vendor/CredentialManagerData /cache/CredentialManagerData >> $LOG 2>&1
 	F_ERR $? "copy CredentialManagerData"
 	chown system:system /cache/CredentialManagerData >> $LOG 2>&1
 	F_ERR $? "chown CredentialManagerData"

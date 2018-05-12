@@ -54,7 +54,7 @@ on post-fs-data
 on post-fs-data
     # SONY: Start early TA-users
     mkdir /data/etc 0755 root shell
-    exec -- /system/vendor/bin/taimport
+    exec -- /vendor/bin/taimport
 
     # SONY: Create dir for Widevine keybox
     mkdir /data/persist/wv 0700 system system
@@ -68,18 +68,18 @@ on post-fs-data
     chmod 0660 /sys/devices/sony_camera_1/info
 
     # SONY: Import MiscTA to System properties
-    exec -- /system/vendor/bin/taimport property
+    exec -- /vendor/bin/taimport property
     setprop init.taimport.ready true
     # taimport ready, use this as trigger for multi-cdf-symlinker
 
-service taimport /system/vendor/bin/taimport
+service taimport /vendor/bin/taimport
     class late_start
     user root
     group system
     oneshot
 
 # This script init /cache/CredentialManagerData if /data/credmgr doesn't meet our requirements
-service initcredmgr /system/vendor/bin/credmgrfirstboot.sh
+service initcredmgr /vendor/bin/credmgrfirstboot.sh
     class late_start
     user root
     group root
@@ -91,30 +91,30 @@ on property:sys.credmgrdready=true
 start credmgrd
 
 # Start Credential manager daemon
-service credmgrd /system/vendor/bin/credmgrd
+service credmgrd /vendor/bin/credmgrd
     user system
     group system camera media
     socket credmgr stream 0660 system camera
     disabled
 
 # Secure Config Transfer service
-service sct_service /system/vendor/bin/sct_service
+service sct_service /vendor/bin/sct_service
     user root
     disabled
 
 # Trim Area QMI service
-service ta_qmi_service /system/vendor/bin/ta_qmi_service
+service ta_qmi_service /vendor/bin/ta_qmi_service
     user system
     group system root net_raw wakelock
     disabled
 
-service scd /system/vendor/bin/scd
+service scd /vendor/bin/scd
     class late_start
     user system
     group system
 
-#service wvkbd_installer /system/bin/logwrapper /system/vendor/bin/wvkbd
-service wvkbd_installer /system/vendor/bin/wvkbd
+#service wvkbd_installer /system/bin/logwrapper /vendor/bin/wvkbd
+service wvkbd_installer /vendor/bin/wvkbd
     user system
     group system
     oneshot
@@ -127,7 +127,7 @@ on property:sys.listeners.registered=true
     start wvkbd_installer
 
 #service qcamerasvr /system/bin/logwrapper /system/bin/mm-qcamera-daemon
-service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
+service qcamerasvr /vendor/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera media system inet input graphics
@@ -145,7 +145,7 @@ service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
 # tad_static is in rootfs, normal file_context does not work
     seclabel u:r:tad:s0
 
-service updatemiscta /system/vendor/bin/updatemiscta
+service updatemiscta /vendor/bin/updatemiscta
     class main
     user system
     group system

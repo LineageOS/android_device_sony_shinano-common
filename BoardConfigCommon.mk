@@ -94,7 +94,7 @@ WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/fw_bcmdhd.bin"
 
 # Shims
 TARGET_LD_SHIM_LIBS += \
-    /system/lib/libsomc_chokoballpal.so|/system/vendor/lib/libshim_camera.so
+    /system/lib/libsomc_chokoballpal.so|/vendor/lib/libshim_camera.so
 
 # Filesystem
 BOARD_FLASH_BLOCK_SIZE := 131072

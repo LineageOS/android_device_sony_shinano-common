@@ -98,7 +98,7 @@ PRODUCT_PACKAGES += \
 
 # IPC Security Config
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/sec_config:system/vendor/etc/sec_config
+    $(COMMON_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
 # Keystore
 PRODUCT_PACKAGES += \
