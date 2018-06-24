@@ -126,12 +126,16 @@ service wvkbd_installer /vendor/bin/wvkbd
 on property:sys.listeners.registered=true
     start wvkbd_installer
 
-#service qcamerasvr /system/bin/logwrapper /system/bin/mm-qcamera-daemon
 service qcamerasvr /vendor/bin/mm-qcamera-daemon
-    class late_start
+    class main
     user camera
     group camera media system inet input graphics
-#    seclabel u:r:mm-qcamerad:s0
+
+on property:init.svc.media=restarting
+    restart qcamerasvr
+
+on property:init.svc.servicemanager=restarting
+    restart qcamerasvr
 
 # SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
