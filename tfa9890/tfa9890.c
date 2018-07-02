@@ -25,7 +25,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#include <cutils/log.h>
+#include <log/log.h>
 #include <cutils/misc.h>
 #include <sys/ioctl.h>
 #include <system/audio.h>
