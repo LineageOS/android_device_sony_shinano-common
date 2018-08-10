@@ -49,5 +49,5 @@ static inline const char* getBTDefaultName()
 
 #define BTM_WBS_INCLUDED TRUE
 #define BTIF_HF_WBS_PREFERRED TRUE
-
+#undef PROPERTY_VALUE_MAX
 #endif
