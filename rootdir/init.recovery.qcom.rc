@@ -3,6 +3,8 @@ on init
     write /sys/class/android_usb/android0/idProduct 6182
     symlink /dev/block/platform/msm_sdcc.1 /dev/block/bootdevice
 
+    setprop sys.usb.ffs.aio_compat 1
+
 on boot
     # Allow core adjustements
     write /sys/module/msm_thermal/core_control/enabled 0
