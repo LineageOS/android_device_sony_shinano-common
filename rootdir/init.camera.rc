@@ -137,7 +137,7 @@ service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
 service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
 #service tad_static /sbin/tad_static /data/credmgr/ta_part.bin 0,16
-    class trimarea
+    class core
     user system
     group system root camera media
     socket tad stream 0770 system system
