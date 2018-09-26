@@ -207,6 +207,9 @@
 #nfc permissions
 #/dev/nfc-nci              0660    nfc         nfc
 
+# RTC
+/sys/devices/soc.0/qpnp-rtc-* since_epoch 0660 system system
+
 # NFC
 /sys/devices/f9928000.i2c/i2c-6/6-0028  init_deinit 0200    nfc     nfc
 /sys/devices/f9928000.i2c/i2c-6/6-0028  set_pwr     0200    nfc     nfc
