@@ -100,6 +100,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
+# Bluetooth treble
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-impl
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     e2fsck
