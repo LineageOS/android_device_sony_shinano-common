@@ -34,9 +34,6 @@ on init
     write /sys/bus/msm_subsys/devices/subsys2/restart_level "RELATED"
     write /sys/bus/msm_subsys/devices/subsys3/restart_level "RELATED"
 
-    # for backwards compatibility
-    symlink /sdcard /storage/sdcard0
-
     chmod 0664 /proc/rdtag
     chown root system /proc/rdtag
 
@@ -80,8 +77,6 @@ on fs
     # Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
-
-    symlink /sdcard /storage/sdcard0
 
     # Start hvdcp to enable quck charge 2.0 in power off charge
     start hvdcp
