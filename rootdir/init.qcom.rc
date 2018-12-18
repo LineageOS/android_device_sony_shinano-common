@@ -153,6 +153,7 @@ on boot
 
     # Create folder for timekeep
     mkdir /data/time/ 0700 system system
+    chmod 0770 /data/time/ats_2
 
     # port-bridge
     chmod 0660 /dev/smd0
@@ -559,6 +560,7 @@ service timekeep /system/vendor/bin/timekeep restore
     user root
     group root
     oneshot
+    writepid /dev/cpuset/system-background/tasks
 
 # Quick Charge    
 service hvdcp /system/vendor/bin/hvdcp
