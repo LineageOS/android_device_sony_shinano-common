@@ -23,3 +23,9 @@
 
 # Quick Charge
 /system/vendor/bin/hvdcp                      u:object_r:hvdcp_exec:s0
+
+# Touch
+/sys/devices/virtual/input/clearpad/glove -- u:object_r:sysfs_touch:s0
+/sys/devices/virtual/input/clearpad/wakeup_gesture -- u:object_r:sysfs_touch:s0
+/sys/devices/virtual/input/max1187x/glove -- u:object_r:sysfs_touch:s0
+/sys/devices/virtual/input/max1187x/wakeup_gesture -- u:object_r:sysfs_touch:s0
