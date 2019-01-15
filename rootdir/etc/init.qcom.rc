@@ -23,7 +23,6 @@ import /vendor/etc/init/hw/init.camera.rc
 
 on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
-    chown system system /sys/kernel/debug/kgsl/proc
 
 on init
     symlink /dev/block/platform/msm_sdcc.1 /dev/block/bootdevice
@@ -123,21 +122,16 @@ on boot
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
-    #Create QMUX deamon socket area
-    mkdir /dev/socket/qmux_radio 0770 radio radio
-    chmod 2770 /dev/socket/qmux_radio
-    mkdir /dev/socket/qmux_audio 0770 media audio
-    chmod 2770 /dev/socket/qmux_audio
-    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
-    chmod 2770 /dev/socket/qmux_bluetooth
-    mkdir /dev/socket/qmux_gps 0770 gps gps
-    chmod 2770 /dev/socket/qmux_gps
+    # Create QMUX deamon socket area
+    mkdir /dev/socket/qmux_radio 2770 radio radio
+    mkdir /dev/socket/netmgr 0750 radio radio
+    mkdir /dev/socket/qmux_audio 2770 media audio
+    mkdir /dev/socket/qmux_bluetooth 2770 bluetooth bluetooth
+    mkdir /dev/socket/qmux_gps 2770 gps gps
 
     # Create PERFD deamon related dirs
-    mkdir /data/misc/perfd 0755 root system
-    chmod 2755 /data/misc/perfd
-    mkdir /data/system/perfd 0770 root system
-    chmod 2770 /data/system/perfd
+    mkdir /data/misc/perfd 2755 root system
+    mkdir /data/system/perfd 2770 root system
 
     #Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
@@ -152,7 +146,7 @@ on boot
     setprop ro.telephony.call_ring.multiple false
 
     # Create folder for timekeep
-    mkdir /data/time/ 0700 system system
+    mkdir /data/time 0700 system system
     chmod 0770 /data/time/ats_2
 
     # port-bridge
