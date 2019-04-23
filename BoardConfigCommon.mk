@@ -78,9 +78,6 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 BOARD_SEPOLICY_DIRS += \
     device/sony/shinano-common/sepolicy
 
-# Props for hotplugging
-TARGET_SYSTEM_PROP += device/sony/shinano-common/system.prop
-
 #Sensors
 USE_SENSOR_MULTI_HAL := true
 
