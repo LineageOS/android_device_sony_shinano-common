@@ -16,16 +16,17 @@
 
 #define LOG_TAG "Vector"
 
-#include <string.h>
-#include <stdlib.h>
+#include <utils/VectorImpl.h>
+
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include <log/log.h>
+
 #include <safe_iop.h>
 
-#include <SharedBuffer.h>
-#include <utils/Errors.h>
-#include <utils/VectorImpl.h>
+#include "SharedBuffer.h"
 
 /*****************************************************************************/
 
@@ -62,7 +63,7 @@ VectorImpl::~VectorImpl()
         "[%p] subclasses of VectorImpl must call finish_vector()"
         " in their destructor. Leaking %d bytes.",
         this, (int)(mCount*mItemSize));
-    // We can't call _do_destroy() here because the vtable is already gone.
+    // We can't call _do_destroy() here because the vtable is already gone. 
 }
 
 VectorImpl& VectorImpl::operator = (const VectorImpl& rhs)
@@ -198,13 +199,16 @@ status_t VectorImpl::sort(VectorImpl::compar_r_t cmp, void* state)
                 _do_copy(temp, item, 1);
 
                 ssize_t j = i-1;
-                void* next = reinterpret_cast<char*>(array) + mItemSize*(i);
+                void* next = reinterpret_cast<char*>(array) + mItemSize*(i);                    
                 do {
                     _do_destroy(next, 1);
                     _do_copy(next, curr, 1);
                     next = curr;
                     --j;
-                    curr = reinterpret_cast<char*>(array) + mItemSize*(j);
+                    curr = NULL;
+                    if (j >= 0) {
+                        curr = reinterpret_cast<char*>(array) + mItemSize*(j);
+                    }
                 } while (j>=0 && (cmp(curr, temp, state) > 0));
 
                 _do_destroy(next, 1);
@@ -212,7 +216,7 @@ status_t VectorImpl::sort(VectorImpl::compar_r_t cmp, void* state)
             }
             i++;
         }
-
+        
         if (temp) {
             _do_destroy(temp, 1);
             free(temp);
@@ -368,7 +372,7 @@ void VectorImpl::release_storage()
         if (sb->release(SharedBuffer::eKeepStorage) == 1) {
             _do_destroy(mStorage, mCount);
             SharedBuffer::dealloc(sb);
-        }
+        } 
     }
 }
 
@@ -552,15 +556,6 @@ void VectorImpl::_do_move_backward(void* dest, const void* from, size_t num) con
     do_move_backward(dest, from, num);
 }
 
-void VectorImpl::reservedVectorImpl1() { }
-void VectorImpl::reservedVectorImpl2() { }
-void VectorImpl::reservedVectorImpl3() { }
-void VectorImpl::reservedVectorImpl4() { }
-void VectorImpl::reservedVectorImpl5() { }
-void VectorImpl::reservedVectorImpl6() { }
-void VectorImpl::reservedVectorImpl7() { }
-void VectorImpl::reservedVectorImpl8() { }
-
 /*****************************************************************************/
 
 SortedVectorImpl::SortedVectorImpl(size_t itemSize, uint32_t flags)
@@ -596,6 +591,10 @@ size_t SortedVectorImpl::orderOf(const void* item) const
 
 ssize_t SortedVectorImpl::_indexOrderOf(const void* item, size_t* order) const
 {
+    if (order) *order = 0;
+    if (isEmpty()) {
+        return NAME_NOT_FOUND;
+    }
     // binary search
     ssize_t err = NAME_NOT_FOUND;
     ssize_t l = 0;
@@ -675,15 +674,6 @@ ssize_t SortedVectorImpl::remove(const void* item)
     }
     return i;
 }
-
-void SortedVectorImpl::reservedSortedVectorImpl1() { };
-void SortedVectorImpl::reservedSortedVectorImpl2() { };
-void SortedVectorImpl::reservedSortedVectorImpl3() { };
-void SortedVectorImpl::reservedSortedVectorImpl4() { };
-void SortedVectorImpl::reservedSortedVectorImpl5() { };
-void SortedVectorImpl::reservedSortedVectorImpl6() { };
-void SortedVectorImpl::reservedSortedVectorImpl7() { };
-void SortedVectorImpl::reservedSortedVectorImpl8() { };
 
 /*****************************************************************************/
 
