@@ -63,7 +63,7 @@ VectorImpl::~VectorImpl()
         "[%p] subclasses of VectorImpl must call finish_vector()"
         " in their destructor. Leaking %d bytes.",
         this, (int)(mCount*mItemSize));
-    // We can't call _do_destroy() here because the vtable is already gone. 
+    // We can't call _do_destroy() here because the vtable is already gone.
 }
 
 VectorImpl& VectorImpl::operator = (const VectorImpl& rhs)
@@ -199,7 +199,7 @@ status_t VectorImpl::sort(VectorImpl::compar_r_t cmp, void* state)
                 _do_copy(temp, item, 1);
 
                 ssize_t j = i-1;
-                void* next = reinterpret_cast<char*>(array) + mItemSize*(i);                    
+                void* next = reinterpret_cast<char*>(array) + mItemSize*(i);
                 do {
                     _do_destroy(next, 1);
                     _do_copy(next, curr, 1);
@@ -216,7 +216,7 @@ status_t VectorImpl::sort(VectorImpl::compar_r_t cmp, void* state)
             }
             i++;
         }
-        
+
         if (temp) {
             _do_destroy(temp, 1);
             free(temp);
@@ -372,7 +372,7 @@ void VectorImpl::release_storage()
         if (sb->release(SharedBuffer::eKeepStorage) == 1) {
             _do_destroy(mStorage, mCount);
             SharedBuffer::dealloc(sb);
-        } 
+        }
     }
 }
 
@@ -556,6 +556,15 @@ void VectorImpl::_do_move_backward(void* dest, const void* from, size_t num) con
     do_move_backward(dest, from, num);
 }
 
+void VectorImpl::reservedVectorImpl1() { }
+void VectorImpl::reservedVectorImpl2() { }
+void VectorImpl::reservedVectorImpl3() { }
+void VectorImpl::reservedVectorImpl4() { }
+void VectorImpl::reservedVectorImpl5() { }
+void VectorImpl::reservedVectorImpl6() { }
+void VectorImpl::reservedVectorImpl7() { }
+void VectorImpl::reservedVectorImpl8() { }
+
 /*****************************************************************************/
 
 SortedVectorImpl::SortedVectorImpl(size_t itemSize, uint32_t flags)
@@ -675,7 +684,15 @@ ssize_t SortedVectorImpl::remove(const void* item)
     return i;
 }
 
+void SortedVectorImpl::reservedSortedVectorImpl1() { };
+void SortedVectorImpl::reservedSortedVectorImpl2() { };
+void SortedVectorImpl::reservedSortedVectorImpl3() { };
+void SortedVectorImpl::reservedSortedVectorImpl4() { };
+void SortedVectorImpl::reservedSortedVectorImpl5() { };
+void SortedVectorImpl::reservedSortedVectorImpl6() { };
+void SortedVectorImpl::reservedSortedVectorImpl7() { };
+void SortedVectorImpl::reservedSortedVectorImpl8() { };
+
 /*****************************************************************************/
 
 }; // namespace android
-

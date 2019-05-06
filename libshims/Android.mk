@@ -29,7 +29,9 @@ LOCAL_SRC_FILES := \
 LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/include \
     external/safe-iop/include \
-    system/core/libutils
+    system/core/libutils \
+    system/core/libgrallocusage/include \
+    frameworks/native/libs/vr/libpdx/private
 
 LOCAL_SHARED_LIBRARIES := \
     libcutils \
@@ -37,7 +39,10 @@ LOCAL_SHARED_LIBRARIES := \
     liblog \
     libui \
     libsync \
-    libutils
+    libutils \
+    libhidlbase \
+    android.hardware.graphics.allocator@2.0 \
+    android.hardware.graphics.mapper@2.1
 
 LOCAL_MODULE := libshim_camera
 

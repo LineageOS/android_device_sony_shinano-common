@@ -58,40 +58,47 @@ GraphicBuffer::GraphicBuffer()
     handle = NULL;
 }
 
-// deprecated
 GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
-        PixelFormat inFormat, uint32_t inUsage, std::string requestorName)
-    : GraphicBuffer(inWidth, inHeight, inFormat, 1, static_cast<uint64_t>(inUsage), requestorName)
+        PixelFormat inFormat, uint32_t inUsage)
+    : BASE(), mOwner(ownData), mBufferMapper(GraphicBufferMapper::get()),
+      mInitCheck(NO_ERROR), mId(getUniqueId())
 {
+    width  =
+    height =
+    stride =
+    format =
+    usage  = 0;
+    handle = NULL;
+    mInitCheck = initWithSize(inWidth, inHeight, inFormat, 1,
+                static_cast<uint64_t>(inUsage), "<Unknown>");
 }
 
 GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
-        PixelFormat inFormat, uint32_t inLayerCount, uint64_t usage, std::string requestorName)
-    : GraphicBuffer()
+        PixelFormat inFormat, uint32_t inUsage, uint32_t inStride,
+        native_handle_t* inHandle, bool keepOwnership)
+    : BASE(), mOwner(keepOwnership ? ownHandle : ownNone),
+      mBufferMapper(GraphicBufferMapper::get()),
+      mInitCheck(NO_ERROR), mId(getUniqueId())
 {
-    mInitCheck = initWithSize(inWidth, inHeight, inFormat, inLayerCount,
-            usage, std::move(requestorName));
+    width  = static_cast<int>(inWidth);
+    height = static_cast<int>(inHeight);
+    stride = static_cast<int>(inStride);
+    format = inFormat;
+    usage  = static_cast<int>(inUsage);
+    handle = inHandle;
 }
 
-// deprecated
-GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
-        PixelFormat inFormat, uint32_t inLayerCount, uint32_t inUsage,
-        uint32_t inStride, native_handle_t* inHandle, bool keepOwnership)
-    : GraphicBuffer(inHandle, keepOwnership ? TAKE_HANDLE : WRAP_HANDLE,
-            inWidth, inHeight, inFormat, inLayerCount, static_cast<uint64_t>(inUsage),
-            inStride)
+GraphicBuffer::GraphicBuffer(ANativeWindowBuffer* buffer, bool keepOwnership)
+    : BASE(), mOwner(keepOwnership ? ownHandle : ownNone),
+      mBufferMapper(GraphicBufferMapper::get()),
+      mInitCheck(NO_ERROR), mWrappedBuffer(buffer), mId(getUniqueId())
 {
-}
-
-GraphicBuffer::GraphicBuffer(const native_handle_t* handle,
-        HandleWrapMethod method, uint32_t width, uint32_t height,
-        PixelFormat format, uint32_t layerCount,
-        uint64_t usage,
-        uint32_t stride)
-    : GraphicBuffer()
-{
-    mInitCheck = initWithHandle(handle, method, width, height, format,
-            layerCount, usage, stride);
+    width  = buffer->width;
+    height = buffer->height;
+    stride = buffer->stride;
+    format = buffer->format;
+    usage  = buffer->usage;
+    handle = buffer->handle;
 }
 
 GraphicBuffer::~GraphicBuffer()

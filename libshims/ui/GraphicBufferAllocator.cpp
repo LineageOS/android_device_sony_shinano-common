@@ -42,13 +42,20 @@ KeyedVector<buffer_handle_t,
     GraphicBufferAllocator::alloc_rec_t> GraphicBufferAllocator::sAllocList;
 
 GraphicBufferAllocator::GraphicBufferAllocator()
-  : mMapper(GraphicBufferMapper::getInstance()),
-    mAllocator(std::make_unique<Gralloc2::Allocator>(
-                mMapper.getGrallocMapper()))
+  : mAllocDev(0)
 {
+    hw_module_t const* module;
+    int err = hw_get_module(GRALLOC_HARDWARE_MODULE_ID, &module);
+    ALOGE_IF(err, "FATAL: can't find the %s module", GRALLOC_HARDWARE_MODULE_ID);
+    if (err == 0) {
+        gralloc_open(module, &mAllocDev);
+    }
 }
 
-GraphicBufferAllocator::~GraphicBufferAllocator() {}
+GraphicBufferAllocator::~GraphicBufferAllocator()
+{
+    gralloc_close(mAllocDev);
+}
 
 void GraphicBufferAllocator::dump(String8& result) const
 {
@@ -143,17 +150,18 @@ status_t GraphicBufferAllocator::allocate(uint32_t width, uint32_t height,
 
 status_t GraphicBufferAllocator::free(buffer_handle_t handle)
 {
-    ATRACE_CALL();
+    status_t err;
 
-    // We allocated a buffer from the allocator and imported it into the
-    // mapper to get the handle.  We just need to free the handle now.
-    mMapper.freeBuffer(handle);
+    err = mAllocDev->free(mAllocDev, handle);
 
-    Mutex::Autolock _l(sLock);
-    KeyedVector<buffer_handle_t, alloc_rec_t>& list(sAllocList);
-    list.removeItem(handle);
+    ALOGW_IF(err, "free(...) failed %d (%s)", err, strerror(-err));
+    if (err == NO_ERROR) {
+        Mutex::Autolock _l(sLock);
+        KeyedVector<buffer_handle_t, alloc_rec_t>& list(sAllocList);
+        list.removeItem(handle);
+    }
 
-    return NO_ERROR;
+    return err;
 }
 
 // ---------------------------------------------------------------------------

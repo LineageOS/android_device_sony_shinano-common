@@ -31,6 +31,7 @@
 #include <nativebase/nativebase.h>
 
 #include <hardware/gralloc.h>
+struct ANativeWindowBuffer;
 
 namespace android {
 
@@ -126,13 +127,18 @@ public:
     // These functions are deprecated because they only take 32 bits of usage
     GraphicBuffer(const native_handle_t* handle, HandleWrapMethod method,
             uint32_t width, uint32_t height,
-            PixelFormat format, uint32_t layerCount,
+            PixelFormat format,
             uint32_t usage, uint32_t stride)
         : GraphicBuffer(handle, method, width, height, format, layerCount,
                 static_cast<uint64_t>(usage), stride) {}
     GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
-            uint32_t inLayerCount, uint32_t inUsage, uint32_t inStride,
+            uint32_t inUsage, uint32_t inStride,
             native_handle_t* inHandle, bool keepOwnership);
+    GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
+            uint32_t inUsage);
+    // create a buffer from an existing ANativeWindowBuffer
+    GraphicBuffer(ANativeWindowBuffer* buffer, bool keepOwnership);
+
     GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
             uint32_t inUsage, std::string requestorName = "<Unknown>");
 
@@ -235,6 +241,10 @@ private:
 
     GraphicBufferMapper& mBufferMapper;
     ssize_t mInitCheck;
+
+    // If we're wrapping another buffer then this reference will make sure it
+    // doesn't get freed.
+    sp<ANativeWindowBuffer> mWrappedBuffer;
 
     // numbers of fds/ints in native_handle_t to flatten
     uint32_t mTransportNumFds;
