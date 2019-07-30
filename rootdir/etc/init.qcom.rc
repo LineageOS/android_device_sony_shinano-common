@@ -468,7 +468,8 @@ service adsprpcd /vendor/bin/adsprpcd
 
 service charger /charger
     class charger
-    group system graphics
+    user system
+    group system graphics input
     seclabel u:r:healthd:s0
 
 # Redefined Service
