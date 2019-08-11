@@ -10,7 +10,7 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and 
+# See the License for the specific language governing permissions and
 # limitations under the License.
 #
 
@@ -101,14 +101,14 @@ service credmgrd /system/vendor/bin/credmgrd
 service sct_service /system/vendor/bin/sct_service
     user root
     disabled
- 
+
 # Trim Area QMI service
 service ta_qmi_service /system/vendor/bin/ta_qmi_service
     user system
     group system root net_raw wakelock
     disabled
 
-service scd /system/bin/scd
+service scd /system/vendor/bin/scd
     class late_start
     user system
     group system
@@ -141,7 +141,7 @@ service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
     user system
     group system root camera media
     socket tad stream 0770 system system
-    
+
 # tad_static is in rootfs, normal file_context does not work
     seclabel u:r:tad:s0
 
@@ -150,4 +150,3 @@ service updatemiscta /system/vendor/bin/updatemiscta
     user system
     group system
     oneshot
-

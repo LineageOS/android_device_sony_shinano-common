@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2014, The CyanogenMod Project
+ * Copyright (C) 2014-2016 The CyanogenMod Project
+ * Copyright (C) 2017-2019 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,40 +20,40 @@
 
 #define TFA9890_DEVICE "/dev/tfa98xx"
 
-/* All the files in /system/etc/tfa98xx */
-#define PATCH_DSP_FILE "/system/etc/tfa98xx/TFA9890.patch"
-#define PATCH_COLDBOOT_FILE "/system/etc/tfa98xx/coldboot.patch"
+/* All the files in /vendor/etc/tfa98xx */
+#define PATCH_DSP_FILE "/vendor/etc/tfa98xx/TFA9890.patch"
+#define PATCH_COLDBOOT_FILE "/vendor/etc/tfa98xx/coldboot.patch"
 
-#define CONFIG_TOP "/system/etc/tfa98xx/TFA9890_top.config"
-#define CONFIG_BOTTOM "/system/etc/tfa98xx/TFA9890_btm.config"
-#define CONFIG_RECEIVER "/system/etc/tfa98xx/TFA9890_Receiver.config"
+#define CONFIG_TOP "/vendor/etc/tfa98xx/TFA9890_top.config"
+#define CONFIG_BOTTOM "/vendor/etc/tfa98xx/TFA9890_btm.config"
+#define CONFIG_RECEIVER "/vendor/etc/tfa98xx/TFA9890_Receiver.config"
 
-#define SPEAKER_TOP "/system/etc/tfa98xx/top.speaker"
-#define SPEAKER_BOTTOM "/system/etc/tfa98xx/btm.speaker"
+#define SPEAKER_TOP "/vendor/etc/tfa98xx/top.speaker"
+#define SPEAKER_BOTTOM "/vendor/etc/tfa98xx/btm.speaker"
 
-#define PRESET_HIFISPEAKER_TOP "/system/etc/tfa98xx/HiFiSpeaker_top.preset"
-#define PRESET_HIFISPEAKER_BOTTOM "/system/etc/tfa98xx/HiFiSpeaker_btm.preset"
-#define PRESET_HIFISPEAKER_RING_TOP "/system/etc/tfa98xx/HiFiSpeakerRing_top.preset"
-#define PRESET_HIFISPEAKER_RING_BOTTOM "/system/etc/tfa98xx/HiFiSpeakerRing_btm.preset"
-#define PRESET_HIFISPEAKER_SFORCE_TOP "/system/etc/tfa98xx/HiFiSpeakerSforce_top.preset"
-#define PRESET_HIFISPEAKER_SFORCE_BOTTOM "/system/etc/tfa98xx/HiFiSpeakerSforce_btm.preset"
-#define PRESET_VOICECALLSPEAKER_TOP "/system/etc/tfa98xx/VoiceCallSpeaker_top.preset"
-#define PRESET_VOICECALLSPEAKER_BOTTOM "/system/etc/tfa98xx/VoiceCallSpeaker_btm.preset"
-#define PRESET_FMSPEAKER_TOP "/system/etc/tfa98xx/FMSpeaker_top.preset"
-#define PRESET_FMSPEAKER_BOTTOM "/system/etc/tfa98xx/FMSpeaker_btm.preset"
-#define PRESET_VOICECALLEARPICE_TOP "/system/etc/tfa98xx/VoiceCallEarpice_top.preset"
+#define PRESET_HIFISPEAKER_TOP "/vendor/etc/tfa98xx/HiFiSpeaker_top.preset"
+#define PRESET_HIFISPEAKER_BOTTOM "/vendor/etc/tfa98xx/HiFiSpeaker_btm.preset"
+#define PRESET_HIFISPEAKER_RING_TOP "/vendor/etc/tfa98xx/HiFiSpeakerRing_top.preset"
+#define PRESET_HIFISPEAKER_RING_BOTTOM "/vendor/etc/tfa98xx/HiFiSpeakerRing_btm.preset"
+#define PRESET_HIFISPEAKER_SFORCE_TOP "/vendor/etc/tfa98xx/HiFiSpeakerSforce_top.preset"
+#define PRESET_HIFISPEAKER_SFORCE_BOTTOM "/vendor/etc/tfa98xx/HiFiSpeakerSforce_btm.preset"
+#define PRESET_VOICECALLSPEAKER_TOP "/vendor/etc/tfa98xx/VoiceCallSpeaker_top.preset"
+#define PRESET_VOICECALLSPEAKER_BOTTOM "/vendor/etc/tfa98xx/VoiceCallSpeaker_btm.preset"
+#define PRESET_FMSPEAKER_TOP "/vendor/etc/tfa98xx/FMSpeaker_top.preset"
+#define PRESET_FMSPEAKER_BOTTOM "/vendor/etc/tfa98xx/FMSpeaker_btm.preset"
+#define PRESET_VOICECALLEARPICE_TOP "/vendor/etc/tfa98xx/VoiceCallEarpice_top.preset"
 
-#define EQ_HIFISPEAKER_TOP "/system/etc/tfa98xx/HiFiSpeaker_top.eq"
-#define EQ_HIFISPEAKER_BOTTOM "/system/etc/tfa98xx/HiFiSpeaker_btm.eq"
-#define EQ_HIFISPEAKER_RING_TOP "/system/etc/tfa98xx/HiFiSpeakerRing_top.eq"
-#define EQ_HIFISPEAKER_RING_BOTTOM "/system/etc/tfa98xx/HiFiSpeakerRing_btm.eq"
-#define EQ_HIFISPEAKER_SFORCE_TOP "/system/etc/tfa98xx/HiFiSpeakerSforce_top.eq"
-#define EQ_HIFISPEAKER_SFORCE_BOTTOM "/system/etc/tfa98xx/HiFiSpeakerSforce_btm.eq"
-#define EQ_VOICECALLSPEAKER_TOP "/system/etc/tfa98xx/VoiceCallSpeaker_top.eq"
-#define EQ_VOICECALLSPEAKER_BOTTOM "/system/etc/tfa98xx/VoiceCallSpeaker_btm.eq"
-#define EQ_FMSPEAKER_TOP "/system/etc/tfa98xx/FMSpeaker_top.eq"
-#define EQ_FMSPEAKER_BOTTOM "/system/etc/tfa98xx/FMSpeaker_btm.eq"
-#define EQ_VOICECALLEARPICE_TOP "/system/etc/tfa98xx/VoiceCallEarpice_top.eq"
+#define EQ_HIFISPEAKER_TOP "/vendor/etc/tfa98xx/HiFiSpeaker_top.eq"
+#define EQ_HIFISPEAKER_BOTTOM "/vendor/etc/tfa98xx/HiFiSpeaker_btm.eq"
+#define EQ_HIFISPEAKER_RING_TOP "/vendor/etc/tfa98xx/HiFiSpeakerRing_top.eq"
+#define EQ_HIFISPEAKER_RING_BOTTOM "/vendor/etc/tfa98xx/HiFiSpeakerRing_btm.eq"
+#define EQ_HIFISPEAKER_SFORCE_TOP "/vendor/etc/tfa98xx/HiFiSpeakerSforce_top.eq"
+#define EQ_HIFISPEAKER_SFORCE_BOTTOM "/vendor/etc/tfa98xx/HiFiSpeakerSforce_btm.eq"
+#define EQ_VOICECALLSPEAKER_TOP "/vendor/etc/tfa98xx/VoiceCallSpeaker_top.eq"
+#define EQ_VOICECALLSPEAKER_BOTTOM "/vendor/etc/tfa98xx/VoiceCallSpeaker_btm.eq"
+#define EQ_FMSPEAKER_TOP "/vendor/etc/tfa98xx/FMSpeaker_top.eq"
+#define EQ_FMSPEAKER_BOTTOM "/vendor/etc/tfa98xx/FMSpeaker_btm.eq"
+#define EQ_VOICECALLEARPICE_TOP "/vendor/etc/tfa98xx/VoiceCallEarpice_top.eq"
 
 /* Macros for ioctl with above files
  * This macro calls tfa9890_prepare_for_ioctl()

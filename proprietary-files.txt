@@ -1,117 +1,54 @@
+# ADSP
+bin/adsprpcd:vendor/bin/adsprpcd
+vendor/lib/libadsprpc.so
+vendor/lib/libfastcvadsp_stub.so
+vendor/lib/libfastcvopt.so
+
+# Assertive Display
+etc/ad_calib.cfg:vendor/etc/ad_calib.cfg
+
 # Audio
 vendor/lib/libacdbloader.so
-vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
-vendor/lib/libaudioalsa.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 
-# ADSP
-bin/adsprpcd
-vendor/lib/libadsprpc.so
-vendor/lib/libfastcvadsp_stub.so
+# Bluetooth aptX - from Motorola Moto Z NCLS25.86-11-4-6-5
+vendor/lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
 
-# Camera
-bin/credmgrd|220874582f2c22cfcca380ca2870e1eB9ab366ae
-bin/iddd
-bin/mm-qcamera-daemon
-etc/flashled_calc_parameters.cfg
-etc/iddd.conf
-lib/hw/camera.qcom.so:lib/hw/camera.vendor.qcom.so
-lib/lib_get_secure_mode.so
-lib/lib_get_rooting_status.so
-lib/libcamera_clientsemc.so
-lib/libcameralight.so
-lib/libcammw.so
-lib/libcredential-manager-service.so|0a20a83de6be69a8ce1d0ed15f76a1bd3cdcfd31
-lib/libidd.so
-lib/liblights-core.so
-lib/libmmcamera_interface.so
-lib/libmmjpeg_interface.so
-lib/libprotobuf-c.so
-lib/libqomx_core.so
-lib/libsys-utils.so
-vendor/CredentialManagerData
-vendor/lib/libactuator_dw9714.so
-vendor/lib/libactuator_dw9714_camcorder.so
-vendor/lib/libactuator_dw9714_camera.so
-vendor/lib/libactuator_dw9716.so
-vendor/lib/libactuator_dw9716_camcorder.so
-vendor/lib/libactuator_dw9716_camera.so
-vendor/lib/libactuator_iu074.so
-vendor/lib/libactuator_iu074_camcorder.so
-vendor/lib/libactuator_iu074_camera.so
-vendor/lib/libactuator_ov8825.so
-vendor/lib/libactuator_ov8825_camcorder.so
-vendor/lib/libactuator_ov8825_camera.so
-vendor/lib/libactuator_ov12830.so
-vendor/lib/libactuator_ov12830_camcorder.so
-vendor/lib/libactuator_ov12830_camera.so
-vendor/lib/libactuator_rohm_bu64243gwz.so
-vendor/lib/libactuator_rohm_bu64243gwz_camcorder.so
-vendor/lib/libactuator_rohm_bu64243gwz_camera.so
-vendor/lib/libfastcvopt.so
-vendor/lib/libjpegdhw.so
-vendor/lib/libjpegehw.so
-vendor/lib/libmmcamera2_c2d_module.so
-vendor/lib/libmmcamera2_cpp_module.so
-vendor/lib/libmmcamera2_frame_algorithm.so
-vendor/lib/libmmcamera2_iface_modules.so
-vendor/lib/libmmcamera2_imglib_modules.so
-vendor/lib/libmmcamera2_isp_modules.so
-vendor/lib/libmmcamera2_is.so
-vendor/lib/libmmcamera2_pproc_modules.so
-vendor/lib/libmmcamera2_sensor_modules.so
-vendor/lib/libmmcamera2_stats_algorithm.so
-vendor/lib/libmmcamera2_stats_modules.so
-vendor/lib/libmmcamera2_vpe_module.so
-vendor/lib/libmmcamera2_wnr_module.so
-vendor/lib/libmmcamera_faceproc.so
-vendor/lib/libmmcamera_hdr_gb_lib.so
-vendor/lib/libmmcamera_hdr_lib.so
-vendor/lib/libmmcamera_imglib.so
-vendor/lib/libmmcamera_ofilm_oty5f03_eeprom.so
-vendor/lib/libmmcamera_sunny_p12v01m_eeprom.so
-vendor/lib/libmmcamera_sunny_p5v23c_eeprom.so
-vendor/lib/libmmcamera_sunny_q8v18a_eeprom.so
-vendor/lib/libmmcamera_tintless_algo.so
-vendor/lib/libmmcamera_tintless_bg_pca_algo.so
-vendor/lib/libmmcamera_truly_cm7700_eeprom.so
-vendor/lib/libmmcamera_wavelet_lib.so
-vendor/lib/libmmjpeg.so
-vendor/lib/libmmqjpeg_codec.so
-vendor/lib/liboemcamera.so
-vendor/lib/libqomx_jpegdec.so
-vendor/lib/libqomx_jpegenc.so
-vendor/camera/flash.dat
-vendor/camera/jpeg_fsc.dat
+# CMN firmware
+etc/firmware/cmnlib.b00:vendor/firmware/cmnlib.b00
+etc/firmware/cmnlib.b01:vendor/firmware/cmnlib.b01
+etc/firmware/cmnlib.b02:vendor/firmware/cmnlib.b02
+etc/firmware/cmnlib.b03:vendor/firmware/cmnlib.b03
+etc/firmware/cmnlib.mdt:vendor/firmware/cmnlib.mdt
 
 # Cacao
-lib/camera/libexcal_object_tracker_plugin.so
 lib/camera/libexcal_cam_ctrl_plugin.so
-lib/camera/libexcal_scene_detector_plugin.so
-lib/camera/libexcal_streaming_ctrl_plugin.so
-lib/camera/libexcal_idt_ctrl_plugin.so
-lib/camera/libexcal_hdr_plugin.so
-lib/camera/libexcal_splitter_plugin.so
-lib/camera/libexcal_color_ctrl_plugin.so
-lib/camera/libexcal_snapshot_ctrl_plugin.so
-lib/camera/libexcal_hal_ctrl_plugin.so
-lib/camera/libexcal_face_detector_plugin.so
-lib/camera/libexcal_debug_display_plugin.so
-lib/camera/libexcal_lens_ctrl_plugin.so
-lib/camera/libexcal_focus_stats_conv_plugin.so
-lib/camera/libexcal_image_conv_plugin.so
-lib/camera/libexcal_flicker_detector_plugin.so
-lib/camera/libexcal_multiframe_nr_plugin.so
-lib/camera/libexcal_jpeg_enc_plugin.so
 lib/camera/libexcal_cap_ctrl_plugin.so
-lib/camera/libexcal_motion_estimation_plugin.so
-lib/camera/libexcal_iq_ctrl_plugin.so
+lib/camera/libexcal_color_ctrl_plugin.so
+lib/camera/libexcal_debug_display_plugin.so
 lib/camera/libexcal_exposure_ctrl_plugin.so
+lib/camera/libexcal_face_detector_plugin.so
+lib/camera/libexcal_flicker_detector_plugin.so
+lib/camera/libexcal_focus_stats_conv_plugin.so
+lib/camera/libexcal_hal_ctrl_plugin.so
+lib/camera/libexcal_hdr_plugin.so
+lib/camera/libexcal_idt_ctrl_plugin.so
+lib/camera/libexcal_image_conv_plugin.so
+lib/camera/libexcal_iq_ctrl_plugin.so
+lib/camera/libexcal_jpeg_enc_plugin.so
+lib/camera/libexcal_lens_ctrl_plugin.so
+lib/camera/libexcal_motion_estimation_plugin.so
+lib/camera/libexcal_multiframe_nr_plugin.so
+lib/camera/libexcal_object_tracker_plugin.so
+lib/camera/libexcal_scene_detector_plugin.so
+lib/camera/libexcal_snapshot_ctrl_plugin.so
+lib/camera/libexcal_splitter_plugin.so
+lib/camera/libexcal_streaming_ctrl_plugin.so
 lib/libcacao_chokoball.so
 lib/libcacao_client.so
 lib/libcacao_common.so
@@ -130,9 +67,53 @@ lib/libcald_util.so
 lib/libexcal_core.so
 lib/libexcal_system.so
 lib/libsomc_chokoballpal.so
-lib/libsony_chokoball.so
 lib/libsony_chokoballrsc.so
+lib/libsony_chokoball.so
 lib/libsony_face.so
+
+# Camera
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
+bin/scd:vendor/bin/scd
+bin/sct_service:vendor/bin/sct_service
+etc/flashled_calc_parameters.cfg:vendor/etc/flashled_calc_parameters.cfg
+lib/hw/camera.qcom.so:lib/hw/camera.vendor.qcom.so
+lib/libcamera_clientsemc.so
+lib/libcameralight.so
+lib/libcammw.so
+lib/libmmcamera_interface.so:vendor/lib/libmmcamera_interface.so
+lib/libmmjpeg_interface.so:vendor/lib/libmmjpeg_interface.so
+lib/libqomx_core.so:vendor/lib/libqomx_core.so
+vendor/camera/flash.dat
+vendor/camera/jpeg_fsc.dat
+vendor/lib/libactuator_dw9714_camera.so
+vendor/lib/libactuator_dw9716_camera.so
+vendor/lib/libactuator_iu074_camera.so
+vendor/lib/libactuator_ov12830_camera.so
+vendor/lib/libactuator_ov8825_camera.so
+vendor/lib/libactuator_rohm_bu64243gwz_camera.so
+vendor/lib/libfastcvopt.so
+vendor/lib/libmmcamera2_c2d_module.so
+vendor/lib/libmmcamera2_cpp_module.so
+vendor/lib/libmmcamera2_frame_algorithm.so
+vendor/lib/libmmcamera2_iface_modules.so
+vendor/lib/libmmcamera2_imglib_modules.so
+vendor/lib/libmmcamera2_isp_modules.so
+vendor/lib/libmmcamera2_is.so
+vendor/lib/libmmcamera2_pproc_modules.so
+vendor/lib/libmmcamera2_sensor_modules.so
+vendor/lib/libmmcamera2_stats_algorithm.so
+vendor/lib/libmmcamera2_stats_modules.so
+vendor/lib/libmmcamera2_vpe_module.so
+vendor/lib/libmmcamera2_wnr_module.so
+vendor/lib/libmmcamera_faceproc.so
+vendor/lib/libmmcamera_hdr_gb_lib.so
+vendor/lib/libmmcamera_hdr_lib.so
+vendor/lib/libmmcamera_imglib.so
+vendor/lib/libmmcamera_tintless_algo.so
+vendor/lib/libmmcamera_tintless_bg_pca_algo.so
+vendor/lib/libmmcamera_truly_cm7700_eeprom.so
+vendor/lib/libmmcamera_wavelet_lib.so
+vendor/lib/liboemcamera.so
 
 # Chromatix
 vendor/lib/libchromatix_imx132_common.so
@@ -236,117 +217,105 @@ vendor/lib/libchromatix_skuf_ov5648_p5v23c_preview.so
 vendor/lib/libchromatix_skuf_ov5648_p5v23c_snapshot.so
 
 # Camera firmware
-etc/firmware/cpp_firmware_v1_1_1.fw
-etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
-etc/firmware/venus.b00
-etc/firmware/venus.b01
-etc/firmware/venus.b02
-etc/firmware/venus.b03
-etc/firmware/venus.b04
-etc/firmware/venus.mbn
-etc/firmware/venus.mdt
+
+# Credential manager
+bin/credmgrd:vendor/bin/credmgrd|220874582f2c22cfcca380ca2870e1eB9ab366ae
+bin/suntrold:vendor/bin/suntrold
+lib/lib_asb_tee.so
+lib/libcredential-manager-service.so|0a20a83de6be69a8ce1d0ed15f76a1bd3cdcfd31
+lib/lib_get_secure_mode.so
+lib/libkeyctrl.so
+lib/libprotobuf-c.so
+vendor/CredentialManagerData|94ec2de302937f545ab0b8a221f73d1fcfa84916
 
 # DRM
-bin/qseecomd
-vendor/lib/libdrmdiag.so
+bin/qseecomd:vendor/bin/qseecomd
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
-vendor/lib/libtzdrmgenprov.so
 
-# GPS
-bin/loc_launcher
-lib/hw/gps.default.so
-lib/libgps.utils.so
-lib/libloc_api_v02.so
-lib/libloc_core.so
-lib/libloc_eng.so
-vendor/lib/hw/flp.default.so
-vendor/lib/libflp.so
-vendor/lib/libgeofence.so
-vendor/lib/libizat_core.so
-vendor/lib/liblbs_core.so
-vendor/lib/libloc_ext.so
-vendor/lib/libloc_xtra.so
-vendor/lib/libquipc_os_api.so
+# In Device Diagnostics (idd)
+bin/iddd:vendor/bin/iddd
+etc/iddd.conf:vendor/etc/iddd.conf
+lib/libidd.so:vendor/lib/libidd.so
 
-# IRSC
-bin/irsc_util
-
-# Keystore
+# Keymaster firmware
 vendor/firmware/keymaster/keymaster.b00
 vendor/firmware/keymaster/keymaster.b01
 vendor/firmware/keymaster/keymaster.b02
 vendor/firmware/keymaster/keymaster.b03
 vendor/firmware/keymaster/keymaster.mdt
 
-# Modem
-bin/netmgrd
-bin/qmuxd
-bin/rmt_storage
-lib/libmdmdetect.so
-lib/libpin-cache.so
-lib/libstartup-reason.so
-vendor/lib/libconnctrl.so
-vendor/lib/libcneapiclient.so
-vendor/lib/libconfigdb.so
-vendor/lib/libdiag.so
-vendor/lib/libdsi_netctrl.so
-vendor/lib/libdsutils.so
-vendor/lib/libidl.so
-vendor/lib/liblqe.so
-vendor/lib/libnetmgr.so
-vendor/lib/libperipheral_client.so
-vendor/lib/libril-qc-qmi-1.so
-vendor/lib/libril-qc-radioconfig.so
-vendor/lib/libsmemlog.so
-vendor/lib/libsystem_health_mon.so
-vendor/lib/libxml.so
-vendor/lib/libxtadapter.so
-vendor/lib/libwqe.so
+# Media
+vendor/lib/libOmxAacDec.so
+vendor/lib/libOmxAmrwbplusDec.so
+vendor/lib/libOmxEvrcDec.so
+vendor/lib/libOmxQcelp13Dec.so
+vendor/lib/libOmxWmaDec.so
 
-# Misc Firmware
-etc/firmware/leia_pfp_470.fw
-etc/firmware/leia_pm4_470.fw
+# NFC
+vendor/firmware/libpn547_fw.so:vendor/lib/libpn547_fw.so
+vendor/lib/hw/android.hardware.nfc@1.0-impl.so|d3ce6c813c5fab36ddf2d9a933cf6a3da7905382
+vendor/lib/hw/nfc_nci.pn54x.default.so|9175a9714b3e9e27401ea8f51157e5947bb216f3
 
-# Playready
-etc/firmware/cmnlib.b00
-etc/firmware/cmnlib.b01
-etc/firmware/cmnlib.b02
-etc/firmware/cmnlib.b03
-etc/firmware/cmnlib.mdt
+# Perf
+vendor/lib/libqc-opt.so
 
-# QMI
-vendor/lib/libqcci_legacy.so
-vendor/lib/libqdi.so
-vendor/lib/libqdp.so
-vendor/lib/libqmi_cci.so
-vendor/lib/libqmi_client_helper.so
-vendor/lib/libqmi_client_qmux.so
-vendor/lib/libqmi_common_so.so
-vendor/lib/libqmi_csi.so
-vendor/lib/libqmi_encdec.so
-vendor/lib/libqmiservices.so
-vendor/lib/libqmi.so
+# Qualcomm framework - from Xperia AOSP M-MR1 v13 legacy
+vendor/bin/irsc_util|a0e8e2197aacaefcf98b6683813faf29e80b59f9
+vendor/lib/libdiag.so|f9fa0da3765ee4a2fa6d5db6f61533a18aece10b
+vendor/lib/libdsi_netctrl.so|74a7e0fc3e68a5386da0b6a5c38c80a34a98d530|9e711c3e7122b9745e406fcbc65f24da48f2969d
+vendor/lib/libdsutils.so|421701b34d49e73f6c80b6cc38c6019b0c46ec40
+vendor/lib/libidl.so|d11d82fa9234081aefa76aaddc38d557cc95791f
+vendor/lib/libqcci_legacy.so|83cabc8c9d7945cbc63561e7974e30f5f9f7e635
+vendor/lib/libqdi.so|8710587f553672024750e2f23fdab4b17552d771
+vendor/lib/libqdp.so|49a30545f0db0e0175e9be2f42667b7d1baa1bca
+vendor/lib/libqmi_cci.so|540e0ff1627c5b98629ff0654453e87c36e1c039
+vendor/lib/libqmi_client_helper.so|26600b37463d7c25b9331333c1938f9c806e49d8
+vendor/lib/libqmi_client_qmux.so|024934bf845fed73703c7a9a8ba8554cad756260
+vendor/lib/libqmi_common_so.so|a14f7c2cad475b08b7fd8683b7ae02a151ef8fe6
+vendor/lib/libqmi_csi.so|266967783e9d432fa55cb3771bfcf837f5e77296
+vendor/lib/libqmi_encdec.so|4d55f0ea75c282d7bb91f61ef779019b2e6f89bc
+vendor/lib/libqmiservices.so|0aebb2765786fa7ba3a36d8b5feec92c990879e5
+vendor/lib/libqmi.so|a4107711bf03e5b8be2049422e3546967f229d92
+vendor/lib/libsmemlog.so|e4dd61a1d9b1c41eaebdc4eab809362dc156db54
+vendor/lib/libsystem_health_mon.so|2beb793d35d097db64254d19dd1bcc1e11da9a27
 
-# Security
-lib/lib_asb_tee.so
-lib/libkeyctrl.so
+# QuickCharge 2.0
+bin/hvdcp:vendor/bin/hvdcp
+
+# Radio config
+etc/data/dsi_config.xml:vendor/etc/data/dsi_config.xml
+etc/data/netmgr_config.xml:vendor/etc/data/netmgr_config.xml
+etc/data/qmi_config.xml:vendor/etc/data/qmi_config.xml
+
+# Radio - from Xperia AOSP M-MR1 v13 legacy
+vendor/bin/netmgrd|0cba1f2685ed868331a974332e3dd8411e1f7008|26aed010ce431b01f427f88466f02d16f53bdf12
+vendor/bin/qmuxd|1f2f06e0aa4eb3ba1e15384538c0c76fa89d9d21|3de892962e863231f1c2c937d39299126a8e4c51
+vendor/bin/rmt_storage|2dfc2543f5f76e1e4b5761f21813bbd023ee4ad0
+vendor/lib/libconfigdb.so|f36d649ddd3531bb6a51d00a598e04df265947e8
+vendor/lib/liblqe.so|7b8ff5471b737cdf49505ae0e6cd7dd2c6a35023
+vendor/lib/libmdmdetect.so|ad101a2bf081a640a1c35f7da03ab25bb20599be
+vendor/lib/libnetmgr.so|c028279bd15e4755bf444522a19572a56f1b01ac
+vendor/lib/libperipheral_client.so|031007d4688445d69bca6ec11d799f95b24d917c
+vendor/lib/libril-qc-qmi-1.so|3e310ae6fdab47e5bc3080046f2d75eba022d461
+vendor/lib/libril-qcril-hook-oem.so|cd685fd7590ab1641fc90ef9b15dc0e0382781c0
+vendor/lib/libxml.so|4dfdc946c5a72f63069bcbcdbe1bd7b4dd4bcc48
 
 # Security firmware
+etc/firmware/tzhdcp.b00
+etc/firmware/tzhdcp.b01
+etc/firmware/tzhdcp.b02
+etc/firmware/tzhdcp.b03
+etc/firmware/tzhdcp.mdt
 etc/firmware/tzlibasb.b00
 etc/firmware/tzlibasb.b01
 etc/firmware/tzlibasb.b02
 etc/firmware/tzlibasb.b03
 etc/firmware/tzlibasb.mdt
-etc/firmware/tznautilus.b00
-etc/firmware/tznautilus.b01
-etc/firmware/tznautilus.b02
-etc/firmware/tznautilus.b03
-etc/firmware/tznautilus.mdt
 etc/firmware/tzsuntory.b00
 etc/firmware/tzsuntory.b01
 etc/firmware/tzsuntory.b02
@@ -354,49 +323,32 @@ etc/firmware/tzsuntory.b03
 etc/firmware/tzsuntory.mdt
 
 # Sensors
-bin/sensors.qcom
+bin/sensors.qcom:vendor/bin/sensors.qcom
 vendor/lib/hw/activity_recognition.msm8974.so
 vendor/lib/hw/sensors.msm8974.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
 
 # TA
-bin/taimport
-bin/ta_qmi_service
-bin/mlog_qmi_service
-bin/updatemiscta
-lib/libMiscTaAccessor.so
-lib/libmiscta.so
--lib/libta.so
-lib/lib_extended_boot_lock.so
-lib/lib_get_hwc_revision.so
-lib/lib_get_s1_cert_common_name.so
-lib/libMiscTAApi.so
-lib/lib_s1_verification.so
-lib/lib_uncontrolled_rooting_status.so
+bin/mlog_qmi_service:vendor/bin/mlog_qmi_service
+bin/taimport:vendor/bin/taimport
+bin/ta_qmi_service:vendor/bin/ta_qmi_service
+bin/updatemiscta:vendor/bin/updatemiscta
+lib/libmiscta.so:vendor/lib/libmiscta.so
+-lib/libta.so:vendor/lib/libta.so
 
-# Time
-bin/time_daemon
--app/TimeService/TimeService.apk
+# Time services
 -vendor/lib/libtime_genoff.so
--vendor/lib/libTimeService.so
 
-# Widevine firmware
-etc/firmware/tzwidevine.b00
-etc/firmware/tzwidevine.b01
-etc/firmware/tzwidevine.b02
-etc/firmware/tzwidevine.b03
-etc/firmware/tzwidevine.mdt
+# Venus (media) firmware
+etc/firmware/venus.b00:vendor/firmware/venus.b00
+etc/firmware/venus.b01:vendor/firmware/venus.b01
+etc/firmware/venus.b02:vendor/firmware/venus.b02
+etc/firmware/venus.b03:vendor/firmware/venus.b03
+etc/firmware/venus.b04:vendor/firmware/venus.b04
+etc/firmware/venus.mbn:vendor/firmware/venus.mbn
+etc/firmware/venus.mdt:vendor/firmware/venus.mdt
 
-# Perf
-vendor/lib/libqc-opt.so
-
-# NFC
-vendor/firmware/libpn547_fw.so
-
-# Misc
-bin/scd
-bin/sct_service
-bin/suntrold
-lib/libscdclient.so
-vendor/lib/liboemcrypto.so
+# Wifi firmware
+etc/firmware/wlan/bcmdhd/fw_bcmdhd_apsta.bin:vendor/firmware/fw_bcmdhd_apsta.bin
+etc/firmware/wlan/bcmdhd/fw_bcmdhd.bin:vendor/firmware/fw_bcmdhd.bin

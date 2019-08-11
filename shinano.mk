@@ -77,19 +77,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     tfa9890_amp
 
-# Assertive Display
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/ad_calib.cfg:system/etc/ad_calib.cfg
-
 # Bluetooth
 PRODUCT_PACKAGES += \
     libbt-vendor
-
-# RIL
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/netmgr_config.xml:system/etc/data/netmgr_config.xml \
-    $(LOCAL_PATH)/configs/dsi_config.xml:system/etc/data/dsi_config.xml \
-    $(LOCAL_PATH)/configs/qmi_config.xml:system/etc/data/qmi_config.xml
 
 # Media profile
 PRODUCT_COPY_FILES += \
@@ -175,5 +165,5 @@ PRODUCT_COPY_FILES += \
 # BCM Wifi
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4339/device-bcm.mk)
 
-# Include non-opensource parts
+# Call the proprietary setup
 $(call inherit-product, vendor/sony/shinano-common/shinano-common-vendor.mk)
