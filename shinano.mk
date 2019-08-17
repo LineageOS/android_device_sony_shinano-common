@@ -41,18 +41,18 @@ PRODUCT_COPY_FILES += \
 
 # Init
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
-    $(COMMON_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
-    $(COMMON_PATH)/rootdir/init.camera.rc:root/init.camera.rc \
-    $(COMMON_PATH)/rootdir/init.platform-common.rc:root/init.platform-common.rc \
-    $(COMMON_PATH)/rootdir/init.sony.rc:root/init.sony.rc \
-    $(COMMON_PATH)/rootdir/init.qcom.power.rc:root/init.qcom.power.rc \
-    $(COMMON_PATH)/rootdir/init.sony.usb.rc:root/init.sony.usb.rc \
-    $(COMMON_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
+    $(COMMON_PATH)/rootdir/etc/fstab.qcom:root/fstab.qcom \
+    $(COMMON_PATH)/rootdir/etc/init.qcom.rc:root/init.qcom.rc \
+    $(COMMON_PATH)/rootdir/etc/init.camera.rc:root/init.camera.rc \
+    $(COMMON_PATH)/rootdir/etc/init.platform-common.rc:root/init.platform-common.rc \
+    $(COMMON_PATH)/rootdir/etc/init.sony.rc:root/init.sony.rc \
+    $(COMMON_PATH)/rootdir/etc/init.qcom.power.rc:root/init.qcom.power.rc \
+    $(COMMON_PATH)/rootdir/etc/init.sony.usb.rc:root/init.sony.usb.rc \
+    $(COMMON_PATH)/rootdir/etc/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 # Recovery Init
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc
+    $(COMMON_PATH)/rootdir/etc/init.recovery.qcom.rc:root/init.recovery.qcom.rc
 
 # Camera
 PRODUCT_COPY_FILES += \
@@ -63,7 +63,7 @@ PRODUCT_PACKAGES += \
     libshim_camera
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/vendor/bin/credmgrfirstboot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/credmgrfirstboot.sh
+    $(COMMON_PATH)/rootdir/bin/credmgrfirstboot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/credmgrfirstboot.sh
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -120,7 +120,7 @@ PRODUCT_PACKAGES += \
 
 # IPC Security Config
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/sec_config:system/vendor/etc/sec_config
+    $(COMMON_PATH)/configs/sec_config:system/vendor/etc/sec_config
 
 # Keystore
 PRODUCT_PACKAGES += \
@@ -128,9 +128,9 @@ PRODUCT_PACKAGES += \
 
 # Keylayout
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/usr/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
-    $(COMMON_PATH)/rootdir/system/usr/keylayout/mhl-rcp.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/mhl-rcp.kl \
-    $(COMMON_PATH)/rootdir/system/usr/keylayout/msm8974-taiko-mtp-snd-card_Button_Jack.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/msm8974-taiko-mtp-snd-card_Button_Jack.kl
+    $(COMMON_PATH)/configs/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
+    $(COMMON_PATH)/configs/keylayout/mhl-rcp.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/mhl-rcp.kl \
+    $(COMMON_PATH)/configs/keylayout/msm8974-taiko-mtp-snd-card_Button_Jack.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/msm8974-taiko-mtp-snd-card_Button_Jack.kl
 
 # MAC address - BT and Wi-Fi
 PRODUCT_PACKAGES += \
@@ -148,7 +148,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.hardware.nfc_nci=pn54x.default
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/nfcee_access.xml:$(TARGET_COPY_OUT_VENDOR)/etc/nfcee_access.xml \
+    $(COMMON_PATH)/configs/nfc/nfcee_access.xml:$(TARGET_COPY_OUT_VENDOR)/etc/nfcee_access.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml \
@@ -163,7 +163,7 @@ include $(COMMON_PATH)/system_prop.mk
 
 # Sensor file
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/vendor/bin/init.qcom-sensor.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom-sensor.sh
+    $(COMMON_PATH)/rootdir/bin/init.qcom-sensor.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom-sensor.sh
 
 # BCM Wifi
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4339/device-bcm.mk)
