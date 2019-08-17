@@ -39,31 +39,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml
 
-# Init
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/etc/fstab.qcom:root/fstab.qcom \
-    $(COMMON_PATH)/rootdir/etc/init.qcom.rc:root/init.qcom.rc \
-    $(COMMON_PATH)/rootdir/etc/init.camera.rc:root/init.camera.rc \
-    $(COMMON_PATH)/rootdir/etc/init.platform-common.rc:root/init.platform-common.rc \
-    $(COMMON_PATH)/rootdir/etc/init.sony.rc:root/init.sony.rc \
-    $(COMMON_PATH)/rootdir/etc/init.qcom.power.rc:root/init.qcom.power.rc \
-    $(COMMON_PATH)/rootdir/etc/init.sony.usb.rc:root/init.sony.usb.rc \
-    $(COMMON_PATH)/rootdir/etc/ueventd.qcom.rc:root/ueventd.qcom.rc
-
-# Recovery Init
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/etc/init.recovery.qcom.rc:root/init.recovery.qcom.rc
-
 # Camera
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static \
-    $(COMMON_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static
-
 PRODUCT_PACKAGES += \
     libshim_camera
-
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/bin/credmgrfirstboot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/credmgrfirstboot.sh
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -158,12 +136,28 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
- # Properties
+# Properties
 include $(COMMON_PATH)/system_prop.mk
 
-# Sensor file
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/bin/init.qcom-sensor.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom-sensor.sh
+# Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.camera.rc \
+    init.platform-common.rc \
+    init.qcom.power.rc \
+    init.qcom.rc \
+    init.recovery.qcom.rc \
+    init.sony.rc \
+    init.sony.usb.rc \
+    ueventd.qcom.rc
+
+PRODUCT_PACKAGES += \
+    credmgrfirstboot.sh \
+    init.qcom-sensor.sh
+
+PRODUCT_PACKAGES += \
+    tad_static \
+    wait4tad_static
 
 # BCM Wifi
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4339/device-bcm.mk)
