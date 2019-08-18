@@ -113,19 +113,6 @@ service scd /vendor/bin/scd
     user system
     group system
 
-#service wvkbd_installer /system/bin/logwrapper /vendor/bin/wvkbd
-service wvkbd_installer /vendor/bin/wvkbd
-    user system
-    group system
-    oneshot
-    disabled
-
-# All services that use qseecomd daemon listeners should
-# start on sys.listeners.registered property to make sure that
-# all of its service listeners are registered before calling them
-on property:sys.listeners.registered=true
-    start wvkbd_installer
-
 service qcamerasvr /vendor/bin/mm-qcamera-daemon
     class main
     user camera
