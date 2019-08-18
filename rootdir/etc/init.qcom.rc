@@ -339,10 +339,6 @@ on post-fs-data
     chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
 
-    # NFC local data and nfcee xml storage
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
-
     # QCOM Sensors
     mkdir /data/system/sensors 0775 system system
     mkdir /data/misc/sensors 0775 system system
