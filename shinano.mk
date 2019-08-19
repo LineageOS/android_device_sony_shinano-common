@@ -143,7 +143,6 @@ include $(COMMON_PATH)/system_prop.mk
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.camera.rc \
-    init.platform-common.rc \
     init.qcom.power.rc \
     init.qcom.rc \
     init.recovery.qcom.rc \

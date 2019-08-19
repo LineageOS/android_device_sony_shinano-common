@@ -265,6 +265,10 @@ on boot
     chown system system /sys/devices/virtual/graphics/fb0/rgb
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
+    # Touchscreen
+    chown system system /sys/devices/virtual/input/clearpad/wakeup_gesture
+    chown system system /sys/devices/virtual/input/max1187x/wakeup_gesture
+
 on post-fs
     # Change to socket location on libkeyctrl/suntory for /data encryption
     # Create suntory data directory
@@ -532,3 +536,10 @@ service hvdcp /vendor/bin/hvdcp
     class core
     user root
     disabled
+
+# TFA9890 AMP
+service tfa9890_amp /system/bin/tfa9890_amp
+    class late_start
+    user root
+    group root
+    oneshot
