@@ -507,8 +507,8 @@ service adsprpcd /system/vendor/bin/adsprpcd
 
 service charger /charger
     class charger
+    group system graphics
     seclabel u:r:healthd:s0
-
 
 # Redefined Service
 service audioserver /system/bin/audioserver
