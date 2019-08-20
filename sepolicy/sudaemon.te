@@ -1,3 +1,0 @@
-allow sudaemon account_service:service_manager find;
-allow sudaemon package_service:service_manager find;
-allow sudaemon user_service:service_manager find;
