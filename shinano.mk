@@ -146,7 +146,6 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.rc \
     init.recovery.qcom.rc \
-    init.sony.rc \
     init.sony.usb.rc \
     ueventd.qcom.rc
 

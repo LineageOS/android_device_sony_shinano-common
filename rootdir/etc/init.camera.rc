@@ -21,6 +21,17 @@ on early-fs
     class_start trimarea
     exec u:r:qti_init_shell:s0 -- /sbin/wait4tad_static
 
+on fs
+    # SONY: create mount point for idd
+    mkdir /idd 0751 system system
+
+    # SONY: setup idd partition
+    chown system system /idd
+    chmod 0751 /idd
+    exec u:r:qti_init_shell:s0 -- /system/bin/rm -r /idd/lost+found
+    symlink /idd /mnt/idd
+    restorecon_recursive   /idd
+
 on early-boot
     #SONY early boot
     start ta_qmi_service
@@ -71,6 +82,12 @@ on post-fs-data
     exec -- /vendor/bin/taimport property
     setprop init.taimport.ready true
     # taimport ready, use this as trigger for multi-cdf-symlinker
+
+    # SONY: IDD
+    mkdir /idd/lost+found 0770 root root
+    mkdir /idd/output 0755 system system
+    mkdir /idd/socket 0711 system system
+    restorecon_recursive /idd
 
 service taimport /vendor/bin/taimport
     class late_start
@@ -127,13 +144,11 @@ on property:init.svc.servicemanager=restarting
 # SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
 service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
-#service tad_static /sbin/tad_static /data/credmgr/ta_part.bin 0,16
     class core
     user system
     group system root camera media
     socket tad stream 0770 system system
-
-# tad_static is in rootfs, normal file_context does not work
+    # tad_static is in rootfs, normal file_context does not work
     seclabel u:r:tad:s0
 
 service updatemiscta /vendor/bin/updatemiscta
@@ -141,3 +156,8 @@ service updatemiscta /vendor/bin/updatemiscta
     user system
     group system
     oneshot
+
+service iddd /vendor/bin/iddd
+    class main
+    user system
+    group system log inet cameraserver media
