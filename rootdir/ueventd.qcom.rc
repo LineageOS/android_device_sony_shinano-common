@@ -42,18 +42,18 @@
 /dev/smd5                 0660   system     system
 /dev/smd6                 0660   system     system
 /dev/smd7                 0660   bluetooth  bluetooth
-/dev/ttyHS0               0660   bluetooth  net_bt_stack
+/dev/ttyHS0               0660   bluetooth  bluetooth
 
 #permissions for CSVT
 /dev/smd11                0660   radio      radio
 
 # BT/FM/ANT+ V4L2
-/dev/brcm_bt_drv          0660   bluetooth  net_bt_stack
-/dev/radio1               0660   system     net_bt_stack
+/dev/brcm_bt_drv          0660   bluetooth  bluetooth
+/dev/radio1               0660   system     bluetooth
 /dev/rfcomm0              0660   bluetooth  bluetooth
 /dev/ttyUSB0              0660   bluetooth  bluetooth
-/dev/smd3                 0660   bluetooth  net_bt_stack
-/dev/smd2                 0660   bluetooth  net_bt_stack
+/dev/smd3                 0660   bluetooth  bluetooth
+/dev/smd2                 0660   bluetooth  bluetooth
 
 /dev/radio0               0640   system     system
 /dev/smdcntl0             0640   radio      radio

@@ -105,18 +105,18 @@ on boot
     write /sys/module/qpnp_power_on/parameters/forcecrash_on 1
 
     # Bluetooth
-    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/type
-    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     # bluetooth LPM
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+    chown bluetooth bluetooth /proc/bluetooth/sleep/lpm
+    chown bluetooth bluetooth /proc/bluetooth/sleep/btwrite
 
     # BT DUN port-bridge
     chmod 0660 /dev/smd7
     chown bluetooth bluetooth /dev/smd7
 
     chmod 0660 /sys/class/rfkill/rfkill0/state
-    chown bluetooth net_bt_admin /dev/ttyHS0
+    chown bluetooth bluetooth /dev/ttyHS0
     chmod 0660 /dev/ttyHS0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
@@ -516,7 +516,7 @@ service audioserver /system/bin/audioserver
     class main
     user audioserver
     # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
-    group audio trimarea camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct qcom_diag
+    group audio trimarea camera drmrpc inet media mediadrm net_bt bluetooth net_bw_acct qcom_diag
     ioprio rt 4
 
 service drm /system/bin/drmserver
@@ -528,7 +528,7 @@ service drm /system/bin/drmserver
 service media /system/bin/mediaserver
     class main
     user media
-    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm credmgr_client system
+    group audio camera inet net_bt bluetooth net_bw_acct drmrpc mediadrm credmgr_client system
     ioprio rt 4
 
 service mediadrm /system/bin/mediadrmserver
@@ -547,5 +547,5 @@ service mpdecision /system/bin/mpdecision --avg_comp
  service uim /system/bin/brcm-uim-sysfs
     class late_start
     user root
-    group bluetooth net_bt_admin net_bt
+    group bluetooth net_bt
     seclabel u:r:uim:s0
