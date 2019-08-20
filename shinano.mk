@@ -56,7 +56,8 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
+    $(COMMON_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static \
+    $(COMMON_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/vendor/bin/credmgrfirstboot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/credmgrfirstboot.sh
