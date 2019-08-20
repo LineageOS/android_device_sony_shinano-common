@@ -14,4 +14,3 @@ allow mlog_qmi smem_log_device:chr_file rw_file_perms;
 
 # qseecom
 allow mlog_qmi tee_device:chr_file rw_file_perms;
-allowxperm mlog_qmi tee_device:chr_file ioctl qseecom_sock_ipc_ioctls;

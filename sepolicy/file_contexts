@@ -1,31 +1,31 @@
 # NFC
-/dev/pn547                           u:object_r:nfc_device:s0
+/dev/pn547                               u:object_r:nfc_device:s0
 
 # Audio
-/dev/tfa98xx                         u:object_r:audio_device:s0
-/system/bin/tfa9890_amp              u:object_r:tfa_amp_exec:s0
+/dev/tfa98xx                             u:object_r:audio_device:s0
+/system/bin/tfa9890_amp                  u:object_r:tfa_amp_exec:s0
 
 # Dumpstate service
-/system/vendor/bin/hw/android\.hardware\.dumpstate@1.0-service\.sony      u:object_r:hal_dumpstate_default_exec:s0
+/system/vendor/bin/hw/android\.hardware\.dumpstate@1.0-service\.sony    u:object_r:hal_dumpstate_default_exec:s0
 
 # Modem
-/system/vendor/bin/mlog_qmi_service         u:object_r:mlog_qmi_exec:s0
+/system/vendor/bin/mlog_qmi_service      u:object_r:mlog_qmi_exec:s0
 
 # HCI
 /dev/ttyHS0                              u:object_r:hci_attach_dev:s0
 /dev/brcm_bt_drv                         u:object_r:hci_attach_dev:s0
 
 # Bluetooth
-/system/bin/brcm-uim-sysfs                              u:object_r:brcm_uim_exec:s0
+/system/bin/brcm-uim-sysfs               u:object_r:brcm_uim_exec:s0
 
 # WIFI
-/sys/module/bcmdhd/parameters/firmware_path             u:object_r:sysfs_wlan_fwpath:s0
+/sys/module/bcmdhd/parameters/firmware_path    u:object_r:sysfs_wlan_fwpath:s0
 
 # Quick Charge
-/system/vendor/bin/hvdcp                      u:object_r:hvdcp_exec:s0
+/system/vendor/bin/hvdcp                 u:object_r:hvdcp_exec:s0
 
 # Touch
-/sys/devices/virtual/input/clearpad/glove -- u:object_r:sysfs_touch:s0
-/sys/devices/virtual/input/clearpad/wakeup_gesture -- u:object_r:sysfs_touch:s0
-/sys/devices/virtual/input/max1187x/glove -- u:object_r:sysfs_touch:s0
-/sys/devices/virtual/input/max1187x/wakeup_gesture -- u:object_r:sysfs_touch:s0
+/sys/devices/virtual/input/clearpad/glove             u:object_r:sysfs_touch:s0
+/sys/devices/virtual/input/clearpad/wakeup_gesture    u:object_r:sysfs_touch:s0
+/sys/devices/virtual/input/max1187x/glove             u:object_r:sysfs_touch:s0
+/sys/devices/virtual/input/max1187x/wakeup_gesture    u:object_r:sysfs_touch:s0
