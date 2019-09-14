@@ -18,6 +18,8 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
+#pragma push_macro("PROPERTY_VALUE_MAX")
+
 #include <cutils/properties.h>
 #include <string.h>
 
@@ -47,5 +49,5 @@ static inline const char* getBTDefaultName()
 
 #define BTM_DEF_LOCAL_NAME getBTDefaultName()
 
-#undef PROPERTY_VALUE_MAX
+#pragma pop_macro("PROPERTY_VALUE_MAX")
 #endif
