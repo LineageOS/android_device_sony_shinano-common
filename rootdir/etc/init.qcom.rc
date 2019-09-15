@@ -430,7 +430,7 @@ service suntrold /vendor/bin/suntrold
 
 # Modem Log QMI service
 service mlog_qmi_service /vendor/bin/mlog_qmi_service
-    class late_start
+    class core
     user root
 
 # Thermal Manager service
