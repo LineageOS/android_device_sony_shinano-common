@@ -111,6 +111,13 @@ status_t GraphicBufferMapper::lock(buffer_handle_t handle, uint32_t usage, const
     return lockAsync(handle, usage, bounds, vaddr, -1, outBytesPerPixel, outBytesPerStride);
 }
 
+// for old devices
+status_t GraphicBufferMapper::lock(buffer_handle_t handle, uint32_t usage,
+        const Rect& bounds, void** vaddr)
+{
+    return lock(handle, usage, bounds, vaddr, 0, 0);
+}
+
 status_t GraphicBufferMapper::lockYCbCr(buffer_handle_t handle, uint32_t usage,
         const Rect& bounds, android_ycbcr *ycbcr)
 {

@@ -32,6 +32,8 @@
 #include <utils/Mutex.h>
 #include <utils/Singleton.h>
 
+#include <hardware/gralloc.h>
+
 namespace android {
 
 class GrallocAllocator;
@@ -73,7 +75,7 @@ private:
     GraphicBufferAllocator();
     ~GraphicBufferAllocator();
 
-    GraphicBufferMapper& mMapper;
+    alloc_device_t  *mAllocDev;
     std::unique_ptr<const GrallocAllocator> mAllocator;
 };
 
