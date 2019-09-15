@@ -99,6 +99,37 @@ GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
 {
 }
 
+// deprecated (android-6.0)
+GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
+        PixelFormat inFormat, uint32_t inUsage)
+    : GraphicBuffer(inWidth, inHeight, inFormat, 1, static_cast<uint64_t>(inUsage), "<Unknown>")
+{
+}
+
+// deprecated (android-6.0)
+GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
+        PixelFormat inFormat, uint32_t inUsage, uint32_t inStride,
+        native_handle_t* inHandle, bool keepOwnership)
+    : GraphicBuffer(inHandle, keepOwnership ? TAKE_HANDLE : WRAP_HANDLE,
+            inWidth, inHeight, inFormat, 1, static_cast<uint64_t>(inUsage), inStride)
+{
+}
+
+// deprecated (android-6.0)
+GraphicBuffer::GraphicBuffer(ANativeWindowBuffer* buffer, bool keepOwnership)
+    : BASE(), mOwner(keepOwnership ? ownHandle : ownNone),
+      mBufferMapper(GraphicBufferMapper::get()),
+      mInitCheck(NO_ERROR), mWrappedBuffer(buffer), mId(getUniqueId()),
+      mGenerationNumber(0)
+{
+    width  = buffer->width;
+    height = buffer->height;
+    stride = buffer->stride;
+    format = buffer->format;
+    usage  = buffer->usage;
+    handle = buffer->handle;
+}
+
 GraphicBuffer::GraphicBuffer(const native_handle_t* inHandle, HandleWrapMethod method,
                              uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
                              uint32_t inLayerCount, uint64_t inUsage, uint32_t inStride)
