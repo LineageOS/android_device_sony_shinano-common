@@ -18,11 +18,9 @@ include device/sony/msm8974-common/BoardConfigCommon.mk
 
 COMMON_PATH := device/sony/shinano-common
 
-TARGET_SPECIFIC_HEADER_PATH += $(COMMON_PATH)/include
-
 # Platform
 BOARD_VENDOR_PLATFORM := shinano
-PRODUCT_PLATFORM:= shinano
+PRODUCT_PLATFORM := shinano
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 dwc3.maximum_speed=high dwc3_msm.prop_chg_detect=Y vmalloc=300M
