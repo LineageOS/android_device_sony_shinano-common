@@ -61,7 +61,7 @@ TARGET_USES_MEDIA_EXTENSIONS := true
 BOARD_HAVE_BCM_FM := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_shinano
+TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_shinano
 
 # Partition information
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2671771648
