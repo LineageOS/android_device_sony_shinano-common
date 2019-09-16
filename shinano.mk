@@ -22,6 +22,11 @@ COMMON_PATH := device/sony/shinano-common
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
+
+# APEX
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/media/ld.config.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/swcodec/ld.config.txt
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \

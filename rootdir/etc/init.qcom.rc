@@ -365,6 +365,9 @@ on property:bluetooth.isEnabled=true
 #    start btwlancoex
     write /sys/class/bluetooth/hci0/idle_timeout 7000
 
+on property:apexd.status=ready
+    mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind
+
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /vendor/bin/qmuxd
     class main
