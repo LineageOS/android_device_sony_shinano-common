@@ -17,7 +17,7 @@
 on early-fs
     wait /dev/block/mmcblk0p1
     class_start trimarea
-    exec u:r:qti_init_shell:s0 -- /sbin/wait4tad_static
+    exec u:r:qti_init_shell:s0 -- /vendor/bin/wait4tad_static
 
 on early-boot
     #SONY early boot
@@ -124,7 +124,7 @@ on property:init.svc.servicemanager=restarting
 
 # SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
-service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
+service tad_static /vendor/bin/tad_static /dev/block/bootdevice/by-name/TA 0,16
     class core
     user system
     group system root camera media
