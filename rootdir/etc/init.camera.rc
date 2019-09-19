@@ -17,7 +17,7 @@
 on early-fs
     wait /dev/block/mmcblk0p1
     class_start trimarea
-    exec u:r:qti_init_shell:s0 -- /vendor/bin/wait4tad_static
+    exec -- /vendor/bin/wait4tad_static
 
 on early-boot
     #SONY early boot
