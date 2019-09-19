@@ -128,8 +128,6 @@ service tad_static /vendor/bin/tad_static /dev/block/bootdevice/by-name/TA 0,16
     user system
     group system root camera media
     socket tad stream 0770 system system
-    # tad_static is in rootfs, normal file_context does not work
-    seclabel u:r:tad:s0
 
 service updatemiscta /vendor/bin/updatemiscta
     class main
