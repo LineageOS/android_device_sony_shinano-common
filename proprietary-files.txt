@@ -258,7 +258,6 @@ vendor/lib/libOmxWmaDec.so
 
 # NFC
 vendor/firmware/libpn547_fw.so:vendor/lib/libpn547_fw.so
-vendor/lib/hw/android.hardware.nfc@1.0-impl.so|d3ce6c813c5fab36ddf2d9a933cf6a3da7905382
 vendor/lib/hw/nfc_nci.pn54x.default.so|9175a9714b3e9e27401ea8f51157e5947bb216f3
 
 # Perf

@@ -87,9 +87,10 @@ PRODUCT_COPY_FILES += \
 
 # NFC
 PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0-impl \
     android.hardware.nfc@1.0-service \
     NfcNci \
-    com.android.nfc_extras \
+    com.android.nfc_extras
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.hardware.nfc_nci=pn54x.default
