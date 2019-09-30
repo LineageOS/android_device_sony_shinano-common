@@ -49,8 +49,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.voicerec=false \
     ro.vendor.audio.sdk.fluencetype=fluence
 
-# Bluetooth rfkill
+# Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
+    bluetooth.a2dp.sink.enabled=false \
+    ro.bluetooth.hfp.ver=1.6 \
+    ro.bt.bdaddr_path="/data/etc/bluetooth_bdaddr" \
     ro.rfkilldisabled=1
 
 # Semc
