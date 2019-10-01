@@ -27,8 +27,6 @@ LOCAL_SHARED_LIBRARIES := \
     libcutils \
     libdumpstateutil \
     libhidlbase \
-    libhidltransport \
-    libhwbinder \
     liblog \
     libutils
 LOCAL_MODULE_TAGS := optional
