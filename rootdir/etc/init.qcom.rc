@@ -501,7 +501,7 @@ service mpdecision /vendor/bin/mpdecision --avg_comp
     disabled
 
 # brcm-uim-sysfs (BT/FM/ANT+)
- service uim /system/bin/brcm-uim-sysfs
+service uim /vendor/bin/brcm-uim-sysfs
     class late_start
     user root
     group bluetooth net_bt
