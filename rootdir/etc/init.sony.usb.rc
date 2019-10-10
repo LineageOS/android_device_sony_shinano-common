@@ -33,6 +33,9 @@ on fs
 
     setprop sys.usb.ffs.aio_compat 1
 
+on charger
+    setprop sys.usb.config mtp
+
 on property:sys.usb.config=mtp
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor 0FCE
