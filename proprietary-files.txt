@@ -240,8 +240,6 @@ vendor/lib/librpmb.so
 vendor/lib/libssd.so
 
 # In Device Diagnostics (idd)
-bin/iddd:vendor/bin/iddd
-etc/iddd.conf:vendor/etc/iddd.conf
 lib/libidd.so:vendor/lib/libidd.so
 
 # Keymaster firmware

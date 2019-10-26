@@ -14,17 +14,10 @@
 # limitations under the License.
 #
 
-on init
-
 on early-fs
     wait /dev/block/mmcblk0p1
     class_start trimarea
     exec u:r:qti_init_shell:s0 -- /sbin/wait4tad_static
-
-on fs
-    exec u:r:qti_init_shell:s0 -- /system/bin/rm -r /idd/lost+found
-    symlink /idd /mnt/idd
-    restorecon_recursive   /idd
 
 on early-boot
     #SONY early boot
@@ -77,12 +70,6 @@ on post-fs-data
     setprop init.taimport.ready true
     # taimport ready, use this as trigger for multi-cdf-symlinker
 
-    # SONY: IDD
-    mkdir /idd/lost+found 0770 root root
-    mkdir /idd/output 0755 system system
-    mkdir /idd/socket 0711 system system
-    restorecon_recursive /idd
-
 service taimport /vendor/bin/taimport
     class late_start
     user root
@@ -99,7 +86,7 @@ service initcredmgr /vendor/bin/credmgrfirstboot.sh
 # When credmgrfirstboot is ready it set sys.credmgrdready=true.
 # Start credmgrd after that
 on property:sys.credmgrdready=true
-start credmgrd
+    start credmgrd
 
 # Start Credential manager daemon
 service credmgrd /vendor/bin/credmgrd
@@ -150,8 +137,3 @@ service updatemiscta /vendor/bin/updatemiscta
     user system
     group system
     oneshot
-
-service iddd /vendor/bin/iddd
-    class main
-    user system
-    group system log inet cameraserver media

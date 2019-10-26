@@ -26,9 +26,6 @@ function blob_fixup() {
     vendor/lib/libdsi_netctrl.so)
         sed -i "s|/system/etc/data/dsi_config.xml|/vendor/etc/data/dsi_config.xml|g" "${2}"
         ;;
-    vendor/bin/iddd)
-        sed -i "s|/system/etc/iddd.conf|/vendor/etc/iddd.conf|g" "${2}"
-        ;;
     vendor/bin/netmgrd)
         sed -i "s|/system/etc/data/netmgr_config.xml|/vendor/etc/data/netmgr_config.xml|g" "${2}"
         ;;
