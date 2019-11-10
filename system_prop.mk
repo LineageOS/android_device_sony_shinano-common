@@ -1,7 +1,3 @@
-# Active Noise Cancelling
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.anc.enabled=true
-
 # aDSP sensors
 ## max rate
 PRODUCT_PROPERTY_OVERRIDES += \
