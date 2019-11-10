@@ -525,7 +525,7 @@ service hvdcp /vendor/bin/hvdcp
     disabled
 
 # TFA9890 AMP
-service tfa9890_amp /system/bin/tfa9890_amp
+service tfa9890_amp /vendor/bin/tfa9890_amp
     class late_start
     user root
     group root
