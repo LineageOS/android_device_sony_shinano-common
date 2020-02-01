@@ -80,11 +80,3 @@ LOCAL_MODULE_CLASS := BIN
 LOCAL_SRC_FILES    := sbin/tad_static
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT_SBIN)
 include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := wait4tad_static
-LOCAL_MODULE_TAGS  := optional
-LOCAL_MODULE_CLASS := BIN
-LOCAL_SRC_FILES    := sbin/wait4tad_static
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT_SBIN)
-include $(BUILD_PREBUILT)
