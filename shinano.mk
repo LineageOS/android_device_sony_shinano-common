@@ -52,8 +52,7 @@ PRODUCT_PACKAGES += \
     libshim_camera
 
 PRODUCT_PACKAGES += \
-    tad_static \
-    wait4tad_static
+    tad_static
 
 # FM
 PRODUCT_PACKAGES += \
