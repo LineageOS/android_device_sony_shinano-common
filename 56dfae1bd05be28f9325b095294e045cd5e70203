@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5ad7a09_c7e6cb61",
+        "filename": "configs/audio/audio_platform_info.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2020-02-06T17:13:24Z",
+      "side": 1,
+      "message": "no, this is the default id for non-fluence",
+      "revId": "56dfae1bd05be28f9325b095294e045cd5e70203",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
