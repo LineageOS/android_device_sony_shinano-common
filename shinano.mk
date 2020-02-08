@@ -128,6 +128,7 @@ include $(COMMON_PATH)/system_prop.mk
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    logo.rle \
     init.camera.rc \
     init.qcom.power.rc \
     init.qcom.rc \
