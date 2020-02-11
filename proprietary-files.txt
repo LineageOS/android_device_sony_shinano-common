@@ -336,7 +336,9 @@ lib/libmiscta.so:vendor/lib/libmiscta.so
 -lib/libta.so:vendor/lib/libta.so
 
 # Time services
--vendor/lib/libtime_genoff.so
+-app/TimeService/TimeService.apk:vendor/app/TimeService/TimeService.apk
+bin/time_daemon:vendor/bin/time_daemon
+vendor/lib/libtime_genoff.so
 
 # Venus (media) firmware
 etc/firmware/venus.b00:vendor/firmware/venus.b00
