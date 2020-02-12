@@ -52,6 +52,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bt.bdaddr_path="/data/etc/bluetooth_bdaddr" \
     ro.rfkilldisabled=1
 
+# macaddrsetup
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.wifi.addr_path="/sys/devices/platform/bcmdhd_wlan/macaddr"
+
 # Semc
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.semc.version.sw_revision=23.5.A.1.291 \
