@@ -126,10 +126,6 @@ on boot
     # Send single UNSOL_CALL_RING notification
     setprop ro.telephony.call_ring.multiple false
 
-    # Create folder for timekeep
-    mkdir /data/time 0700 system system
-    chmod 0770 /data/time/ats_2
-
     # port-bridge
     chmod 0660 /dev/smd0
     chown system system /dev/smd0
@@ -505,14 +501,6 @@ service uim /vendor/bin/brcm-uim-sysfs
     user root
     group bluetooth net_bt
     seclabel u:r:uim:s0
-
-# OSS time
-service timekeep /vendor/bin/timekeep restore
-    class late_start
-    user root
-    group root system
-    oneshot
-    writepid /dev/cpuset/system-background/tasks
 
 # Quick Charge
 service hvdcp /vendor/bin/hvdcp
