@@ -23,14 +23,20 @@ function blob_fixup() {
     lib/libcameralight.so)
         sed -i "s|/system/etc/flashled_calc_parameters.cfg|/vendor/etc/flashled_calc_parameters.cfg|g" "${2}"
         ;;
-    vendor/lib/libdsi_netctrl.so)
-        sed -i "s|/system/etc/data/dsi_config.xml|/vendor/etc/data/dsi_config.xml|g" "${2}"
-        ;;
     vendor/bin/netmgrd)
         sed -i "s|/system/etc/data/netmgr_config.xml|/vendor/etc/data/netmgr_config.xml|g" "${2}"
         ;;
     vendor/bin/qmuxd)
         sed -i "s|/system/etc/data/qmi_config.xml|/vendor/etc/data/qmi_config.xml|g" "${2}"
+        ;;
+    vendor/lib/hw/audio.primary.msm8974.so)
+        sed -i "s|/system/etc/mixer_paths.xml|/vendor/etc/mixer_paths.xml|g" "${2}"
+        ;;
+    vendor/lib/libaudioroute.so)
+        sed -i "s|/system/etc/mixer_paths.xml|/vendor/etc/mixer_paths.xml|g" "${2}"
+        ;;
+    vendor/lib/libdsi_netctrl.so)
+        sed -i "s|/system/etc/data/dsi_config.xml|/vendor/etc/data/dsi_config.xml|g" "${2}"
         ;;
     esac
 }
