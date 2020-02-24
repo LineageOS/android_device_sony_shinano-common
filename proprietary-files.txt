@@ -13,6 +13,10 @@ vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
 
+# Audio HAL
+lib/hw/audio.primary.msm8974.so:vendor/lib/hw/audio.primary.msm8974.so
+lib/libaudioroute.so:vendor/lib/libaudioroute.so
+
 # Bluetooth aptX - from Motorola Moto Z NCLS25.86-11-4-6-5
 vendor/lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
 
