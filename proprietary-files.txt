@@ -291,18 +291,22 @@ etc/data/dsi_config.xml:vendor/etc/data/dsi_config.xml
 etc/data/netmgr_config.xml:vendor/etc/data/netmgr_config.xml
 etc/data/qmi_config.xml:vendor/etc/data/qmi_config.xml
 
-# Radio - from Xperia AOSP M-MR1 v13 legacy
-vendor/bin/netmgrd|0cba1f2685ed868331a974332e3dd8411e1f7008|26aed010ce431b01f427f88466f02d16f53bdf12
-vendor/bin/qmuxd|1f2f06e0aa4eb3ba1e15384538c0c76fa89d9d21|3de892962e863231f1c2c937d39299126a8e4c51
-vendor/bin/rmt_storage|2dfc2543f5f76e1e4b5761f21813bbd023ee4ad0
-vendor/lib/libconfigdb.so|f36d649ddd3531bb6a51d00a598e04df265947e8
-vendor/lib/liblqe.so|7b8ff5471b737cdf49505ae0e6cd7dd2c6a35023
-vendor/lib/libmdmdetect.so|ad101a2bf081a640a1c35f7da03ab25bb20599be
-vendor/lib/libnetmgr.so|c028279bd15e4755bf444522a19572a56f1b01ac
-vendor/lib/libperipheral_client.so|031007d4688445d69bca6ec11d799f95b24d917c
-vendor/lib/libril-qc-qmi-1.so|3e310ae6fdab47e5bc3080046f2d75eba022d461
-vendor/lib/libril-qcril-hook-oem.so|cd685fd7590ab1641fc90ef9b15dc0e0382781c0
-vendor/lib/libxml.so|4dfdc946c5a72f63069bcbcdbe1bd7b4dd4bcc48
+# Radio
+bin/netmgrd:vendor/bin/netmgrd
+bin/qmuxd:vendor/bin/qmuxd
+bin/rmt_storage:vendor/bin/rmt_storage
+lib/libmdmdetect.so:vendor/lib/libmdmdetect.so
+lib/libpin-cache.so:vendor/lib/libpin-cache.so
+lib/libstartup-reason.so:vendor/lib/libstartup-reason.so
+vendor/lib/libconfigdb.so
+vendor/lib/libnetmgr.so
+vendor/lib/liblqe.so
+vendor/lib/libperipheral_client.so
+vendor/lib/libril-qc-qmi-1.so
+vendor/lib/libril-qc-radioconfig.so
+vendor/lib/libxml.so
+vendor/lib/libperipheral_client.so
+vendor/lib/libsystem_health_mon.so
 
 # Security firmware
 etc/firmware/tzhdcp.b00
