@@ -39,11 +39,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio HAL
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.audio.fluence.audiorec=true \
-    persist.vendor.audio.fluence.speaker=false \
-    persist.vendor.audio.fluence.voicecall=true \
-    persist.vendor.audio.fluence.voicerec=false \
-    ro.vendor.audio.sdk.fluencetype=fluence
+    persist.audio.fluence.audiorec=true \
+    persist.audio.fluence.speaker=true \
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=false \
+    ro.qc.sdk.audio.ssr=false \
+    ro.qc.sdk.audio.fluencetype=none
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
