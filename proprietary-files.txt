@@ -263,25 +263,25 @@ vendor/firmware/libpn547_fw.so:vendor/lib/libpn547_fw.so
 # Perf
 vendor/lib/libqc-opt.so
 
-# Qualcomm framework - from Xperia AOSP M-MR1 v13 legacy
-vendor/bin/irsc_util|a0e8e2197aacaefcf98b6683813faf29e80b59f9
-vendor/lib/libdiag.so|f9fa0da3765ee4a2fa6d5db6f61533a18aece10b
-vendor/lib/libdsi_netctrl.so|74a7e0fc3e68a5386da0b6a5c38c80a34a98d530|9e711c3e7122b9745e406fcbc65f24da48f2969d
-vendor/lib/libdsutils.so|421701b34d49e73f6c80b6cc38c6019b0c46ec40
-vendor/lib/libidl.so|d11d82fa9234081aefa76aaddc38d557cc95791f
-vendor/lib/libqcci_legacy.so|83cabc8c9d7945cbc63561e7974e30f5f9f7e635
-vendor/lib/libqdi.so|8710587f553672024750e2f23fdab4b17552d771
-vendor/lib/libqdp.so|49a30545f0db0e0175e9be2f42667b7d1baa1bca
-vendor/lib/libqmi_cci.so|540e0ff1627c5b98629ff0654453e87c36e1c039
-vendor/lib/libqmi_client_helper.so|26600b37463d7c25b9331333c1938f9c806e49d8
-vendor/lib/libqmi_client_qmux.so|024934bf845fed73703c7a9a8ba8554cad756260
-vendor/lib/libqmi_common_so.so|a14f7c2cad475b08b7fd8683b7ae02a151ef8fe6
-vendor/lib/libqmi_csi.so|266967783e9d432fa55cb3771bfcf837f5e77296
-vendor/lib/libqmi_encdec.so|4d55f0ea75c282d7bb91f61ef779019b2e6f89bc
-vendor/lib/libqmiservices.so|0aebb2765786fa7ba3a36d8b5feec92c990879e5
-vendor/lib/libqmi.so|a4107711bf03e5b8be2049422e3546967f229d92
-vendor/lib/libsmemlog.so|e4dd61a1d9b1c41eaebdc4eab809362dc156db54
-vendor/lib/libsystem_health_mon.so|2beb793d35d097db64254d19dd1bcc1e11da9a27
+# Qualcomm framework
+bin/irsc_util:vendor/bin/irsc_util
+vendor/lib/libdiag.so
+vendor/lib/libdsi_netctrl.so
+vendor/lib/libdsutils.so
+vendor/lib/libidl.so
+vendor/lib/libqcci_legacy.so
+vendor/lib/libqdi.so
+vendor/lib/libqdp.so
+vendor/lib/libqmi_cci.so
+vendor/lib/libqmi_client_helper.so
+vendor/lib/libqmi_client_qmux.so
+vendor/lib/libqmi_common_so.so
+vendor/lib/libqmi_csi.so
+vendor/lib/libqmi_encdec.so
+vendor/lib/libqmiservices.so
+vendor/lib/libqmi.so
+vendor/lib/libsmemlog.so
+vendor/lib/libsystem_health_mon.so
 
 # QuickCharge 2.0
 bin/hvdcp:vendor/bin/hvdcp
