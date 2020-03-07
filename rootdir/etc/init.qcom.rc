@@ -74,6 +74,9 @@ on fs
     # Start hvdcp to enable quck charge 2.0 in power off charge
     start hvdcp
 
+    # GnssConfiguration doesn't actually look at gps.conf, just the debug file
+    mount none /system/etc/gps.conf /system/etc/gps_debug.conf bind
+
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
