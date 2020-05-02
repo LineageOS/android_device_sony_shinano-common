@@ -32,6 +32,12 @@ function blob_fixup() {
     vendor/bin/qmuxd)
         sed -i "s|/system/etc/data/qmi_config.xml|/vendor/etc/data/qmi_config.xml|g" "${2}"
         ;;
+    vendor/lib/hw/audio.primary.msm8974.so)
+        sed -i "s|/system/etc/mixer_paths|/vendor/etc/mixer_paths|g" "${2}"
+        ;;
+    vendor/lib/libaudioroute.so)
+        sed -i "s|/system/etc/mixer_paths|/vendor/etc/mixer_paths|g" "${2}"
+        ;;
     esac
 }
 
