@@ -29,11 +29,24 @@
 
 #include <stdlib.h>
 
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
+
 #include <android-base/file.h>
 #include <android-base/strings.h>
 
 #include "vendor_init.h"
-#include "property_service.h"
+
+void property_override(char const prop[], char const value[], bool add = true)
+{
+    prop_info *pi;
+
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else if (add)
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+}
 
 void import_kernel_cmdline(const std::function<void(const std::string&, const std::string&)>& fn) {
     std::string cmdline;
@@ -53,11 +66,11 @@ static void import_kernel_nv(const std::string& key, const std::string& value)
 
     // We only want the bootloader version
     if (key == "oemandroidboot.s1boot") {
-        android::init::property_set("ro.boot.oemandroidboot.s1boot", value.c_str());
+        property_override("ro.boot.oemandroidboot.s1boot", value.c_str());
     }
 }
 
-void init_target_properties()
+void vendor_load_properties()
 {
     import_kernel_cmdline(import_kernel_nv);
 }
