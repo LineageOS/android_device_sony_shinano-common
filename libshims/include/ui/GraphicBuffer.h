@@ -35,6 +35,7 @@
 #include <nativebase/nativebase.h>
 
 #include <hardware/gralloc.h>
+
 struct ANativeWindowBuffer;
 
 namespace android {
@@ -167,7 +168,6 @@ public:
     uint32_t getLayerCount() const      { return static_cast<uint32_t>(layerCount); }
     Rect getBounds() const              { return Rect(width, height); }
     uint64_t getId() const              { return mId; }
-    int32_t getBufferId() const { return mBufferId; }
 
     uint32_t getGenerationNumber() const { return mGenerationNumber; }
     void setGenerationNumber(uint32_t generation) {
@@ -278,12 +278,6 @@ private:
 
     uint64_t mId;
 
-    // System unique buffer ID. Note that this is different from mId, which is process unique. For
-    // GraphicBuffer backed by BufferHub, the mBufferId is a system unique identifier that stays the
-    // same cross process for the same chunck of underlying memory. Also note that this only applies
-    // to GraphicBuffers that are backed by BufferHub.
-    int32_t mBufferId = -1;
-
     // Stores the generation number of this buffer. If this number does not
     // match the BufferQueue's internal generation number (set through
     // IGBP::setGenerationNumber), attempts to attach the buffer will fail.
@@ -302,7 +296,6 @@ private:
     // and informs SurfaceFlinger that it should drop its strong pointer reference to the buffer.
     std::vector<std::pair<GraphicBufferDeathCallback, void* /*mDeathCallbackContext*/>>
             mDeathCallbacks;
-
 };
 
 }; // namespace android

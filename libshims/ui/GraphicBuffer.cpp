@@ -23,7 +23,6 @@
 
 #include <grallocusage/GrallocUsageConversion.h>
 
-#include <ui/Gralloc2.h>
 #include <ui/GraphicBufferAllocator.h>
 #include <ui/GraphicBufferMapper.h>
 #include <utils/Trace.h>
@@ -450,8 +449,6 @@ status_t GraphicBuffer::unflatten(void const*& buffer, size_t& size, int const*&
     } else if (buf[0] == 'GBFR') {
         // old version, when usage bits were 32-bits
         flattenWordCount = 12;
-    } else if (buf[0] == 'BHBB') { // BufferHub backed buffer.
-        return BAD_TYPE;
     } else {
         return BAD_TYPE;
     }
