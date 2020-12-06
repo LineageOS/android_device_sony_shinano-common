@@ -5,9 +5,6 @@
 # Bluetooth
 /system/vendor/bin/brcm-uim-sysfs        u:object_r:brcm_uim_exec:s0
 
-# Dumpstate service
-/system/vendor/bin/hw/android\.hardware\.dumpstate@1.0-service\.sony    u:object_r:hal_dumpstate_default_exec:s0
-
 # HCI
 /dev/ttyHS0                              u:object_r:hci_attach_dev:s0
 /dev/brcm_bt_drv                         u:object_r:hci_attach_dev:s0
