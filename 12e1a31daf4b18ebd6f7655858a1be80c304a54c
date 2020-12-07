@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e05e3869_fed38faa",
+        "filename": "rootdir/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-12-07T15:32:18Z",
+      "side": 1,
+      "message": "Unrelated?",
+      "range": {
+        "startLine": 79,
+        "startChar": 22,
+        "endLine": 79,
+        "endChar": 33
+      },
+      "revId": "12e1a31daf4b18ebd6f7655858a1be80c304a54c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
