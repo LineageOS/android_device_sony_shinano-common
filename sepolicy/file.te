@@ -1,4 +1,39 @@
 # BRCM BT FM
-type brcm_ldisc_sysfs, sysfs_type, fs_type;
+type brcm_uim, domain;
 type brcm_uim_exec, exec_type, file_type;
+type bt_firmware, vendor_file_type, file_type;
 
+# Credential manager
+type credmgrd, domain;
+type credmgrd_exec, exec_type, file_type;
+type credmgrd_data_file, file_type, data_file_type, core_data_file_type;
+type credmgrd_socket, file_type;
+type credmgrd_firmware, file_type;
+
+# Modem
+type mlog_qmi, domain;
+type mlog_qmi_exec, exec_type, file_type;
+
+# SCD
+type scd, domain;
+type scd_exec, exec_type, file_type;
+type scd_data_file, file_type, data_file_type, core_data_file_type;
+
+# SCT
+type sct, domain;
+type sct_exec, exec_type, file_type;
+
+# Suntrol
+#type suntrold, domain;
+#type suntrold_exec, exec_type, file_type;
+#type suntrold_firmware, file_type;
+#type suntrold_socket, file_type;
+
+# Trim Area
+type tad, domain;
+type tad_socket, file_type;
+type ta_data_file, file_type;
+type tad_exec, exec_type, file_type;
+
+# Wifi
+type wifi_firmware, vendor_file_type, file_type;

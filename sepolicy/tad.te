@@ -1,0 +1,14 @@
+init_daemon_domain(tad)
+allow tad proc_stat:file r_file_perms;
+
+allow tad tad_block_device:blk_file rw_file_perms;
+
+allow tad self:socket create_socket_perms;
+allow tad self:unix_stream_socket create_socket_perms;
+allow tad tad_socket:sock_file rw_file_perms;
+allow tad sysfs_wake_lock:file rw_file_perms;
+allow tad tad:capability setgid;
+
+allow tad block_device:dir search;
+
+set_prop(tad, ta_prop)

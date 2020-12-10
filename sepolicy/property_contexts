@@ -1,0 +1,10 @@
+sys.credmgrdready u:object_r:credmgrd_prop:s0
+hw.camera.0.status. u:object_r:camera_prop:s0
+hw.camera.1.status. u:object_r:camera_prop:s0
+ro.semc.version. u:object_r:ta_prop:s0
+ro.sony. u:object_r:ta_prop:s0
+persist.tareset. u:object_r:ta_prop:s0
+
+#01-25 21:42:52.759   407   407 E libc    : Access denied finding property "sys.init.userspace_reboot.in_progress"
+#01-25 21:43:10.843   229   356 W libc    : Unable to set property "ro.boottime.init.mount.data" to "8": error code: 0xb
+#01-25 21:43:10.935   229   356 W libc    : Unable to set property "ro.boottime.init.mount.data" to "12": error code: 0xb

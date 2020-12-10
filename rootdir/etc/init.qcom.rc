@@ -46,9 +46,6 @@ on init
 
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
-    # Enable panic on out of memory
-    write /proc/sys/vm/panic_on_oom 2
-
     # Setup zram options
     write /sys/block/zram0/comp_algorithm lz4
 
@@ -223,11 +220,7 @@ on boot
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
-    # Set the console loglevel to < KERN_INFO
-    # Set the default message loglevel to KERN_INFO
-    write /proc/sys/kernel/printk "6 6 1 7"
-
-    chown system /sys/devices/virtual/timed_output/vibrator/vtg_level
+	chown system /sys/devices/virtual/timed_output/vibrator/vtg_level
 
     # charger
     chown root system /sys/module/qpnp_charger/parameters/charger_monitor
@@ -250,11 +243,6 @@ on boot
     chown system system /sys/devices/virtual/input/max1187x/wakeup_gesture
 
 on post-fs
-    # Change to socket location on libkeyctrl/suntory for /data encryption
-    # Create suntory data directory
-    mkdir /dev/socket/suntory 0755 system system
-    mkdir /data/suntory 0755 system system
-
     # led RGB
     chown system system /sys/class/leds/rgb/sync_state
     chown system system /sys/class/leds/rgb/start_blink
@@ -360,10 +348,6 @@ on post-fs-data
     # SONY: Create dir for marlin sdata
     mkdir /data/persist/marlin 0700 system system
 
-    # SONY: Create a dir for pin-cache components
-    mkdir /data/pc 0600 radio radio
-    mkdir /cache/pc 0770 radio system
-
 on property:bluetooth.isEnabled=true
 #    start btwlancoex
     write /sys/class/bluetooth/hci0/idle_timeout 7000
@@ -380,8 +364,7 @@ service qmuxd /vendor/bin/qmuxd
 service netmgrd /vendor/bin/netmgrd
     class late_start
     user root
-    group root wifi wakelock radio inet system
-    seclabel u:r:netmgrd:s0
+    group root wifi wakelock radio inet oem_2950
 
 on property:ro.radio.noril=true
     stop ril-daemon
@@ -433,17 +416,11 @@ service sensors /vendor/bin/sensors.qcom
     user root
     group root wakelock
 
-service qcom-sensor-sh /vendor/bin/init.qcom-sensor.sh
-    class main
-    user root
-    oneshot
-
 # HexagonDSP FastRPC daemon
 service adsprpcd /vendor/bin/adsprpcd
    class main
    user media
    group media
-   seclabel u:r:adsprpcd:s0
 
 service charger /system/bin/charger
     class charger
@@ -489,7 +466,6 @@ service uim /vendor/bin/brcm-uim-sysfs
     class late_start
     user root
     group bluetooth net_bt
-    seclabel u:r:uim:s0
 
 # Quick Charge
 service hvdcp /vendor/bin/hvdcp
@@ -500,6 +476,6 @@ service hvdcp /vendor/bin/hvdcp
 # TFA9890 AMP
 service tfa9890_amp /vendor/bin/tfa9890_amp
     class late_start
-    user root
-    group root
+    user system
+    group system
     oneshot
