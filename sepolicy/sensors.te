@@ -1,0 +1,4 @@
+allow sensors tad_socket:sock_file rw_file_perms;
+allow sensors tad:unix_stream_socket connectto;
+
+get_prop(sensors, ta_prop)
