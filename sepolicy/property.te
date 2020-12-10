@@ -1,0 +1,5 @@
+# Credential Manager
+type credmgrd_prop, property_type;
+
+# Trim Area
+type ta_prop, property_type;

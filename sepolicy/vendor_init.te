@@ -1,0 +1,5 @@
+allow vendor_init tad_block_device:blk_file setattr;
+allow vendor_init {
+    credmgrd_data_file
+    scd_data_file
+}:dir create_dir_perms;

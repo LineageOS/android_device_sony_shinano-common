@@ -1,0 +1,11 @@
+# Camera
+hw.camera.0.status.                  u:object_r:camera_prop:s0
+hw.camera.1.status.                  u:object_r:camera_prop:s0
+
+# Credential Manager
+sys.credmgrdready                    u:object_r:credmgrd_prop:s0
+
+# Trim Area
+persist.tareset.                     u:object_r:ta_prop:s0
+ro.semc.version.                     u:object_r:ta_prop:s0
+ro.sony.                             u:object_r:ta_prop:s0
