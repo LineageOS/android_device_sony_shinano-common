@@ -1,0 +1,3 @@
+init_daemon_domain(sct)
+
+allow sct self:socket create_socket_perms;

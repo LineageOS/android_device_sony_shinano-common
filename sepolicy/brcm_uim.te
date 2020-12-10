@@ -1,0 +1,10 @@
+init_daemon_domain(brcm_uim)
+
+allow brcm_uim bluetooth_data_file:dir search;
+allow brcm_uim bluetooth_data_file:file r_file_perms;
+allow brcm_uim sysfs_bluetooth_writable:dir search;
+allow brcm_uim sysfs_bluetooth_writable:file rw_file_perms;
+allow brcm_uim serial_device:chr_file rw_file_perms;
+allow brcm_uim self:capability net_admin;
+
+get_prop(brcm_uim, bluetooth_prop)
