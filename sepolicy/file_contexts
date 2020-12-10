@@ -1,28 +1,48 @@
 # Audio
-/dev/tfa98xx                             u:object_r:audio_device:s0
-/system/vendor/bin/tfa9890_amp           u:object_r:tfa_amp_exec:s0
+/dev/tfa98xx                                              u:object_r:audio_device:s0
+/(vendor|system/vendor)/bin/tfa9890_amp                   u:object_r:audiod_exec:s0
 
 # Bluetooth
-/system/vendor/bin/brcm-uim-sysfs        u:object_r:brcm_uim_exec:s0
+/dev/brcm_bt_drv                                          u:object_r:serial_device:s0
+/sys/devices/bcm4339\.82/rfkill/rfkill0(/.*)?             u:object_r:sysfs_bluetooth_writable:s0
+/sys/devices/platform/bcm_ldisc(/.*)?                     u:object_r:sysfs_bluetooth_writable:s0
+/(vendor|system/vendor)/bin/brcm-uim-sysfs                u:object_r:brcm_uim_exec:s0
 
-# HCI
-/dev/ttyHS0                              u:object_r:hci_attach_dev:s0
-/dev/brcm_bt_drv                         u:object_r:hci_attach_dev:s0
+# Camera flash
+/sys/devices/pm8941-flash-[0-9]+(/.*)?                    u:object_r:sysfs_graphics:s0
+
+# Credential Manager
+/data/credmgr(/.*)?                                       u:object_r:credmgrd_data_file:s0
+/data/suntory(/.*)?                                       u:object_r:credmgrd_data_file:s0
+/dev/socket/credmgr                                       u:object_r:credmgrd_socket:s0
+/dev/socket/suntory(/.*)?                                 u:object_r:credmgrd_socket:s0
+/(vendor|system/vendor)/bin/credmgrd                      u:object_r:credmgrd_exec:s0
+/(vendor|system/vendor)/bin/credmgrfirstboot\.sh          u:object_r:credmgrd_exec:s0
+/(vendor|system/vendor)/bin/suntrold                      u:object_r:credmgrd_exec:s0
 
 # Lineage hardware
-/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.shinano                  u:object_r:hal_lineage_touch_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.shinano u:object_r:hal_lineage_touch_default_exec:s0
 
 # Modem
-/system/vendor/bin/mlog_qmi_service      u:object_r:mlog_qmi_exec:s0
+/(vendor|system/vendor)/bin/mlog_qmi_service              u:object_r:mlog_qmi_exec:s0
 
 # NFC
-/dev/pn547                               u:object_r:nfc_device:s0
+/dev/pn547                                                u:object_r:nfc_device:s0
 
-# Quick Charge
-/system/vendor/bin/hvdcp                 u:object_r:hvdcp_exec:s0
+# SCD
+/data/scd(/.*)?                                           u:object_r:scd_data_file:s0
+/dev/socket/scd(/.*)?                                     u:object_r:camera_socket:s0
+/(vendor|system/vendor)/bin/scd                           u:object_r:scd_exec:s0
+
+# SCT
+/(vendor|system/vendor)/bin/sct_service                   u:object_r:sct_exec:s0
 
 # Trim Area daemon
-/system/vendor/bin/tad_static            u:object_r:tad_exec:s0
+/dev/socket/tad                                           u:object_r:tad_socket:s0
+/(vendor|system/vendor)/bin/tad_static                    u:object_r:tad_exec:s0
+/(vendor|system/vendor)/bin/ta_qmi_service                u:object_r:tad_exec:s0
+/(vendor|system/vendor)/bin/taimport                      u:object_r:tad_exec:s0
+/(vendor|system/vendor)/bin/updatemiscta                  u:object_r:tad_exec:s0
 
 # WIFI
-/sys/module/bcmdhd/parameters/firmware_path    u:object_r:sysfs_wlan_fwpath:s0
+/sys/module/bcmdhd/parameters/firmware_path               u:object_r:sysfs_wlan_fwpath:s0
