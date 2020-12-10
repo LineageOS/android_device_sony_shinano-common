@@ -50,7 +50,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.a2dp.sink.enabled=false \
     ro.bluetooth.hfp.ver=1.6 \
-    ro.bt.bdaddr_path="/data/etc/bluetooth_bdaddr" \
+    ro.bt.bdaddr_path="/data/vendor/bluetooth/bluetooth_bdaddr" \
     ro.rfkilldisabled=1
 
 # macaddrsetup
