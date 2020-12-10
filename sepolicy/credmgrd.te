@@ -1,0 +1,18 @@
+init_daemon_domain(credmgrd)
+
+allow credmgrd credmgrd_data_file:dir create_dir_perms;
+allow credmgrd credmgrd_data_file:file create_file_perms;
+allow credmgrd credmgrd_socket:dir rw_dir_perms;
+allow credmgrd credmgrd_socket:sock_file create_file_perms;
+allow credmgrd tad_socket:sock_file rw_file_perms;
+allow credmgrd tad:unix_stream_socket connectto;
+allow credmgrd firmware_file:file r_file_perms;
+allow credmgrd tee_device:chr_file rw_file_perms;
+allow credmgrd ion_device:chr_file rw_file_perms;
+allow credmgrd vendor_toolbox_exec:file rx_file_perms;
+
+set_prop(credmgrd, credmgrd_prop)
+
+allow credmgrd firmware_file:dir search;
+
+allow credmgrd cache_file:dir search;

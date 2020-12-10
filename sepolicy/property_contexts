@@ -1,0 +1,3 @@
+sys.credmgrdready u:object_r:credmgrd_prop:s0
+hw.camera.0.status. u:object_r:camera_prop:s0
+hw.camera.1.status. u:object_r:camera_prop:s0
