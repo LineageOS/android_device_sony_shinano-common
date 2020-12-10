@@ -136,8 +136,7 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 PRODUCT_PACKAGES += \
-    credmgrfirstboot.sh \
-    init.qcom-sensor.sh
+    credmgrfirstboot.sh
 
 # Include BCM Wifi
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)

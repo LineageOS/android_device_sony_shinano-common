@@ -1,0 +1,6 @@
+init_daemon_domain(scd)
+allow scd scd_data:file rw_file_perms;
+allow scd sysfs_rtc:dir search;
+allow scd sysfs_rtc:file r_file_perms;
+allow scd camera_socket:dir rw_dir_perms;
+allow scd camera_socket:sock_file rw_file_perms;

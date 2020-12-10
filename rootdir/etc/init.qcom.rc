@@ -380,8 +380,7 @@ service qmuxd /vendor/bin/qmuxd
 service netmgrd /vendor/bin/netmgrd
     class late_start
     user root
-    group root wifi wakelock radio inet system
-    seclabel u:r:netmgrd:s0
+    group root wifi wakelock radio inet oem_2950
 
 on property:ro.radio.noril=true
     stop ril-daemon
@@ -433,17 +432,11 @@ service sensors /vendor/bin/sensors.qcom
     user root
     group root wakelock
 
-service qcom-sensor-sh /vendor/bin/init.qcom-sensor.sh
-    class main
-    user root
-    oneshot
-
 # HexagonDSP FastRPC daemon
 service adsprpcd /vendor/bin/adsprpcd
    class main
    user media
    group media
-   seclabel u:r:adsprpcd:s0
 
 service charger /system/bin/charger
     class charger
@@ -489,7 +482,6 @@ service uim /vendor/bin/brcm-uim-sysfs
     class late_start
     user root
     group bluetooth net_bt
-    seclabel u:r:uim:s0
 
 # Quick Charge
 service hvdcp /vendor/bin/hvdcp
@@ -500,6 +492,6 @@ service hvdcp /vendor/bin/hvdcp
 # TFA9890 AMP
 service tfa9890_amp /vendor/bin/tfa9890_amp
     class late_start
-    user root
-    group root
+    user system
+    group system
     oneshot
