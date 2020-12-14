@@ -78,6 +78,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     keystore.msm8974
 
+# Lineage Hardware
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.shinano
+
 # MAC address - BT and Wi-Fi
 PRODUCT_PACKAGES += \
     macaddrsetup
