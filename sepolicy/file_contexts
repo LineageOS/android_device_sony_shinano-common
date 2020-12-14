@@ -12,6 +12,9 @@
 /dev/ttyHS0                              u:object_r:hci_attach_dev:s0
 /dev/brcm_bt_drv                         u:object_r:hci_attach_dev:s0
 
+# Lineage hardware
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.z3c                  u:object_r:hal_lineage_touch_default_exec:s0
+
 # Modem
 /system/vendor/bin/mlog_qmi_service      u:object_r:mlog_qmi_exec:s0
 
