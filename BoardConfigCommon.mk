@@ -47,6 +47,9 @@ TARGET_USES_MEDIA_EXTENSIONS := true
 # FM
 BOARD_HAVE_BCM_FM := true
 
+# HIDL
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
+
 # Init
 TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_shinano
 
