@@ -1,6 +1,8 @@
 on boot
     chown system system /sys/devices/virtual/input/clearpad/glove
+    chown system system /sys/devices/virtual/input/max1187x/glove
     chmod 0660 /sys/devices/virtual/input/clearpad/glove
+    chmod 0660 /sys/devices/virtual/input/max1187x/glove
 
 service vendor.touch-hal-1-0 /vendor/bin/hw/vendor.lineage.touch@1.0-service.shinano
     class hal
