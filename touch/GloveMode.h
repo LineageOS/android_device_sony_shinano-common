@@ -36,6 +36,7 @@ class GloveMode : public IGloveMode {
 
   private:
     bool mHasGloveMode;
+    std::string mGloveSysfsPath;
 };
 
 }  // namespace implementation
