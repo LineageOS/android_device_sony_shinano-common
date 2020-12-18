@@ -26,8 +26,7 @@ namespace touch {
 namespace V1_0 {
 namespace implementation {
 
-constexpr const char kGlovePath[] =
-    "/sys/devices/virtual/input/clearpad/glove";
+constexpr const char kGlovePath[] = "/sys/devices/virtual/input/clearpad/glove";
 
 GloveMode::GloveMode() {
     mHasGloveMode = !access(kGlovePath, F_OK);

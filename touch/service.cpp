@@ -46,8 +46,7 @@ int main() {
 
     status = gloveMode->registerAsService();
     if (status != OK) {
-        LOG(ERROR) << "Could not register service for Touch HAL GloveMode Iface ("
-                   << status << ")";
+        LOG(ERROR) << "Could not register service for Touch HAL GloveMode Iface (" << status << ")";
         goto shutdown;
     }
 
