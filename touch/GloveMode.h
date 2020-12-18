@@ -35,6 +35,7 @@ class GloveMode : public IGloveMode {
    Return<bool> setEnabled(bool enabled) override;
  private:
    bool mHasGloveMode;
+   std::string mGloveSysfsPath;
 };
 
 }  // namespace implementation
