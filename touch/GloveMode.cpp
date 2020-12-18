@@ -26,10 +26,19 @@ namespace touch {
 namespace V1_0 {
 namespace implementation {
 
-constexpr const char kGlovePath[] = "/sys/devices/virtual/input/clearpad/glove";
+constexpr const char kGlovePathClearpad[] = "/sys/devices/virtual/input/clearpad/glove";
+constexpr const char kGlovePathMax1187x[] = "/sys/devices/virtual/input/max1187x/glove";
 
 GloveMode::GloveMode() {
-    mHasGloveMode = !access(kGlovePath, F_OK);
+    mHasGloveMode = false;
+
+    if (access(kGlovePathClearpad, F_OK)) {
+        mHasGloveMode = true;
+        mGloveSysfsPath = kGlovePath;
+    } else if (access(kGlovePathMax1187x, F_OK)) {
+        mHasGloveMode = true;
+        mGloveSysfsPath = kGlovePathAlt;
+    }
 }
 
 // Methods from ::vendor::lineage::touch::V1_0::IGloveMode follow.
@@ -38,8 +47,8 @@ Return<bool> GloveMode::isEnabled() {
 
     if (!mHasGloveMode) return false;
 
-    if (!android::base::ReadFileToString(kGlovePath, &buf)) {
-        LOG(ERROR) << "Failed to read " << kGlovePath;
+    if (!android::base::ReadFileToString(mGloveSysfsPath, &buf)) {
+        LOG(ERROR) << "Failed to read " << mGloveSysfsPath;
         return false;
     }
 
@@ -49,8 +58,8 @@ Return<bool> GloveMode::isEnabled() {
 Return<bool> GloveMode::setEnabled(bool enabled) {
     if (!mHasGloveMode) return false;
 
-    if (!android::base::WriteStringToFile((enabled ? "1" : "0"), kGlovePath)) {
-        LOG(ERROR) << "Failed to write " << kGlovePath;
+    if (!android::base::WriteStringToFile((enabled ? "1" : "0"), mGloveSysfsPath)) {
+        LOG(ERROR) << "Failed to write " << mGloveSysfsPath;
         return false;
     }
 
