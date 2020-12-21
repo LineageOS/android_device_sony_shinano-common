@@ -19,6 +19,14 @@ vendor/lib/libaudcal.so
 lib/hw/audio.primary.msm8974.so:vendor/lib/hw/audio.primary.msm8974.so
 lib/libaudioroute.so:vendor/lib/libaudioroute.so
 
+# Audio sony effect
+etc/sony_effect/clearphase_sp_param.bin:vendor/etc/sony_effect/clearphase_sp_param.bin
+etc/sony_effect/effect_params.data:vendor/etc/sony_effect/effect_params.data
+etc/sony_effect/sforce_param_arm.bin:vendor/etc/sony_effect/sforce_param_arm.bin
+etc/sony_effect/sforce_param_qdsp.bin:vendor/etc/sony_effect/sforce_param_qdsp.bin
+etc/sony_effect/xloud_param_arm.bin:vendor/etc/sony_effect/xloud_param_arm.bin
+etc/sony_effect/xloud_param_qdsp.bin:vendor/etc/sony_effect/xloud_param_qdsp.bin
+
 # Bluetooth aptX - from Motorola Moto Z NCLS25.86-11-4-6-5
 vendor/lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
 

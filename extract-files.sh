@@ -31,6 +31,9 @@ function blob_fixup() {
         ;;
     vendor/lib/hw/audio.primary.msm8974.so)
         sed -i "s|/system/etc/mixer_paths.xml|/vendor/etc/mixer_paths.xml|g" "${2}"
+        sed -i "s|/system/etc/sony_effect/|/vendor/etc/sony_effect/|g" "${2}"
+        sed -i "s|/system/etc/tfa98xx/|/vendor/etc/tfa98xx/|g" "${2}"
+        sed -i "s|/system/lib/soundfx/|/vendor/lib/soundfx/|g" "${2}"
         ;;
     vendor/lib/libaudioroute.so)
         sed -i "s|/system/etc/mixer_paths.xml|/vendor/etc/mixer_paths.xml|g" "${2}"
