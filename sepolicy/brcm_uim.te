@@ -7,4 +7,4 @@ allow brcm_uim sysfs_bluetooth_writable:file rw_file_perms;
 allow brcm_uim serial_device:chr_file rw_file_perms;
 allow brcm_uim self:capability net_admin;
 
-get_prop(brcm_uim, bluetooth_prop)
+get_prop(brcm_uim, exported_bluetooth_prop)
