@@ -14,7 +14,7 @@ allow credmgrd cache_file:dir create_dir_perms;
 allow credmgrd cache_file:file create_file_perms;
 
 # Needed to create /data/credmgr
-allow credmgrd system_data_file:dir { create_dir_perms relabelfrom };
+allow credmgrd system_data_root_file:dir { create_dir_perms relabelfrom };
 allow credmgrd credmgrd_data_file:dir { create_dir_perms relabelto };
 allow credmgrd credmgrd_data_file:file create_file_perms;
 
