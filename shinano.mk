@@ -137,6 +137,7 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 PRODUCT_PACKAGES += \
+    suntrold.sh \
     credmgrfirstboot.sh
 
 # Include BCM Wifi

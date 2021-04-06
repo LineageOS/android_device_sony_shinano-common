@@ -18,6 +18,7 @@
 /(vendor|system/vendor)/bin/credmgrd                      u:object_r:credmgrd_exec:s0
 /(vendor|system/vendor)/bin/credmgrfirstboot\.sh          u:object_r:credmgrd_exec:s0
 /(vendor|system/vendor)/bin/suntrold                      u:object_r:credmgrd_exec:s0
+/(vendor|system/vendor)/bin/suntrold.sh                   u:object_r:credmgrd_exec:s0
 
 # Lineage hardware
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.shinano u:object_r:hal_lineage_touch_default_exec:s0

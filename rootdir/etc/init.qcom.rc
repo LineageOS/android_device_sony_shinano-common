@@ -385,13 +385,6 @@ service ril-daemon1 /vendor/bin/hw/rild -c 2
 on property:persist.radio.multisim.config=dsds
     start ril-daemon1
 
-# Start suntrold
-service suntrold /vendor/bin/suntrold
-    user system
-    group system camera
-    oneshot
-    class main
-
 # Modem Log QMI service
 service mlog_qmi_service /vendor/bin/mlog_qmi_service
     class core
