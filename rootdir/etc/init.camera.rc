@@ -94,6 +94,11 @@ service initcredmgr /vendor/bin/credmgrfirstboot.sh
 on property:sys.credmgrdready=true
     start credmgrd
 
+service suntrold-sh /vendor/bin/suntrold.sh
+    class main
+    user system
+    group system camera
+
 # Start Credential manager daemon
 service credmgrd /vendor/bin/credmgrd
     user system
