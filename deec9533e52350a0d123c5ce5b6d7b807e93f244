@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30d67a12_49bb8f22",
+        "filename": "pn54x/libnfc-nxp.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 9783
+      },
+      "writtenOn": "2022-09-06T15:07:56Z",
+      "side": 1,
+      "message": "Did you just alphanumerically sort Hex?\nI\u0027d like to have some explanation for that one, because even Google is not \"sorting\" those in any of their reference configs or anywhere else. Therefore, I doubt this is supposed to work that way.",
+      "revId": "deec9533e52350a0d123c5ce5b6d7b807e93f244",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
