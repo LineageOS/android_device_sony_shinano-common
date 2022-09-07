@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f957d05_b06fedeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2022-09-07T21:48:27Z",
+      "side": 1,
+      "message": "Please document the actual changes and explain why they should be done.\nI\u0027d also prefer if we split actual changes from cosmetic changes to a seperate commit to have a better overview about what was changed.",
+      "revId": "deec9533e52350a0d123c5ce5b6d7b807e93f244",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1ff853e_75730a24",
+        "filename": "pn54x/libnfc-nci.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2022-09-07T21:48:27Z",
+      "side": 1,
+      "message": "Is this read by anything?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 16
+      },
+      "revId": "deec9533e52350a0d123c5ce5b6d7b807e93f244",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30d67a12_49bb8f22",
         "filename": "pn54x/libnfc-nxp.conf",
         "patchSetId": 10
@@ -32,6 +72,29 @@
       "side": 1,
       "message": "it\u0027s just config flags, so yes, they can be sorted, and it does work. probably unneeded and just cosmetic, but it won\u0027t hurt anyone actually trying to read and understand the config (as i did when trying to fix the crashes we experienced on castor)\ncan undo the sorting if it bothers you guys that much tho",
       "parentUuid": "30d67a12_49bb8f22",
+      "revId": "deec9533e52350a0d123c5ce5b6d7b807e93f244",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d845647_ff8acd6e",
+        "filename": "pn54x/libnfc-nxp.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2022-09-07T21:48:27Z",
+      "side": 1,
+      "message": "Does anything actually read this?",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 18
+      },
       "revId": "deec9533e52350a0d123c5ce5b6d7b807e93f244",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
