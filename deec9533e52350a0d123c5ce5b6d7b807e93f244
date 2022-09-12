@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "300faf78_37856797",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-09-12T16:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f957d05_b06fedeb",
+      "revId": "deec9533e52350a0d123c5ce5b6d7b807e93f244",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1ff853e_75730a24",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-07T21:48:27Z",
       "side": 1,
       "message": "Is this read by anything?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 16
+      },
+      "revId": "deec9533e52350a0d123c5ce5b6d7b807e93f244",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9af19c5_438288c2",
+        "filename": "pn54x/libnfc-nci.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-09-12T16:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1ff853e_75730a24",
       "range": {
         "startLine": 197,
         "startChar": 0,
@@ -76,6 +118,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d227375b_dcad2315",
+        "filename": "pn54x/libnfc-nxp.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-09-12T16:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1ee0752_81e162d3",
+      "revId": "deec9533e52350a0d123c5ce5b6d7b807e93f244",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d845647_ff8acd6e",
@@ -89,6 +149,30 @@
       "writtenOn": "2022-09-07T21:48:27Z",
       "side": 1,
       "message": "Does anything actually read this?",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 18
+      },
+      "revId": "deec9533e52350a0d123c5ce5b6d7b807e93f244",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a676b2f_9266ab12",
+        "filename": "pn54x/libnfc-nxp.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-09-12T16:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d845647_ff8acd6e",
       "range": {
         "startLine": 250,
         "startChar": 0,
