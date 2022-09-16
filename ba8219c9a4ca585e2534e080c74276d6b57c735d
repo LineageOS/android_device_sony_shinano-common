@@ -16,6 +16,23 @@
       "message": "Don\u0027t really care for the other changes, but this is the vital one, so kicking the rest before we\u0027re discussing this to death.",
       "revId": "ba8219c9a4ca585e2534e080c74276d6b57c735d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56422e7_4c59883c",
+        "filename": "pn54x/libnfc-nxp.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2022-09-16T13:24:23Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we also revert this to 0x01?\nChanging that to 0x02 was also a sony change (https://github.com/LineageOS/android_device_sony_shinano-common/commit/37843e642ae71b082ca35778a42179250d010d6e#diff-188f657026ae81929235200b6dfe974ed3ba16daca95b377176e0f4e673b264bR54) like the others above which are reverted by that.",
+      "revId": "ba8219c9a4ca585e2534e080c74276d6b57c735d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
