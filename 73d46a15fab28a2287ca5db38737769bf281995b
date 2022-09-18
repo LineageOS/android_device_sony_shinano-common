@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c5f17d_3022490d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 24529
+      },
+      "writtenOn": "2022-09-18T20:04:15Z",
+      "side": 1,
+      "message": "We found no way to fix the wakelock root cause, therefore this looks like the best option to me for the time being.",
+      "revId": "73d46a15fab28a2287ca5db38737769bf281995b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
