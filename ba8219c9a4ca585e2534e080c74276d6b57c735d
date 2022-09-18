@@ -51,6 +51,24 @@
       "parentUuid": "f56422e7_4c59883c",
       "revId": "ba8219c9a4ca585e2534e080c74276d6b57c735d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ae5446_3fe3f13e",
+        "filename": "pn54x/libnfc-nxp.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 24529
+      },
+      "writtenOn": "2022-09-18T19:13:33Z",
+      "side": 1,
+      "message": "According to the NXP NCI Android Porting Guidelines this value is used \"in case of PLL clock source\". As we switch from PLL to XTAL anyways we should be able to ignore this.",
+      "parentUuid": "6ecf6cdb_357f9274",
+      "revId": "ba8219c9a4ca585e2534e080c74276d6b57c735d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
