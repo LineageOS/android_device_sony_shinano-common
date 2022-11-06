@@ -33,6 +33,24 @@
       "message": "do you really want me to explain why to disable debug logging in an official build? specific? yes, switch on nfc and logcat and be spammed by plenty of stuff no one needs, there are no known nfc problems atm",
       "revId": "1a3c2d772ce720b3119d3028cc948fb6b8d4ebee",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75037376_d9dfb687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2022-11-06T19:50:00Z",
+      "side": 1,
+      "message": "Official doesn\u0027t mean that there should be no debugging messages in logcat.\nSince this does not spam the log with useless messages continuosly (it seems to just print a few lines while enabling NFC) i see no point in disabling it.",
+      "parentUuid": "3034fef7_b8408214",
+      "revId": "1a3c2d772ce720b3119d3028cc948fb6b8d4ebee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
