@@ -85,6 +85,24 @@
       "message": "no idea who has the say in this, so adding some guys: please aid in resolving this dispute, or just pull me off of device support for castor/castor_windy.",
       "revId": "1a3c2d772ce720b3119d3028cc948fb6b8d4ebee",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9434c29b_89549431",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2022-12-12T19:42:01Z",
+      "side": 1,
+      "message": "fyi, the file is not something i pulled from somewhere, the source of it is mentioned in the commit which imports them (https://github.com/LineageOS/android_device_sony_shinano-common/commit/9224c881cf3f8575194823a6c779c0d65c42258a)",
+      "parentUuid": "ed9fbf0d_bedd7ec8",
+      "revId": "1a3c2d772ce720b3119d3028cc948fb6b8d4ebee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
