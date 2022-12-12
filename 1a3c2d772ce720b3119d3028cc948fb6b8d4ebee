@@ -51,6 +51,23 @@
       "parentUuid": "3034fef7_b8408214",
       "revId": "1a3c2d772ce720b3119d3028cc948fb6b8d4ebee",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed9fbf0d_bedd7ec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-12-12T19:25:54Z",
+      "side": 1,
+      "message": "arian, i am so tired of your attitude. you added a nfc config you pulled out from somewhere (which is NOT the one from sony as you claimed), and now you defend it like it was a religion of some sort.\ngo check your facts first, please. pull the ACTUAL sony nfc configuration (you know, the one that does NOT crash castor, unlike yours) before making claims. you shot down my other attempt to revert to sonys original config, for similar bogus reasons.",
+      "revId": "1a3c2d772ce720b3119d3028cc948fb6b8d4ebee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
